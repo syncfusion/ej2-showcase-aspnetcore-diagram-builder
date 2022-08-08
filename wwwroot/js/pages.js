@@ -96,7 +96,7 @@ var PageCreation = (function () {
     };
     PageCreation.prototype.savePage = function () {
         var pageData = {};
-        PageCreation.prototype.saveDiagramSettings();
+        this.saveDiagramSettings();
         pageData.pageOptionList = this.pageOptionList;
         pageData.activePage = this.activePage.name;
         pageData.diagramType = this.selectedItem.diagramType;
@@ -110,7 +110,7 @@ var PageCreation = (function () {
         this.generatePageButtons(this.pageOptionList);
     };
     PageCreation.prototype.saveDiagramSettings = function () {
-        this.activePage.diagram = JSON.parse(this.selectedItem.selectedDiagram.saveDiagram());
+        this.activePage.diagram = JSON.parse(selectedItem.selectedDiagram.saveDiagram());
         if (this.selectedItem.diagramType === 'MindMap') {
             this.activePage.mindmapTemplateType = MindMapUtilityMethods.templateType;
         }

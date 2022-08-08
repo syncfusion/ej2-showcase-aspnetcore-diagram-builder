@@ -279,8 +279,8 @@ var DiagramPropertyBinding = (function () {
             var diagram = selectedItem.selectedDiagram;
             document.getElementById('pageDimension').style.display = 'none';
             document.getElementById('pageOrientation').style.display = '';
-            selectedItem.pageSettings.paperSize = args.value;
-            var paperSize = selectedItem.utilityMethods.getPaperSize(selectedItem.pageSettings.paperSize);
+            document.getElementById("pageSettingsList").ej2_instances[0] = args.value;
+            var paperSize = selectedItem.utilityMethods.getPaperSize(document.getElementById("pageSettingsList").ej2_instances[0]);
             var pageWidth = paperSize.pageWidth;
             var pageHeight = paperSize.pageHeight;
             if (pageWidth && pageHeight) {
@@ -300,8 +300,8 @@ var DiagramPropertyBinding = (function () {
                 }
                 diagram.pageSettings.width = pageWidth;
                 diagram.pageSettings.height = pageHeight;
-                selectedItem.pageSettings.pageWidth = pageWidth;
-                selectedItem.pageSettings.pageHeight = pageHeight;
+                document.getElementById("pageWidth").ej2_instances[0] = pageWidth;
+                document.getElementById("pageHeight").ej2_instances[0] = pageHeight;
                 diagram.dataBind();
             }
             else {
@@ -312,8 +312,8 @@ var DiagramPropertyBinding = (function () {
     };
     DiagramPropertyBinding.prototype.pageDimensionChange = function (args) {
         if (args.event) {
-            var pageWidth = Number(selectedItem.pageSettings.pageWidth);
-            var pageHeight = Number(selectedItem.pageSettings.pageHeight);
+            var pageWidth = Number(document.getElementById("pageWidth").ej2_instances[0]);
+            var pageHeight = Number(document.getElementById("pageHeight").ej2_instances[0]);
             var target = args.event.target;
             if (target.tagName.toLowerCase() === 'span') {
                 target = target.parentElement.children[0];
@@ -336,16 +336,16 @@ var DiagramPropertyBinding = (function () {
                     selectedItem.pageSettings.isLandscape = false;
                     diagram.pageSettings.orientation = 'Portrait';
                 }
-                selectedItem.pageSettings.pageWidth = diagram.pageSettings.width = pageWidth;
-                selectedItem.pageSettings.pageHeight = diagram.pageSettings.height = pageHeight;
+                document.getElementById("pageWidth").ej2_instances[0]= diagram.pageSettings.width = pageWidth;
+                document.getElementById("pageHeight").ej2_instances[0] = diagram.pageSettings.height = pageHeight;
                 diagram.dataBind();
             }
         }
     };
     DiagramPropertyBinding.prototype.pageOrientationChange = function (args) {
         if (args.event) {
-            var pageWidth = Number(selectedItem.pageSettings.pageWidth);
-            var pageHeight = Number(selectedItem.pageSettings.pageHeight);
+            var pageWidth = Number(document.getElementById("pageWidth").ej2_instances[0]);
+            var pageHeight = Number(document.getElementById("pageHeight").ej2_instances[0]);
             var target = args.event.target;
             var diagram = selectedItem.selectedDiagram;
             switch (target.id) {
@@ -361,8 +361,8 @@ var DiagramPropertyBinding = (function () {
                     break;
             }
             diagram.dataBind();
-            selectedItem.pageSettings.pageWidth = diagram.pageSettings.width;
-            selectedItem.pageSettings.pageHeight = diagram.pageSettings.height;
+            document.getElementById("pageWidth").ej2_instances[0] = diagram.pageSettings.width;
+            document.getElementById("pageHeight").ej2_instances[0] = diagram.pageSettings.height;
         }
     };
     DiagramPropertyBinding.prototype.pageBackgroundChange1 = function (args) {

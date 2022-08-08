@@ -80,14 +80,13 @@ function setPaletteNodeDefaults(node) {
 
 // function setPaletteNodeDefaults(symbol) {
 //     if (symbol.id === 'Terminator' || symbol.id === 'Process') {
-//         symbol.width = 80;
-//         symbol.height = 40;
-//     } else if (symbol.id === 'Document' || symbol.id === 'PreDefinedProcess' ||
-//         symbol.id === 'PaperTap' || symbol.id === 'DirectData') {
 //         symbol.width = 50;
-//         symbol.height = 40;
+//         symbol.height = 65;
+//     } else {
+//         symbol.width = 50;
+//         symbol.height = 50;
 //     }
-//     symbol.style = { strokeWidth: 2, strokeColor: "#757575" };
+//     symbol.style = { strokeWidth: 2, strokeColor: "#3A3A3A" };
 // }
 function getNodeDefaults(node, diagram) {
     if (node.style) {
@@ -602,6 +601,12 @@ function mindmapTextOpacitySliderchange(args) {
     document.getElementById('mindmapTextOpacitySlider').ej2_instances[0].value = args.value;
     SelectorViewModel.prototype.mindMapPropertyChange({propertyName: 'textOpacity', propertyValue: args});
 }
+function Printchange(args) { DiagramPropertyBinding.prototype.multiplePage(args); }
+
+function moreShapesClick(args) {
+    moreShapesDialog.show();
+}
+
 // function opacitychange(args) {
 //     document.getElementById('default1').ej2_instances[0].value= args.value;
 //     SelectorViewModel.prototype.connectorPropertyChange({ propertyName: 'opacity', propertyValue: args });
@@ -1288,129 +1293,129 @@ function mindmapTextOpacitySliderchange(args) {
 // printMultiplePage.appendTo('#printMultiplePage');
 
  //doubt dialog
-var fileUploadDialog = new ej.popups.Dialog({
-    width: '500px',
-    height: '485px',
-    header: 'Upload File',
-    target: document.body,
-    isModal: true,
-    animationSettings: { effect: 'None' },
-    buttons: getUploadButtons(),
-    visible: false,
-    showCloseIcon: true,
-    allowDragging: true,
-    content: ' <div id="uploadDialogContent" class="db-upload-content firstPage"> <div id="tooltip"> <div id="uploadInformationDiv" class="row db-dialog-prop-row" style="margin-top: 0px;">' +
-    ' <div class="row"> <div class="row" style="font-size: 12px;font-weight: 500;color: black;"><div class="db-info-text">Choose Format</div>' +
-    ' <div class="db-format-type" style="display: none"> </div> </div><div class="row db-dialog-child-prop-row"><div class="col-xs-3 db-prop-col-style">' +
-    ' <input id="csvFormat" type="radio"></div> <div class="col-xs-3 db-prop-col-style"><input id="xmlFormat" type="radio"></div> <div class="col-xs-3 db-prop-col-style">' +
-    '<input id="jsonFormat" type="radio"> </div> </div> </div> <div class="row db-dialog-prop-row" style="padding: 10px; background-color: #FFF7B5; border: 1px solid #FFF7B5">' +
-    '<div class="db-info-parent" style="width: 10%; background-color:transparent; height: 60px;"></div> <div style="float:left; width: calc(90% - 5px)">' +
-    ' <ul style="padding-left: 25px; margin-bottom: 0px"><li style="margin-bottom: 5px"><span id="descriptionText1" style="color: #515151;font-size: 11px;line-height: 15px;">Makesure that the every column of your table has a header</span>' +
-    '</li><li><span id="descriptionText2" style="color: #515151;font-size: 11px;line-height: 15px;">Each employee should have a reporting person (except for top most employee of the organization) and it should be indicated by any field from your data source.</span></li></ul>' +
-    '</div></div><div class="row db-dialog-prop-row"><button id="btnDownloadFile"></button></div><div class="row"> <div id="dropArea">' +
-    '<span id="dropRegion" class="droparea"> Drop files here or <a href="" id="browseFile"><u>Browse</u></a></span><input type="file" id="defaultfileupload" name="UploadFiles"/>' +
-    '</div></div></div><div id="parentChildRelationDiv" class="row db-dialog-prop-row"> <div class="row db-dialog-child-prop-row" style="margin-top:20px">' +
-    '<div class="row"><div class="db-info-text">Employee Id</div><div class="db-info-style db-employee-id"></div></div><div class="row db-dialog-child-prop-row">' +
-    '<input type="text" id="employeeId"/></div></div><div class="row db-dialog-prop-row"><div class="row"><div class="db-info-text"> Supervisor Id</div>' +
-    ' <div class="db-info-style db-supervisor-id"> </div> </div> <div class="row db-dialog-child-prop-row"><input type="text" id="superVisorId"/></div></div></div>' +
-    '<div id="moreInformationDiv" class="row db-dialog-prop-row"><div id="bindingFields" class="row"><div class="row"><div class="db-info-text">Name</div>' +
-    '<div class="db-info-style db-nameField-id"></div></div><div class="row db-dialog-child-prop-row"><input type="text" id="orgNameField"/></div></div>' +
-    '<div id="bindingFields" class="row db-dialog-prop-row" style="margin-top:20px"><div class="row"><div class="db-info-text">Binding Fields</div><div class="db-info-style db-bindingField-id">' +
-    '</div></div><div class="row db-dialog-child-prop-row"><input type="text" id="orgBindingFields" /></div></div><div id="imageFields" class="row db-dialog-prop-row">' +
-    '<div class="row"><div class="db-info-text">Image Field</div><div class="db-info-style db-imageField-id"></div></div>' +
-    '<div class="row db-dialog-child-prop-row"><input type="text" id="orgImageField"/></div></div> <div id="additionalFields" class="row db-dialog-prop-row">' +
-    '<div class="row"><div class="db-info-text">Additional Fields</div><div class="db-info-style db-additionalField-id"></div></div><div class="row db-dialog-child-prop-row">' +
-    '<input type="text" id="orgAdditionalField"/></div></div></div></div></div>'
-});
-fileUploadDialog.appendTo('#fileUploadDialog');
+// var fileUploadDialog = new ej.popups.Dialog({
+//     width: '500px',
+//     height: '485px',
+//     header: 'Upload File',
+//     target: document.body,
+//     isModal: true,
+//     animationSettings: { effect: 'None' },
+//     buttons: getUploadButtons(),
+//     visible: false,
+//     showCloseIcon: true,
+//     allowDragging: true,
+//     content: ' <div id="uploadDialogContent" class="db-upload-content firstPage"> <div id="tooltip"> <div id="uploadInformationDiv" class="row db-dialog-prop-row" style="margin-top: 0px;">' +
+//     ' <div class="row"> <div class="row" style="font-size: 12px;font-weight: 500;color: black;"><div class="db-info-text">Choose Format</div>' +
+//     ' <div class="db-format-type" style="display: none"> </div> </div><div class="row db-dialog-child-prop-row"><div class="col-xs-3 db-prop-col-style">' +
+//     ' <input id="csvFormat" type="radio"></div> <div class="col-xs-3 db-prop-col-style"><input id="xmlFormat" type="radio"></div> <div class="col-xs-3 db-prop-col-style">' +
+//     '<input id="jsonFormat" type="radio"> </div> </div> </div> <div class="row db-dialog-prop-row" style="padding: 10px; background-color: #FFF7B5; border: 1px solid #FFF7B5">' +
+//     '<div class="db-info-parent" style="width: 10%; background-color:transparent; height: 60px;"></div> <div style="float:left; width: calc(90% - 5px)">' +
+//     ' <ul style="padding-left: 25px; margin-bottom: 0px"><li style="margin-bottom: 5px"><span id="descriptionText1" style="color: #515151;font-size: 11px;line-height: 15px;">Makesure that the every column of your table has a header</span>' +
+//     '</li><li><span id="descriptionText2" style="color: #515151;font-size: 11px;line-height: 15px;">Each employee should have a reporting person (except for top most employee of the organization) and it should be indicated by any field from your data source.</span></li></ul>' +
+//     '</div></div><div class="row db-dialog-prop-row"><button id="btnDownloadFile"></button></div><div class="row"> <div id="dropArea">' +
+//     '<span id="dropRegion" class="droparea"> Drop files here or <a href="" id="browseFile"><u>Browse</u></a></span><input type="file" id="defaultfileupload" name="UploadFiles"/>' +
+//     '</div></div></div><div id="parentChildRelationDiv" class="row db-dialog-prop-row"> <div class="row db-dialog-child-prop-row" style="margin-top:20px">' +
+//     '<div class="row"><div class="db-info-text">Employee Id</div><div class="db-info-style db-employee-id"></div></div><div class="row db-dialog-child-prop-row">' +
+//     '<input type="text" id="employeeId"/></div></div><div class="row db-dialog-prop-row"><div class="row"><div class="db-info-text"> Supervisor Id</div>' +
+//     ' <div class="db-info-style db-supervisor-id"> </div> </div> <div class="row db-dialog-child-prop-row"><input type="text" id="superVisorId"/></div></div></div>' +
+//     '<div id="moreInformationDiv" class="row db-dialog-prop-row"><div id="bindingFields" class="row"><div class="row"><div class="db-info-text">Name</div>' +
+//     '<div class="db-info-style db-nameField-id"></div></div><div class="row db-dialog-child-prop-row"><input type="text" id="orgNameField"/></div></div>' +
+//     '<div id="bindingFields" class="row db-dialog-prop-row" style="margin-top:20px"><div class="row"><div class="db-info-text">Binding Fields</div><div class="db-info-style db-bindingField-id">' +
+//     '</div></div><div class="row db-dialog-child-prop-row"><input type="text" id="orgBindingFields" /></div></div><div id="imageFields" class="row db-dialog-prop-row">' +
+//     '<div class="row"><div class="db-info-text">Image Field</div><div class="db-info-style db-imageField-id"></div></div>' +
+//     '<div class="row db-dialog-child-prop-row"><input type="text" id="orgImageField"/></div></div> <div id="additionalFields" class="row db-dialog-prop-row">' +
+//     '<div class="row"><div class="db-info-text">Additional Fields</div><div class="db-info-style db-additionalField-id"></div></div><div class="row db-dialog-child-prop-row">' +
+//     '<input type="text" id="orgAdditionalField"/></div></div></div></div></div>'
+// });
+// fileUploadDialog.appendTo('#fileUploadDialog');
 
-//tooltip template for fileupload control
-var tooltip = new ej.popups.Tooltip({
-    beforeRender: onTooltipBeforeRender,
-    created: tooltipCreated,
-    position: 'RightCenter'
-});
-tooltip.appendTo('#tooltip');
+// //tooltip template for fileupload control
+// var tooltip = new ej.popups.Tooltip({
+//     beforeRender: onTooltipBeforeRender,
+//     created: tooltipCreated,
+//     position: 'RightCenter'
+// });
+// tooltip.appendTo('#tooltip');
 
-// radio button template for fileupload control
-var csvFormat = new ej.buttons.RadioButton({ label: 'csv', name: 'uploadFileFormat', checked: true, change: function(args) { DownloadExampleFiles.prototype.downloadFormatChange(args); } });
-csvFormat.appendTo('#csvFormat');
+// // radio button template for fileupload control
+// var csvFormat = new ej.buttons.RadioButton({ label: 'csv', name: 'uploadFileFormat', checked: true, change: function(args) { DownloadExampleFiles.prototype.downloadFormatChange(args); } });
+// csvFormat.appendTo('#csvFormat');
 
-// radio button template for fileupload control
-var xmlFormat = new ej.buttons.RadioButton({ label: 'xml', name: 'uploadFileFormat', change:function(args) {DownloadExampleFiles.prototype.downloadFormatChange(args); } });
-xmlFormat.appendTo('#xmlFormat');
+// // radio button template for fileupload control
+// var xmlFormat = new ej.buttons.RadioButton({ label: 'xml', name: 'uploadFileFormat', change:function(args) {DownloadExampleFiles.prototype.downloadFormatChange(args); } });
+// xmlFormat.appendTo('#xmlFormat');
 
-// radio button template for fileupload control
-var jsonFormat = new ej.buttons.RadioButton({ label: 'json', name: 'uploadFileFormat', change:function(args) {DownloadExampleFiles.prototype.downloadFormatChange(args); } });
-jsonFormat.appendTo('#jsonFormat');
+// // radio button template for fileupload control
+// var jsonFormat = new ej.buttons.RadioButton({ label: 'json', name: 'uploadFileFormat', change:function(args) {DownloadExampleFiles.prototype.downloadFormatChange(args); } });
+// jsonFormat.appendTo('#jsonFormat');
 
-// button template for fileupload control
-var btnDownloadFile = new ej.buttons.Button({ content: selectedItem.orgDataSettings.buttonContent
-});
-btnDownloadFile.appendTo('#btnDownloadFile');
+// // button template for fileupload control
+// var btnDownloadFile = new ej.buttons.Button({ content: selectedItem.orgDataSettings.buttonContent
+// });
+// btnDownloadFile.appendTo('#btnDownloadFile');
 
-// upload template for fileupload control
-var defaultfileupload = new ej.inputs.Uploader({
-    asyncSettings: {
-        saveUrl: 'https://aspnetmvc.syncfusion.com/services/api/uploadbox/Save',
-        removeUrl: 'https://aspnetmvc.syncfusion.com/services/api/uploadbox/Remove'
-    },
-    success: onUploadSuccess,
-    failure: onUploadFailure,
-    progress: onUploadFileSelected,
-    allowedExtensions: selectedItem.orgDataSettings.extensionType
-});
-defaultfileupload.appendTo('#defaultfileupload');
+// // upload template for fileupload control
+// var defaultfileupload = new ej.inputs.Uploader({
+//     asyncSettings: {
+//         saveUrl: 'https://aspnetmvc.syncfusion.com/services/api/uploadbox/Save',
+//         removeUrl: 'https://aspnetmvc.syncfusion.com/services/api/uploadbox/Remove'
+//     },
+//     success: onUploadSuccess,
+//     failure: onUploadFailure,
+//     progress: onUploadFileSelected,
+//     allowedExtensions: selectedItem.orgDataSettings.extensionType
+// });
+// defaultfileupload.appendTo('#defaultfileupload');
 
-// dropdown template for fileupload control
-var employeeId = new ej.dropdowns.DropDownList({
-    change: function (args) { OrgChartPropertyBinding.prototype.orgDropDownChange(args); },
-    dataSource:selectedItem.orgDataSettings.dataSourceColumns,
-    fields: { text: 'text', value: 'value' }
-});
-employeeId.appendTo('#employeeId');
+// // dropdown template for fileupload control
+// var employeeId = new ej.dropdowns.DropDownList({
+//     change: function (args) { OrgChartPropertyBinding.prototype.orgDropDownChange(args); },
+//     dataSource:selectedItem.orgDataSettings.dataSourceColumns,
+//     fields: { text: 'text', value: 'value' }
+// });
+// employeeId.appendTo('#employeeId');
 
-// dropdown template for fileupload control
-var superVisorId = new ej.dropdowns.DropDownList({
-    change: function (args) { OrgChartPropertyBinding.prototype.orgDropDownChange(args); },
-    dataSource: selectedItem.orgDataSettings.dataSourceColumns,
-    fields: { text: 'text', value: 'value' }
-});
-superVisorId.appendTo('#superVisorId');
+// // dropdown template for fileupload control
+// var superVisorId = new ej.dropdowns.DropDownList({
+//     change: function (args) { OrgChartPropertyBinding.prototype.orgDropDownChange(args); },
+//     dataSource: selectedItem.orgDataSettings.dataSourceColumns,
+//     fields: { text: 'text', value: 'value' }
+// });
+// superVisorId.appendTo('#superVisorId');
 
-// dropdown template for fileupload control
-var orgNameField = new ej.dropdowns.DropDownList({
-    change: function (args) { OrgChartPropertyBinding.prototype.orgDropDownChange(args); },
-    dataSource: selectedItem.orgDataSettings.dataSourceColumns,
-    fields: { text: 'text', value: 'value' }
-});
-orgNameField.appendTo('#orgNameField');
+// // dropdown template for fileupload control
+// var orgNameField = new ej.dropdowns.DropDownList({
+//     change: function (args) { OrgChartPropertyBinding.prototype.orgDropDownChange(args); },
+//     dataSource: selectedItem.orgDataSettings.dataSourceColumns,
+//     fields: { text: 'text', value: 'value' }
+// });
+// orgNameField.appendTo('#orgNameField');
 
-// multiselect template for fileupload control
-var orgBindingFields = new ej.dropdowns.MultiSelect({
-    change: function(args) {OrgChartPropertyBinding.prototype.orgMultiSelectChange(args); },
-    dataSource: selectedItem.orgDataSettings.dataSourceColumns,
-    mode: 'Delimiter',
-    fields: { text: 'text', value: 'value' }
-});
-orgBindingFields.appendTo('#orgBindingFields');
+// // multiselect template for fileupload control
+// var orgBindingFields = new ej.dropdowns.MultiSelect({
+//     change: function(args) {OrgChartPropertyBinding.prototype.orgMultiSelectChange(args); },
+//     dataSource: selectedItem.orgDataSettings.dataSourceColumns,
+//     mode: 'Delimiter',
+//     fields: { text: 'text', value: 'value' }
+// });
+// orgBindingFields.appendTo('#orgBindingFields');
 
-// dropdown template for fileupload control
-var orgImageField = new ej.dropdowns.DropDownList({
-    change: function (args) { OrgChartPropertyBinding.prototype.orgDropDownChange(args); },
-    dataSource: selectedItem.orgDataSettings.dataSourceColumns,
-    fields: { text: 'text', value: 'value' }
-});
-orgImageField.appendTo('#orgImageField');
+// // dropdown template for fileupload control
+// var orgImageField = new ej.dropdowns.DropDownList({
+//     change: function (args) { OrgChartPropertyBinding.prototype.orgDropDownChange(args); },
+//     dataSource: selectedItem.orgDataSettings.dataSourceColumns,
+//     fields: { text: 'text', value: 'value' }
+// });
+// orgImageField.appendTo('#orgImageField');
 
-// multiselect template for fileupload control
-var orgAdditionalField = new ej.dropdowns.MultiSelect({
-    change: function(args) {OrgChartPropertyBinding.prototype.orgMultiSelectChange(args); },
-    dataSource: selectedItem.orgDataSettings.dataSourceColumns,
-    mode: 'Delimiter',
-    fields: { text: 'text', value: 'value' }
-});
-orgAdditionalField.appendTo('#orgAdditionalField');
+// // multiselect template for fileupload control
+// var orgAdditionalField = new ej.dropdowns.MultiSelect({
+//     change: function(args) {OrgChartPropertyBinding.prototype.orgMultiSelectChange(args); },
+//     dataSource: selectedItem.orgDataSettings.dataSourceColumns,
+//     mode: 'Delimiter',
+//     fields: { text: 'text', value: 'value' }
+// });
+// orgAdditionalField.appendTo('#orgAdditionalField');
 
 // var openTemplateDialog = new ej.popups.Dialog({
 //     width: '695px',
@@ -1456,9 +1461,7 @@ orgAdditionalField.appendTo('#orgAdditionalField');
 //     '<img id="shapePreviewImage" src="css/assets/dbstyle/shapes_images/flow.png" /></div></div></div>'
 // });
 // moreShapesDialogContent.appendTo('#moreShapesDialogContent');
-function moreShapesClick(args) {
-    moreShapesDialog.show();
-}
+
 // var moreShapesList = new ej.lists.ListView({
 //     fields: { isChecked: 'checked' },
 //     dataSource: DropDownDataSources.prototype.listViewData(),
@@ -1710,11 +1713,11 @@ function menuClick(args) {
             saveDialog.show();
             break;
         case 'print':
-            document.getElementById("printPageHeight").ej2_instances[0] = document.getElementById("printPageHeight").ej2_instances[0];
-            document.getElementById("printPageWidth").ej2_instances[0] =  document.getElementById("printPageWidth").ej2_instances[0];
-            document.getElementById("printPaperSizeDropdown").ej2_instances[0] = document.getElementById("printPaperSizeDropdown").ej2_instances[0];
-            document.getElementById("printPortrait").ej2_instances[0] = document.getElementById("printPortrait").ej2_instances[0];
-            document.getElementById("printLandscape").ej2_instances[0] = !document.getElementById("printPortrait").ej2_instances[0];
+            document.getElementById("printPageHeight").ej2_instances[0] = document.getElementById("pageHeight").ej2_instances[0];
+            document.getElementById("printPageWidth").ej2_instances[0] =  document.getElementById("pageWidth").ej2_instances[0];
+            document.getElementById("printPaperSizeDropdown").ej2_instances[0] = document.getElementById("pageSettingsList").ej2_instances[0];
+            document.getElementById("printPortrait").ej2_instances[0] = document.getElementById("pagePortrait").ej2_instances[0];
+            document.getElementById("printLandscape").ej2_instances[0] = !document.getElementById("pagePortrait").ej2_instances[0];
             printDialog.show();
             break;
         case 'export':
@@ -2037,7 +2040,7 @@ function btnCancelClick(args) {
             OrgChartUtilityMethods.uploadDialog.hide();
             OrgChartUtilityMethods.isUploadSuccess = false;
             break;
-        case 'moreShapesDialog':
+        case 'moreShapesDialogContent':
             moreShapesDialog.hide();
             break;
     }
@@ -2084,7 +2087,7 @@ function btnTooltip() {
 }
 
 function btnSave() {
-    CommonKeyboardCommands.download(savePage(), (document.getElementById('saveFileName')).value);
+    CommonKeyboardCommands.download(page.savePage(), (document.getElementById('saveFileName')).value);
     saveDialog.hide();
 }
 
@@ -2494,57 +2497,57 @@ function getCommandSettings() {
     return commandManager;
 }
 
-function getDialogButtons(dialogType) {
-    var buttons= [];
-    switch (dialogType) {
-        // case 'export':
-        //     buttons.push({
-        //         click: btnExportClick.bind(this), buttonModel: { content: 'Export', cssClass: 'e-flat e-db-primary', isPrimary: true }
-        //     });
-        //     break;
-        case 'print':
-            buttons.push({
-                click: btnPrintClick.bind(this),
-                buttonModel: { content: 'Print', cssClass: 'e-flat e-db-primary', isPrimary: true }
-            });
-            break;
-        case 'save':
-            buttons.push({
-                click: btnSave.bind(this),
-                buttonModel: { content: 'Save', cssClass: 'e-flat e-db-primary', isPrimary: true }
-            });
-            break;
-        case 'tooltip':
-            buttons.push({
-                click: btnTooltip.bind(this),
-                buttonModel: { content: 'Apply', cssClass: 'e-flat e-db-primary', isPrimary: true }
-            });
-            break;
-        case 'hyperlink':
-            buttons.push({
-                click: btnHyperLink.bind(this),
-                buttonModel: { content: 'Apply', cssClass: 'e-flat e-db-primary', isPrimary: true }
-            });
-            break;
-        case 'deleteconfirmation':
-            buttons.push({
-                click: btnDeleteConfirmation.bind(this),
-                buttonModel: { content: 'Ok', cssClass: 'e-flat e-db-primary', isPrimary: true }
-            });
-            break;
-        case 'moreshapes':
-            buttons.push({
-                click: btnMoreShapes.bind(this),
-                buttonModel: { content: 'Apply', cssClass: 'e-flat e-db-primary', isPrimary: true }
-            });
-            break;
-    }
-    buttons.push({
-        click: btnCancelClick.bind(this),
-        buttonModel: { content: 'Cancel', cssClass: 'e-flat', isPrimary: true }
-    });
-    return buttons;
-}
+// function getDialogButtons(dialogType) {
+//     var buttons= [];
+//     switch (dialogType) {
+//         case 'export':
+//             buttons.push({
+//                 click: btnExportClick.bind(this), buttonModel: { content: 'Export', cssClass: 'e-flat e-db-primary', isPrimary: true }
+//             });
+//             break;
+//         case 'print':
+//             buttons.push({
+//                 click: btnPrintClick.bind(this),
+//                 buttonModel: { content: 'Print', cssClass: 'e-flat e-db-primary', isPrimary: true }
+//             });
+//             break;
+//         case 'save':
+//             buttons.push({
+//                 click: btnSave.bind(this),
+//                 buttonModel: { content: 'Save', cssClass: 'e-flat e-db-primary', isPrimary: true }
+//             });
+//             break;
+//         case 'tooltip':
+//             buttons.push({
+//                 click: btnTooltip.bind(this),
+//                 buttonModel: { content: 'Apply', cssClass: 'e-flat e-db-primary', isPrimary: true }
+//             });
+//             break;
+//         case 'hyperlink':
+//             buttons.push({
+//                 click: btnHyperLink.bind(this),
+//                 buttonModel: { content: 'Apply', cssClass: 'e-flat e-db-primary', isPrimary: true }
+//             });
+//             break;
+//         case 'deleteconfirmation':
+//             buttons.push({
+//                 click: btnDeleteConfirmation.bind(this),
+//                 buttonModel: { content: 'Ok', cssClass: 'e-flat e-db-primary', isPrimary: true }
+//             });
+//             break;
+//         case 'moreshapes':
+//             buttons.push({
+//                 click: btnMoreShapes.bind(this),
+//                 buttonModel: { content: 'Apply', cssClass: 'e-flat e-db-primary', isPrimary: true }
+//             });
+//             break;
+//     }
+//     buttons.push({
+//         click: btnCancelClick.bind(this),
+//         buttonModel: { content: 'Cancel', cssClass: 'e-flat', isPrimary: true }
+//     });
+//     return buttons;
+// }
 
 function btnExportClick() {
     var diagram = selectedItem.selectedDiagram;
@@ -2557,9 +2560,9 @@ function btnExportClick() {
 }
 
 function btnPrintClick() {
-    var pageWidth = document.getElementById("printPageWidth").ej2_instances[0];
-    var pageHeight = document.getElementById("printPageHeight").ej2_instances[0];
-    var paperSize = selectedItem.utilityMethods.getPaperSize(document.getElementById("printPaperSizeDropdown").ej2_instances[0]);
+    var pageWidth = selectedItem.printSettings.pageWidth;
+    var pageHeight = selectedItem.printSettings.pageHeight;
+    var paperSize = selectedItem.utilityMethods.getPaperSize(selectedItem.printSettings.paperSize);
     if (paperSize.pageHeight && paperSize.pageWidth) {
         pageWidth = paperSize.pageWidth;
         pageHeight = paperSize.pageHeight;
@@ -2579,9 +2582,9 @@ function btnPrintClick() {
     }
     var diagram = selectedItem.selectedDiagram;
     diagram.print({
-        region: document.getElementById("printRegionDropdown").ej2_instances[0], pageHeight: pageHeight, pageWidth: pageWidth,
-        multiplePage: !document.getElementById("printMultiplePage").ej2_instances[0],
-        pageOrientation:document.getElementById("printPortrait").ej2_instances[0] ? 'Portrait' : 'Landscape'
+        region: selectedItem.printSettings.region, pageHeight: pageHeight, pageWidth: pageWidth,
+        multiplePage: !selectedItem.printSettings.multiplePage,
+        pageOrientation: selectedItem.printSettings.isPortrait ? 'Portrait' : 'Landscape'
     });
     printDialog.hide();
 }

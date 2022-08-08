@@ -17,7 +17,7 @@ var CommonKeyboardCommands = (function () {
         this.openUploadBox(true, '.json');
     };
     CommonKeyboardCommands.saveDiagram = function () {
-        this.download(this.page.savePage(), document.getElementById('diagramName').innerHTML);
+        this.download(page.savePage(), document.getElementById('diagramName').innerHTML);
     };
     CommonKeyboardCommands.zoomIn = function () {
         var diagram = this.selectedItem.selectedDiagram;

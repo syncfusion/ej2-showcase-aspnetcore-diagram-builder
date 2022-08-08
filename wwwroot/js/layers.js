@@ -120,7 +120,7 @@ var DiagramBuilderLayer = (function () {
     DiagramBuilderLayer.prototype.initLayerBottomPanel = function () {
         this.removeLayer = new ej.buttons.Button({ iconCss: 'sf-icon-Delete' });
         this.removeLayer.appendTo('#btnRemove');
-        document.getElementById('btnRemove').onclick = this.btnRemoveLayer.bind(this);
+        document.getElementById('btnRemove').onclick=this.btnRemoveLayer.bind(this);
         var duplicateLayer = new ej.buttons.Button({ iconCss: 'sf-icon-Copy' });
         duplicateLayer.appendTo('#btnDuplicate');
         document.getElementById('btnDuplicate').onclick = this.btnDuplicateLayer.bind(this);
