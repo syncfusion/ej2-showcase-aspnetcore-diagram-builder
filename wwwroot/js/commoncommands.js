@@ -22,12 +22,12 @@ var CommonKeyboardCommands = (function () {
     CommonKeyboardCommands.zoomIn = function () {
         var diagram = this.selectedItem.selectedDiagram;
         diagram.zoomTo({ type: 'ZoomIn', zoomFactor: 0.2 });
-        this.selectedItem.scrollSettings.currentZoom = (diagram.scrollSettings.currentZoom * 100).toFixed() + '%';
+        selectedItem.scrollSettings.currentZoom = (diagram.scrollSettings.currentZoom * 100).toFixed() + '%';
     };
     CommonKeyboardCommands.zoomOut = function () {
         var diagram = this.selectedItem.selectedDiagram;
         diagram.zoomTo({ type: 'ZoomOut', zoomFactor: 0.2 });
-        this.selectedItem.scrollSettings.currentZoom = (diagram.scrollSettings.currentZoom * 100).toFixed() + '%';
+        selectedItem.scrollSettings.currentZoom = (diagram.scrollSettings.currentZoom * 100).toFixed() + '%';
     };
     CommonKeyboardCommands.download = function (data, filename) {
         var dataStr = data;

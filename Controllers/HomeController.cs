@@ -194,7 +194,7 @@ namespace SyncfusionWebApp3.Controllers
             ViewBag.Connectors = connector;
             
             List<SymbolPalettePalette> palettes = new List<SymbolPalettePalette>();
-            palettes.Add(new SymbolPalettePalette() { Id = "flow", Expanded =false, Symbols = SymbolPaletee, Title = "Flow Shapes" });
+            palettes.Add(new SymbolPalettePalette() { Id = "flow", Expanded =true, Symbols = SymbolPaletee, Title = "Flow Shapes" });
             palettes.Add(new SymbolPalettePalette() { Id = "basic", Expanded = false, Symbols = BasicNodes,  Title = "Basic Shapes" });
             palettes.Add(new SymbolPalettePalette() { Id = "bpmn", Expanded = false, Symbols = BpmnShapes,  Title = "BPMN Shapes" });
             palettes.Add(new SymbolPalettePalette() { Id = "connectors", Expanded = false, Symbols = connector, Title = "Connectors" });
@@ -227,17 +227,23 @@ namespace SyncfusionWebApp3.Controllers
             SymbolPaletteSymbolPreview preview=new SymbolPaletteSymbolPreview{Height = 100, Width = 100};
             ViewBag.preview = preview;
             
-            // ViewBag.fileItems="DropDownDataSources.prototype.getFileMenuItems";
             ViewBag.setPaletteNodeDefaults = "setPaletteNodeDefaults";
             ViewBag.getSymbolInfo = "getSymbolInfo";
-            ViewBag.expandValue = "Multiple";
+            // ViewBag.expandValue = "Multiple";
             ViewBag.enableSearch=true;
             ViewBag.getNodeDefaults = "getNodeDefaults";
             ViewBag.getConnectorDefaults="getConnectorDefaults";
             ViewBag.getTool = "getTool";
+            // ViewBag.Multiple='Multiple';
             // ViewBag.commandSettings="getCommandSettings";
             // ViewBag.value="selectedItem.nodeProperties.offsetX";
             ViewBag.nodechange="change";
+
+            // List<ExpandOptions> expand = new List<ExpandOptions>();
+            // expand.Add(new ExpandOptions() { text = "Multiple", value = "multiple" });
+
+            // ViewBag.expand = expand;
+            // ViewBag.expandValue = "Multiple";
             
             double[] intervals = { 1, 9, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75};
             DiagramGridlines grIdLines = new DiagramGridlines()
@@ -259,6 +265,11 @@ namespace SyncfusionWebApp3.Controllers
             public bool isPrimary { get; set; }
             public string cssClass { get; set; }
         }
+        //  public class ExpandOptions
+        // {
+        //     public string text;
+        //     public string value;
+        // }
         public class contextMenuItems
         {
             [DefaultValue(null)]

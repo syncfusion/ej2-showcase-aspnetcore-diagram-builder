@@ -75,6 +75,11 @@ namespace SyncfusionWebApp3.Models
             });
             editmenuitems.Add(new
             {
+                text = "Paste",
+                iconCss= "sf-icon-Paste"
+            });
+            editmenuitems.Add(new
+            {
                 text = "Delete",
                 iconCss= "sf-icon-Delete"
             });

@@ -483,6 +483,7 @@ var SelectorViewModel = (function () {
                                 node.rotateAngle =document.getElementById('nodeRotateAngle').ej2_instances[0].value;
                                 break;
                             case 'aspectratio':
+                                // node.constraints = node.constraints ^ ej.diagrams.NodeConstraints.AspectRatio;
                                 node.constraints = node.constraints ^ ej.diagrams.NodeConstraints.AspectRatio;
                                 break;
                         }

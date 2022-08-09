@@ -8,7 +8,7 @@
 
 <ejs-contextmenu id='arrangeContextMenu' 
     items='ViewBag.arrangemenuitems' onOpen="arrangeContextMenuOpen" animationSettings="@new Syncfusion.EJ2.Navigations.ContextMenuAnimationSettings(){Effect= Syncfusion.EJ2.Navigations.MenuEffect.None }" cssClass="arrangeMenu" 
-    select="contextMenuClick"  beforeClose="arrangeMenuBeforeClose" >
+    select="contextMenuClick" beforeClose="arrangeMenuBeforeClose" >
 </ejs-contextmenu>
 
 <div class='diagrambuilder-container' style="display: none;">
@@ -166,10 +166,11 @@
    <div class='row content'>
         <div class='sidebar show-overview'>
             <div class="db-palette-parent">
-                <ejs-symbolpalette id="symbolpalette"  width="100%" height="100%" symbolHeight="50"symbolWidth="50" expandMode="@ViewBag.expandMode"
+                <ejs-symbolpalette id="symbolpalette"  width="100%" height="100%" symbolHeight="50" symbolWidth="50" expandMode="@ViewBag.expandMode" 
                     getSymbolInfo="@ViewBag.getSymbolInfo" palettes="@ViewBag.palettes" symbolPreview="@ViewBag.preview" symbolMargin= "@ViewBag.margin" enableSearch="@ViewBag.enableSearch"
                     getNodeDefaults="@ViewBag.setPaletteNodeDefaults">
                 </ejs-symbolpalette>
+                @* getNodeDefaults="@ViewBag.setPaletteNodeDefaults" *@
             </div>
             <div class="db-overview-parent">
                 <div id="overview"></div>
@@ -221,9 +222,9 @@
                         </div>
                         <div class="row db-prop-row">
                             <ejs-dropdownlist id="pageSettingsList" dataSource="ViewBag.paperList" change="DiagramPropertyBinding.prototype.paperListChange"
-                                index="0"  >
+                                index="0" >
                                  <e-dropdownlist-fields text="text" value="value"></e-dropdownlist-fields>
-                            </ejs-dropdownlist> 
+                            </ejs-dropdownlist>
                                 @* <input type="text" id='pageSettingsList' /> *@
                         </div>
                         <div class="row db-prop-row" id="pageOrientation">
@@ -245,7 +246,7 @@
                                         <span>W</span>
                                     </div>
                                     <div class="db-text-input">
-                                        <ejs-numerictextbox id="pageWidth" min="100" format="n0" change="DiagramPropertyBinding.prototype.pageDimensionChange" ></ejs-numerictextbox>
+                                        <ejs-numerictextbox id="pageWidth" min="100" format="n0" change="DiagramPropertyBinding.prototype.pageDimensionChange" value="1056"></ejs-numerictextbox>
                                         @* <input id="pageWidth" type="text" /> *@
                                     </div>
                                 </div>
@@ -256,7 +257,7 @@
                                         <span>H</span>
                                     </div>
                                     <div class="db-text-input">
-                                        <ejs-numerictextbox id="pageHeight" min="100" format="n0" change="DiagramPropertyBinding.prototype.pageDimensionChange"></ejs-numerictextbox>
+                                        <ejs-numerictextbox id="pageHeight" min="100" format="n0" change="DiagramPropertyBinding.prototype.pageDimensionChange" value="816"></ejs-numerictextbox>
                                             @* <input id="pageHeight" type="text" /> *@
                                     </div>
                                 </div>
@@ -412,7 +413,7 @@
                                     </div>
                                     <div class="col-xs-4 db-col-center">
                                         <ejs-dropdownlist id='gradientDirectionDropdown' dataSource="ViewBag.gradientDirections"
-                                             popupWidth='200px' change="nodegradientdirectionchange">
+                                             popupWidth='200px' change="nodegradientdirectionchange" index=0>
                                         <e-dropdownlist-fields text="text" value="value"></e-dropdownlist-fields>
                                         </ejs-dropdownlist>
                                             @* <input type="text" id='gradientDirectionDropdown' /> *@
@@ -420,7 +421,7 @@
                                     <div class="col-xs-4 db-col-right">
                                         <div class="db-color-container">
                                             <div class="db-color-input">
-                                                <ejs-colorpicker  id="nodeGradientColor" type="color" mode="Palette" change="nodegradientcolorchange">
+                                                <ejs-colorpicker  id="nodeGradientColor" type="color" mode="Palette" change="nodegradientcolorchange" value="#fff">
                                                 </ejs-colorpicker>
                                                     @* <input id="nodeGradientColor" type="color"> *@
                                             </div>
@@ -741,7 +742,7 @@
                     </div>
                     <div class="row db-prop-row">
                         <div class="col-xs-6 db-col-left">
-                            <ejs-dropdownlist id="mindMapLevels" dataSource="ViewBag.mindmapLevels" change="mindMapLevelschange">
+                            <ejs-dropdownlist id="mindMapLevels" dataSource="ViewBag.mindmapLevels" change="mindMapLevelschange" index=0>
                             <e-dropdownlist-fields text="text" value="value"></e-dropdownlist-fields>
                             </ejs-dropdownlist>
                                 @* <input type="text" id='mindMapLevels' /> *@
@@ -1450,7 +1451,7 @@
     </div><div class="col-xs-2"><button id="btnCloseLayer" style="right:10px;position:absolute"></button></div></div></div>'>
      <e-dialog-animationsettings effect="None"></e-dialog-animationsettings>
 </ejs-dialog>
-
+<div style="height: 100px;">
 <ejs-dialog id="themeDialog" width='174px' header='Themes' target="#target" isModal='false'
     allowDragging="true" visible='false' showCloseIcon='true' position="themesdialogPosition" close='closeThemeDialog'
     created='themeDialogCreated'>
@@ -1508,18 +1509,20 @@
                 </div>
             </div>
             <div class="row">
-                @* <div class="db-theme-style-div">
+                <div class="db-theme-style-div">
                     <div class="db-theme-style theme11">
                     </div>
-                </div> *@
-                @* <div class="db-theme-style-div">
+                </div>
+                <div class="db-theme-style-div">
                     <div class="db-theme-style theme12">
                     </div>
-                </div> *@
+                </div>
             </div>
         </div>
     </e-content-template>
 </ejs-dialog>
+</div>
+
 
 
 <ejs-dialog id="deleteConfirmationDialog" width='400px' header='Delete Field' target="#target"

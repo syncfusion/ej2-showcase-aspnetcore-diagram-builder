@@ -62,7 +62,7 @@ window.onload = function () {
 function setPaletteNodeDefaults(node) {
     if (!(node.addInfo && (node.addInfo).type === 'CustomShapes') && (!node.children)) {
         if (node.id === 'Terminator' || node.id === 'Process') {
-            node.width = 130;
+            node.width = 70;
             node.height = 65;
         } else {
             node.width = 50;
@@ -78,6 +78,16 @@ function setPaletteNodeDefaults(node) {
     }
 };
 
+// function getNodeDefault(symbol) {
+//     if (symbol.id === 'Terminator' || symbol.id === 'Process') {
+//         symbol.width = 135;
+//         symbol.height = 65;
+//     } else  {
+//         symbol.width = 50;
+//         symbol.height = 50;
+//     }
+//     symbol.style = { strokeColor: "#3A3A3A" };
+// }
 // function setPaletteNodeDefaults(symbol) {
 //     if (symbol.id === 'Terminator' || symbol.id === 'Process') {
 //         symbol.width = 50;
@@ -2266,7 +2276,7 @@ function executeEditMenu(diagram, commandType) {
             this.pasteObjects();
             break;
         case 'delete':
-            this.delete();
+            this.deleteData();
             break;
         case 'duplicate':
             CommonKeyboardCommands.duplicateSelectedItems();
