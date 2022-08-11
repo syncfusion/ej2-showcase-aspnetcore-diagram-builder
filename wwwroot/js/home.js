@@ -69,10 +69,10 @@ function setPaletteNodeDefaults(node) {
             node.height = 50;
         }
         node.ports = [
-            { offset: { x: 0, y: 0.5 }, style: { fill: 'white' }, visibility: ej.diagrams.PortVisibility.Connect | ej.diagrams.PortVisibility.Hover, constraints: ej.diagrams.PortConstraints.Draw },
-            { offset: { x: 0.5, y: 0 }, style: { fill: 'white' }, visibility: ej.diagrams.PortVisibility.Connect | ej.diagrams.PortVisibility.Hover, constraints: ej.diagrams.PortConstraints.Draw },
-            { offset: { x: 1, y: 0.5 }, style: { fill: 'white' }, visibility: ej.diagrams.PortVisibility.Connect | ej.diagrams.PortVisibility.Hover, constraints: ej.diagrams.PortConstraints.Draw },
-            { offset: { x: 0.5, y: 1 }, style: { fill: 'white' }, visibility: ej.diagrams.PortVisibility.Connect | ej.diagrams.PortVisibility.Hover, constraints: ej.diagrams.PortConstraints.Draw }
+            { offset: { x: 0, y: 0.5 }, style: { fill: 'white' }, visibility: ej.diagrams.PortVisibility.Connect | ej.diagrams.PortVisibility.Hover, constraints: ej.diagrams.PortConstraints.Default | ej.diagrams.PortConstraints.Draw },
+            { offset: { x: 0.5, y: 0 }, style: { fill: 'white' }, visibility: ej.diagrams.PortVisibility.Connect | ej.diagrams.PortVisibility.Hover, constraints: ej.diagrams.PortConstraints.Default | ej.diagrams.PortConstraints.Draw },
+            { offset: { x: 1, y: 0.5 }, style: { fill: 'white' }, visibility: ej.diagrams.PortVisibility.Connect | ej.diagrams.PortVisibility.Hover, constraints: ej.diagrams.PortConstraints.Default | ej.diagrams.PortConstraints.Draw },
+            { offset: { x: 0.5, y: 1 }, style: { fill: 'white' }, visibility: ej.diagrams.PortVisibility.Connect | ej.diagrams.PortVisibility.Hover, constraints: ej.diagrams.PortConstraints.Default | ej.diagrams.PortConstraints.Draw }
         ];
         node.style.strokeColor = '#3A3A3A';
     }
@@ -145,130 +145,130 @@ function getConnectorDefaults(connector, diagram) {
 // nodeOffsetX.appendTo('#nodeOffsetX');
 
 
-// var toolbarEditor = new ej.navigations.Toolbar({
-//     overflowMode: 'Scrollable',
-//     clicked: toolbarEditorClick,
-//     items: [
-//         {
-//             prefixIcon: 'sf-icon-Undo tb-icons', tooltipText: 'Undo', cssClass: 'tb-item-start tb-item-undo'
-//         },
-//         {
-//             prefixIcon: 'sf-icon-Redo tb-icons', tooltipText: 'Redo', cssClass: 'tb-item-end tb-item-redo'
-//         },
-//         {
-//             type: 'Separator'
-//         },
-//         {
-//             prefixIcon: 'sf-icon-ZoomOut tb-icons', tooltipText: 'Zoom Out(Ctrl + -)', cssClass: 'tb-item-start'
-//         },
-//         {
-//             cssClass: 'tb-item-end tb-zoom-dropdown-btn', template: '<button id="btnZoomIncrement"></button>'
-//         },
-//         {
-//             prefixIcon: 'sf-icon-ZoomIn tb-icons', tooltipText: 'Zoom In(Ctrl + +)', cssClass: 'tb-item-end'
-//         },
-//         {
-//             type: 'Separator'
-//         },
-//         {
-//             prefixIcon: 'sf-icon-Pan tb-icons', tooltipText: 'Pan Tool', cssClass: 'tb-item-start'
-//         },
-//         {
-//             prefixIcon: 'sf-icon-Selector tb-icons', tooltipText: 'Pointer', cssClass: 'tb-item-middle tb-item-selected'
-//         },
-//         {
-//             tooltipText: 'Draw Shapes', cssClass: 'tb-item-middle tb-drawtools-dropdown-btn tb-custom-diagram-disable', template: '<button id="btnDrawShape"></button>'
-//         },
-//         {
-//             tooltipText: 'Draw Connectors', cssClass: 'tb-item-middle tb-drawtools-dropdown-btn tb-custom-diagram-disable', template: '<button id="btnDrawConnector"></button>'
-//         },
-//         {
-//             prefixIcon: 'sf-icon-TextInput tb-icons', tooltipText: 'Text Tool', cssClass: 'tb-item-end tb-custom-diagram-disable'
-//         },
-//         {
-//             type: 'Separator'
-//         },
-//         {
-//             prefixIcon: 'sf-icon-ColorPickers tb-icons', mode: 'Palette', tooltipText: 'Fill Color', cssClass: 'tb-item-start tb-item-fill'
-//         },
-//         {
-//             prefixIcon: 'sf-icon-Pickers tb-icons', mode: 'Palette', tooltipText: 'Border Color', cssClass: 'tb-item-end tb-item-stroke'
-//         },
-//         {
-//             type: 'Separator'
-//         },
-//         {
-//             prefixIcon: 'sf-icon-Group tb-icons', tooltipText: 'Group', cssClass: 'tb-item-start tb-item-align-category'
-//         },
-//         {
-//             prefixIcon: 'sf-icon-Ungroup tb-icons', tooltipText: 'Ungroup', cssClass: 'tb-item-end tb-item-ungroup'
-//         },
-//         {
-//             type: 'Separator'
-//         },
-//         {
-//             prefixIcon: 'sf-icon-Lock tb-icons', tooltipText: 'Lock', cssClass: 'tb-item-start tb-item-lock-category'
-//         },
-//         {
-//             prefixIcon: 'sf-icon-Delete tb-icons', tooltipText: 'Delete', cssClass: 'tb-item-end tb-item-lock-category'
-//         },
-//         {
-//             type: 'Separator'
-//         },
-//         {
-//             prefixIcon: 'sf-icon-Layers tb-icons', tooltipText: 'Show Layers', cssClass: 'tb-item-start tb-custom-diagram-disable'
-//         },
-//         {
-//             prefixIcon: 'db-theme-svg tb-icons', tooltipText: 'Themes', cssClass: 'tb-item-end tb-custom-diagram-disable'
-//         },
-//         {
-//             type: 'Separator'
-//         },
-//         {
-//             tooltipText: 'Order', cssClass: 'tb-item-end tb-item-order tb-dropdown-btn-icon', template: '<button id="orderCommandList"></button>'
-//         },
-//         {
-//             type: 'Separator'
-//         },
-//         {
-//             prefixIcon: 'sf-icon-AlignLeft tb-icons', tooltipText: 'Align Left', cssClass: 'tb-item-start tb-item-align-category'
-//         },
-//         {
-//             prefixIcon: 'sf-icon-AlignHorizontally tb-icons', tooltipText: 'Align Center', cssClass: 'tb-item-middle  tb-item-align-category'
-//         },
-//         {
-//             prefixIcon: 'sf-icon-AlignRight tb-icons', tooltipText: 'Align Right', cssClass: 'tb-item-middle tb-item-align-category'
-//         },
-//         {
-//             prefixIcon: 'sf-icon-AilgnTop tb-icons', tooltipText: 'Align Top', cssClass: 'tb-item-middle tb-item-align-category'
-//         },
-//         {
-//             prefixIcon: 'sf-icon-AlignVertically tb-icons', tooltipText: 'Align Middle', cssClass: 'tb-item-middle tb-item-align-category'
-//         },
-//         {
-//             prefixIcon: 'sf-icon-AlignBottom tb-icons', tooltipText: 'Align Bottom', cssClass: 'tb-item-middle tb-item-align-category'
-//         },
-//         {
-//             prefixIcon: 'sf-icon-DistributeHorizontal tb-icons', tooltipText: 'Distribute Objects Vertically', cssClass: 'tb-item-middle tb-item-space-category'
-//         },
-//         {
-//             prefixIcon: 'sf-icon-DistributeVertical tb-icons', tooltipText: 'Distribute Objects Horizontally', cssClass: 'tb-item-end tb-item-space-category'
-//         },
-//     ]
-// });
-// toolbarEditor.appendTo('#toolbarEditor');
+var toolbarEditor = new ej.navigations.Toolbar({
+    overflowMode: 'Scrollable',
+    clicked: toolbarEditorClick,
+    items: [
+        {
+            prefixIcon: 'sf-icon-Undo tb-icons', tooltipText: 'Undo', cssClass: 'tb-item-start tb-item-undo'
+        },
+        {
+            prefixIcon: 'sf-icon-Redo tb-icons', tooltipText: 'Redo', cssClass: 'tb-item-end tb-item-redo'
+        },
+        {
+            type: 'Separator'
+        },
+        {
+            prefixIcon: 'sf-icon-ZoomOut tb-icons', tooltipText: 'Zoom Out(Ctrl + -)', cssClass: 'tb-item-start'
+        },
+        {
+            cssClass: 'tb-item-end tb-zoom-dropdown-btn', template: '<button id="btnZoomIncrement"></button>'
+        },
+        {
+            prefixIcon: 'sf-icon-ZoomIn tb-icons', tooltipText: 'Zoom In(Ctrl + +)', cssClass: 'tb-item-end'
+        },
+        {
+            type: 'Separator'
+        },
+        {
+            prefixIcon: 'sf-icon-Pan tb-icons', tooltipText: 'Pan Tool', cssClass: 'tb-item-start'
+        },
+        {
+            prefixIcon: 'sf-icon-Selector tb-icons', tooltipText: 'Pointer', cssClass: 'tb-item-middle tb-item-selected'
+        },
+        {
+            tooltipText: 'Draw Shapes', cssClass: 'tb-item-middle tb-drawtools-dropdown-btn tb-custom-diagram-disable', template: '<button id="btnDrawShape"></button>'
+        },
+        {
+            tooltipText: 'Draw Connectors', cssClass: 'tb-item-middle tb-drawtools-dropdown-btn tb-custom-diagram-disable', template: '<button id="btnDrawConnector"></button>'
+        },
+        {
+            prefixIcon: 'sf-icon-TextInput tb-icons', tooltipText: 'Text Tool', cssClass: 'tb-item-end tb-custom-diagram-disable'
+        },
+        {
+            type: 'Separator'
+        },
+        {
+            prefixIcon: 'sf-icon-ColorPickers tb-icons', mode: 'Palette', tooltipText: 'Fill Color', cssClass: 'tb-item-start tb-item-fill'
+        },
+        {
+            prefixIcon: 'sf-icon-Pickers tb-icons', mode: 'Palette', tooltipText: 'Border Color', cssClass: 'tb-item-end tb-item-stroke'
+        },
+        {
+            type: 'Separator'
+        },
+        {
+            prefixIcon: 'sf-icon-Group tb-icons', tooltipText: 'Group', cssClass: 'tb-item-start tb-item-align-category'
+        },
+        {
+            prefixIcon: 'sf-icon-Ungroup tb-icons', tooltipText: 'Ungroup', cssClass: 'tb-item-end tb-item-ungroup'
+        },
+        {
+            type: 'Separator'
+        },
+        {
+            prefixIcon: 'sf-icon-Lock tb-icons', tooltipText: 'Lock', cssClass: 'tb-item-start tb-item-lock-category'
+        },
+        {
+            prefixIcon: 'sf-icon-Delete tb-icons', tooltipText: 'Delete', cssClass: 'tb-item-end tb-item-lock-category'
+        },
+        {
+            type: 'Separator'
+        },
+        {
+            prefixIcon: 'sf-icon-Layers tb-icons', tooltipText: 'Show Layers', cssClass: 'tb-item-start tb-custom-diagram-disable'
+        },
+        {
+            prefixIcon: 'db-theme-svg tb-icons', tooltipText: 'Themes', cssClass: 'tb-item-end tb-custom-diagram-disable'
+        },
+        {
+            type: 'Separator'
+        },
+        {
+            tooltipText: 'Order', cssClass: 'tb-item-end tb-item-order tb-dropdown-btn-icon', template: '<button id="orderCommandList"></button>'
+        },
+        {
+            type: 'Separator'
+        },
+        {
+            prefixIcon: 'sf-icon-AlignLeft tb-icons', tooltipText: 'Align Left', cssClass: 'tb-item-start tb-item-align-category'
+        },
+        {
+            prefixIcon: 'sf-icon-AlignHorizontally tb-icons', tooltipText: 'Align Center', cssClass: 'tb-item-middle  tb-item-align-category'
+        },
+        {
+            prefixIcon: 'sf-icon-AlignRight tb-icons', tooltipText: 'Align Right', cssClass: 'tb-item-middle tb-item-align-category'
+        },
+        {
+            prefixIcon: 'sf-icon-AilgnTop tb-icons', tooltipText: 'Align Top', cssClass: 'tb-item-middle tb-item-align-category'
+        },
+        {
+            prefixIcon: 'sf-icon-AlignVertically tb-icons', tooltipText: 'Align Middle', cssClass: 'tb-item-middle tb-item-align-category'
+        },
+        {
+            prefixIcon: 'sf-icon-AlignBottom tb-icons', tooltipText: 'Align Bottom', cssClass: 'tb-item-middle tb-item-align-category'
+        },
+        {
+            prefixIcon: 'sf-icon-DistributeHorizontal tb-icons', tooltipText: 'Distribute Objects Vertically', cssClass: 'tb-item-middle tb-item-space-category'
+        },
+        {
+            prefixIcon: 'sf-icon-DistributeVertical tb-icons', tooltipText: 'Distribute Objects Horizontally', cssClass: 'tb-item-end tb-item-space-category'
+        },
+    ]
+});
+toolbarEditor.appendTo('#toolbarEditor');
 
-// var btnZoomIncrement = new ej.splitbuttons.DropDownButton({ items: DropDownDataSources.prototype.zoomMenuItems(), content: selectedItem.scrollSettings.currentZoom, select: zoomChange });
-// btnZoomIncrement.appendTo('#btnZoomIncrement');
+var btnZoomIncrement = new ej.splitbuttons.DropDownButton({ items: DropDownDataSources.prototype.zoomMenuItems(), content: selectedItem.scrollSettings.currentZoom, select: zoomChange });
+btnZoomIncrement.appendTo('#btnZoomIncrement');
 
-// var btnDrawShape = new ej.splitbuttons.DropDownButton({ items: DropDownDataSources.prototype.drawShapesList(), iconCss: 'sf-icon-DrawingMode', select: drawShapeChange });
-// btnDrawShape.appendTo('#btnDrawShape');
+var btnDrawShape = new ej.splitbuttons.DropDownButton({ items: DropDownDataSources.prototype.drawShapesList(), iconCss: 'sf-icon-DrawingMode', select: drawShapeChange });
+btnDrawShape.appendTo('#btnDrawShape');
 
-// var btnDrawConnector = new ej.splitbuttons.DropDownButton({ items: DropDownDataSources.prototype.drawConnectorsList(), iconCss: 'sf-icon-ConnectorMode', select: drawConnectorChange });
-// btnDrawConnector.appendTo('#btnDrawConnector');
+var btnDrawConnector = new ej.splitbuttons.DropDownButton({ items: DropDownDataSources.prototype.drawConnectorsList(), iconCss: 'sf-icon-ConnectorMode', select: drawConnectorChange });
+btnDrawConnector.appendTo('#btnDrawConnector');
 
-// var orderCommandList = new ej.splitbuttons.DropDownButton({ items: DropDownDataSources.prototype.orderCommandsList(), iconCss: 'sf-icon-Order', select: orderCommandsChange });
-// orderCommandList.appendTo('#orderCommandList');
+var orderCommandList = new ej.splitbuttons.DropDownButton({ items: DropDownDataSources.prototype.orderCommandsList(), iconCss: 'sf-icon-Order', select: orderCommandsChange });
+orderCommandList.appendTo('#orderCommandList');
 
 // var btnHideToolbar = new ej.buttons.Button({ iconCss: 'sf-icon-Collapse tb-icons' });
 // btnHideToolbar.appendTo('#btnHideToolbar');
@@ -591,6 +591,13 @@ function mindmapStrokeWidthchange(args) {
     document.getElementById('mindmapStrokeWidth').ej2_instances[0].value= args.value;
     SelectorViewModel.prototype.mindMapPropertyChange({propertyName: 'strokeWidth', propertyValue: args});
 }
+function Mindmaptextopacity(args) {
+    document.getElementById('mindmapTextOpacitySlider').ej2_instances[0].value= args.value;
+    SelectorViewModel.prototype.mindMapPropertyChange({propertyName: 'textOpacity', propertyValue: args});
+}
+// function Click(args) { 
+//     MindMapPropertyBinding.prototype.mindmapTextStyleChange(args); 
+// }
 function mindmapOpacitySliderchange(args) {
     document.getElementById('mindmapOpacitySlider').ej2_instances[0].value= args.value;
     SelectorViewModel.prototype.mindMapPropertyChange({propertyName: 'opacity', propertyValue: args});
@@ -2295,6 +2302,109 @@ function executeEditMenu(diagram, commandType) {
 
 function toolbarEditorClick(args) {
     var diagram = selectedItem.selectedDiagram;
+    // document.getElementById("Undo").onclick =function(args) {
+    //     undo();
+    // }
+    // document.getElementById("Redo").onclick =function(args) {
+    //    redo();
+    // }
+    // document.getElementById("Zoom in").onclick =function(args) {
+    //     diagram.zoomTo({ type: 'ZoomIn', zoomFactor: 0.2 });
+    //     zoomCurrentValue.content = selectedItem.scrollSettings.currentZoom = (diagram.scrollSettings.currentZoom * 100).toFixed() + '%';
+    // }
+    // document.getElementById("Zoom out").onclick =function(args) {
+    //     diagram.zoomTo({ type: 'ZoomOut', zoomFactor: 0.2 });
+    //     zoomCurrentValue.content = selectedItem.scrollSettings.currentZoom = (diagram.scrollSettings.currentZoom * 100).toFixed() + '%';
+    // }
+    // document.getElementById("Pan").onclick =function(args) {
+    //     diagram.tool = ej.diagrams.DiagramTools.ZoomPan;
+    //     diagram.clearSelection();
+    //     selectedItem.utilityMethods.objectTypeChange('diagram');
+    // }
+    // document.getElementById("Pointer").onclick =function(args) {
+    //     diagram.drawingObject = {};
+    //     diagram.tool =  ej.diagrams.DiagramTools.SingleSelect |  ej.diagrams.DiagramTools.MultipleSelect;
+    // }
+    // document.getElementById("Texttool").onclick =function(args) {
+    //     diagram.drawingObject = { shape: { type: 'Text' }, style: { strokeColor: 'none', fill: 'none' } };
+    //     diagram.tool = ej.diagrams.DiagramTools.ContinuousDraw;
+    // }
+    // document.getElementById("Fill Color").onclick =function(args) {
+    //     showColorPicker('nodeFillColor', 'tb-item-fill');
+    // }
+    // document.getElementById("Border Color").onclick =function(args) {
+    //     if (selectedItem.selectedDiagram.selectedItems.nodes.length > 0) {
+    //         showColorPicker('nodeStrokeColor', 'tb-item-stroke');
+    //     } else {
+    //         showColorPicker('lineColor', 'tb-item-stroke');
+    //     }
+    // }
+    // document.getElementById("Group").onclick =function(args) {
+    //     group();
+    // }
+    // document.getElementById("Ungroup").onclick =function(args) {
+    //     ungroup();
+    // }
+    // document.getElementById("Lock").onclick =function(args) {
+    //     lockObject();
+    // }
+    // document.getElementById("Delete").onclick =function(args) {
+    //     deleteData();
+    // }
+    // document.getElementById("Layers").onclick =function(args) {
+    //     showHideLayers();
+    // }
+    // document.getElementById("Themes").onclick =function(args) {
+    //     showHideThemes();
+    // }
+    // document.getElementById("AlignLeft").onclick =function(args) {
+    //     selectedItem.isModified = true;
+    //     var alignType = commandType.replace('align', '');
+    //     var alignType1 = alignType.charAt(0).toUpperCase() + alignType.slice(1);
+    //     diagram.align(alignType1);
+    // }
+    // document.getElementById("AlignCenter").onclick =function(args) {
+    //     selectedItem.isModified = true;
+    //     var alignType = commandType.replace('align', '');
+    //     var alignType1 = alignType.charAt(0).toUpperCase() + alignType.slice(1);
+    //     diagram.align(alignType1);
+    // }
+    // document.getElementById("AlignRight").onclick =function(args) {
+    //     selectedItem.isModified = true;
+    //     var alignType = commandType.replace('align', '');
+    //     var alignType1 = alignType.charAt(0).toUpperCase() + alignType.slice(1);
+    //     diagram.align(alignType1);
+    // }
+    // document.getElementById("AilgnTop").onclick =function(args) {
+    //     selectedItem.isModified = true;
+    //     var alignType = commandType.replace('align', '');
+    //     var alignType1 = alignType.charAt(0).toUpperCase() + alignType.slice(1);
+    //     diagram.align(alignType1);
+    // }
+    // document.getElementById("AlignVertically").onclick =function(args) {
+    //     selectedItem.isModified = true;
+    //     var alignType = commandType.replace('align', '');
+    //     var alignType1 = alignType.charAt(0).toUpperCase() + alignType.slice(1);
+    //     diagram.align(alignType1);
+    // }
+    // document.getElementById("Align Bottom").onclick =function(args) {
+    //     selectedItem.isModified = true;
+    //     var alignType = commandType.replace('align', '');
+    //     var alignType1 = alignType.charAt(0).toUpperCase() + alignType.slice(1);
+    //     diagram.align(alignType1);
+    // }
+    // document.getElementById("Align Bottom").onclick =function(args) {
+    //     selectedItem.isModified = true;
+    //     var alignType = commandType.replace('align', '');
+    //     var alignType1 = alignType.charAt(0).toUpperCase() + alignType.slice(1);
+    //     diagram.align(alignType1);
+    // }
+    //    document.getElementById("Align Bottom").onclick =function(args) {
+    //     selectedItem.isModified = true;
+    //     var alignType = commandType.replace('align', '');
+    //     var alignType1 = alignType.charAt(0).toUpperCase() + alignType.slice(1);
+    //     diagram.align(alignType1);
+    // }
     var commandType = args.item.tooltipText.replace(/[' ']/g, '').toLowerCase();
     switch (commandType) {
         case 'undo':

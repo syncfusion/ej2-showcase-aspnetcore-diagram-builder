@@ -84,6 +84,58 @@ var TextProperties = (function () {
         this.m_fontColor = '#ffffff';
         this.textPositionDataSource = this.getNodeTextPositions();
     }
+    Object.defineProperty(TextProperties.prototype, "textPosition", {
+        get: function () {
+            return this.m_textPosition;
+        },
+        set: function (textPosition) {
+            if (this.m_textPosition !== textPosition) {
+                this.m_textPosition = textPosition;
+                this.triggerPropertyChange('textPosition', textPosition);
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(TextProperties.prototype, "fontFamily", {
+        get: function () {
+            return this.m_fontFamily;
+        },
+        set: function (fontFamily) {
+            if (this.m_fontFamily !== fontFamily) {
+                this.m_fontFamily = fontFamily;
+                this.triggerPropertyChange('fontFamily', fontFamily);
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(TextProperties.prototype, "fontColor", {
+        get: function () {
+            return this.m_fontColor;
+        },
+        set: function (fontColor) {
+            if (this.m_fontColor !== fontColor) {
+                this.m_fontColor = fontColor;
+                this.triggerPropertyChange('fontColor', fontColor);
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(TextProperties.prototype, "opacity", {
+        get: function () {
+            return this.m_opacity;
+        },
+        set: function (opacity) {
+            if (this.m_opacity !== opacity) {
+                this.m_opacity = opacity;
+                this.triggerPropertyChange('opacity', opacity);
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
     TextProperties.prototype.getNodeTextPositions = function () {
         return [
             { text: 'TopLeft', value: 'TopLeft' }, { text: 'TopCenter', value: 'TopCenter' },
@@ -503,7 +555,7 @@ var SelectorViewModel = (function () {
                     for (var i = 0; i < selectedNodes.length; i++) {
                         switch (args.propertyName.toString().toLowerCase()) {
                             case 'strokecolor':
-                               document.getElementById('lineColor').ej2_instances[0].value= selectedItem.getColor(document.getElementById('nodeStrokeColor').ej2_instances[0].value);
+                               document.getElementById('lineColor').ej2_instances[0].value= this.getColor(document.getElementById('nodeStrokeColor').ej2_instances[0].value);
                                 break;
                             case 'strokewidth':
                                 document.getElementById('lineWidth').ej2_instances[0].value = document.getElementById('nodeStrokeWidth').ej2_instances[0].value;
@@ -516,6 +568,7 @@ var SelectorViewModel = (function () {
                                 break;
                         }
                     }
+                    diagram.dataBind();
                     this.isModified = true;
                 }
                 diagram.dataBind();
@@ -526,13 +579,13 @@ var SelectorViewModel = (function () {
         var addInfo = node.addInfo || {};
         switch (propertyName) {
             case 'fillcolor':
-                node.style.fill = this.getColor(value);
+                node.style.fill = SelectorViewModel.prototype.getColor(value);
                 if (value && value.checked) {
                     NodeProperties.prototype.getGradient(node);
                 }
                 break;
             case 'strokecolor':
-                node.style.strokeColor = this.getColor(document.getElementById('nodeStrokeColor').ej2_instances[0].value);
+                node.style.strokeColor = SelectorViewModel.prototype.getColor(document.getElementById('nodeStrokeColor').ej2_instances[0].value);
                 break;
             case 'strokewidth':
                 node.style.strokeWidth =document.getElementById('nodeStrokeWidth').ej2_instances[0].value ;
@@ -567,7 +620,8 @@ var SelectorViewModel = (function () {
                     var connector = selectedNodes[i];
                     switch (args.propertyName.toString().toLowerCase()) {
                         case 'linecolor':
-                            connector.style.strokeColor = this.getColor(document.getElementById('lineColor').ej2_instances[0].value);
+                            connector.style.strokeColor = node.style.strokeColor;
+                            connector.style.strokeColor = SelectorViewModel.prototype.getColor(document.getElementById('lineColor').ej2_instances[0].value);
                             connector.sourceDecorator.style = { fill: connector.style.strokeColor, strokeColor: connector.style.strokeColor };
                             connector.targetDecorator.style = { fill: connector.style.strokeColor, strokeColor: connector.style.strokeColor };
                             break;
@@ -642,11 +696,11 @@ var SelectorViewModel = (function () {
                             if (node.annotations.length > 0) {
                                 for (var j = 0; j < node.annotations.length; j++) {
                                     var annotation = node.annotations[j].style;
-                                    SelectorViewModel.prototype.updateTextProperties(propertyName, annotation);
+                                    this.updateTextProperties(propertyName, annotation);
                                 }
                             }
                             else if (node.shape && node.shape.type === 'Text') {
-                                SelectorViewModel.prototype.updateTextProperties(propertyName, node.style);
+                                this.updateTextProperties(propertyName, node.style);
                             }
                         }
                     }

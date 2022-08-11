@@ -17,8 +17,8 @@ var CustomTool = (function () {
     CustomTool.prototype.getTool = function (action) {
         var tool;
         if (action === 'leftHandle') {
-            var leftTool = new LeftExtendTool(this.selectedItem.selectedDiagram.commandHandler);
-            leftTool.selectedItem = this.selectedItem;
+            var leftTool = new LeftExtendTool(selectedItem.selectedDiagram.commandHandler);
+            leftTool.selectedItem = selectedItem;
             return leftTool;
         }
         else if (action === 'rightHandle') {

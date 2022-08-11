@@ -233,7 +233,7 @@ namespace SyncfusionWebApp3.Controllers
             ViewBag.enableSearch=true;
             ViewBag.getNodeDefaults = "getNodeDefaults";
             ViewBag.getConnectorDefaults="getConnectorDefaults";
-            ViewBag.getTool = "getTool";
+            ViewBag.getTool = "CustomTool.prototype.getTool";
             // ViewBag.Multiple='Multiple';
             // ViewBag.commandSettings="getCommandSettings";
             // ViewBag.value="selectedItem.nodeProperties.offsetX";

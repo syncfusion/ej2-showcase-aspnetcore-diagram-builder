@@ -61,8 +61,65 @@
         </div>
         <div class='db-toolbar-editor'>
             <div class='db-toolbar-container '>
-                <ejs-toolbar id="toolbarEditor" overflowMode="Popup" clicked="toolbarEditorClick">
-                    <e-toolbar-items >
+                 <div id="toolbarEditor"></div>
+                @* <ejs-toolbar id="toolbarEditor" overflowMode="Scrollable" clicked="toolbarEditorClick">
+                    <e-toolbar-items>
+                        <e-content-template>
+                            <div>
+                                <div class="e-toolbar-item tb-item-start tb-item-undo e-tbtn-align" aria-disabled="false" title="Undo"><button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" type="button" id="Undo" tabindex="-1" aria-label="Undo" style="width: auto;"><span class="e-btn-icon sf-icon-Undo tb-icons e-icons"></span></button></div>
+                                <div class="e-toolbar-item tb-item-end tb-item-redo e-tbtn-align" aria-disabled="false" title="Redo"><button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" type="button" id="Redo" tabindex="-1" aria-label="Redo" style="width: auto;"><span class="e-btn-icon sf-icon-Redo tb-icons e-icons"></span></button></div>
+                                <div class="e-toolbar-item e-separator" aria-disabled="false"></div>
+                                <div class="e-toolbar-item tb-item-start e-tbtn-align" aria-disabled="false" title="Zoom Out(Ctrl + -)"><button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" type="button" id="Zoom in" tabindex="-1" aria-label="Zoom Out(Ctrl + -)" style="width: auto;"><span class="e-btn-icon sf-icon-ZoomOut tb-icons e-icons"></span></button></div>
+                                <div class="e-toolbar-item tb-item-end tb-zoom-dropdown-btn e-template" aria-disabled="false">
+                                    <ejs-dropdownbutton id="btnZoomIncrement" content="100%" items="ViewBag.zoomMenuItems" select="zoomChange">
+                                    </ejs-dropdownbutton>
+                                </div>
+                                <div class="e-toolbar-item tb-item-end e-tbtn-align" aria-disabled="false" title="Zoom In(Ctrl + +)"><button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" type="button" id="Zoom out" tabindex="-1" aria-label="Zoom In(Ctrl + +)" style="width: auto;"><span class="e-btn-icon sf-icon-ZoomIn tb-icons e-icons"></span></button></div>
+                                <div class="e-toolbar-item e-separator" aria-disabled="false"></div>
+                                <div class="e-toolbar-item tb-item-start e-tbtn-align" aria-disabled="false" title="Pan Tool"><button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" type="button" id="Pan" tabindex="-1" aria-label="Pan Tool" style="width: auto;"><span class="e-btn-icon sf-icon-Pan tb-icons e-icons"></span></button></div>
+                               <div class="e-toolbar-item tb-item-middle tb-item-selected e-tbtn-align" aria-disabled="false" title="Pointer"><button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" type="button" id="Pointer" tabindex="-1" aria-label="Pointer" style="width: auto;"><span class="e-btn-icon sf-icon-Selector tb-icons e-icons"></span></button></div>
+                                <div class="e-toolbar-item tb-item-middle tb-drawtools-dropdown-btn tb-custom-diagram-disable e-template" aria-disabled="false" title="Draw Shapes">
+                                    <ejs-dropdownbutton id="btnDrawShape" items="ViewBag.drawShapesList" iconCss='sf-icon-DrawingMode'
+                                    select="drawShapeChange">
+                                    </ejs-dropdownbutton>
+                                </div>
+                                <div class="e-toolbar-item tb-item-middle tb-drawtools-dropdown-btn tb-custom-diagram-disable e-template" aria-disabled="false" title="Draw Connectors">
+                                   <ejs-dropdownbutton id='btnDrawConnector' items="ViewBag.drawConnectorsList" iconCss='sf-icon-ConnectorMode'
+                                    select="drawConnectorChange">
+                                    </ejs-dropdownbutton>
+                                </div>
+                                <div class="e-toolbar-item tb-item-end tb-custom-diagram-disable e-tbtn-align" aria-disabled="false" title="Text Tool"><button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" type="button" id="Texttool" tabindex="-1" aria-label="Text Tool" style="width: auto;"><span class="e-btn-icon sf-icon-TextInput tb-icons e-icons"></span></button></div>
+                                <div class="e-toolbar-item e-separator" aria-disabled="false"></div>
+                                <div class="e-toolbar-item tb-item-start tb-item-fill e-tbtn-align" aria-disabled="false" title="Fill Color"><button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" type="button" id="Fill Color" tabindex="-1" aria-label="Fill Color" style="width: auto;"><span class="e-btn-icon sf-icon-ColorPickers tb-icons e-icons"></span></button></div>
+                                <div class="e-toolbar-item tb-item-end tb-item-stroke e-tbtn-align" aria-disabled="false" title="Border Color"><button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" type="button" id="Border Color" tabindex="-1" aria-label="Border Color" style="width: auto;"><span class="e-btn-icon sf-icon-Pickers tb-icons e-icons"></span></button></div>
+                                <div class="e-toolbar-item e-separator" aria-disabled="false"></div>
+                                <div class="e-toolbar-item tb-item-start tb-item-align-category e-tbtn-align" aria-disabled="false" title="Group"><button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" type="button" id="Group" tabindex="-1" aria-label="Group" style="width: auto;"><span class="e-btn-icon sf-icon-Group tb-icons e-icons"></span></button></div>
+                                <div class="e-toolbar-item tb-item-end tb-item-ungroup e-tbtn-align" aria-disabled="false" title="Ungroup"><button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" type="button" id="Ungroup" tabindex="-1" aria-label="Ungroup" style="width: auto;"><span class="e-btn-icon sf-icon-Ungroup tb-icons e-icons"></span></button></div>
+                                <div class="e-toolbar-item e-separator" aria-disabled="false"></div>
+                                <div class="e-toolbar-item tb-item-start tb-item-lock-category e-tbtn-align" aria-disabled="false" title="Lock"><button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" type="button" id="Lock" tabindex="-1" aria-label="Lock" style="width: auto;"><span class="e-btn-icon sf-icon-Lock tb-icons e-icons"></span></button></div>
+                                <div class="e-toolbar-item tb-item-end tb-item-lock-category e-tbtn-align" aria-disabled="false" title="Delete"><button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" type="button" id="Delete" tabindex="-1" aria-label="Delete" style="width: auto;"><span class="e-btn-icon sf-icon-Delete tb-icons e-icons"></span></button></div>
+                                <div class="e-toolbar-item e-separator" aria-disabled="false"></div>
+                                <div class="e-toolbar-item tb-item-start tb-custom-diagram-disable e-tbtn-align" aria-disabled="false" title="Show Layers"><button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" type="button" id="Layers" tabindex="-1" aria-label="Show Layers" style="width: auto;"><span class="e-btn-icon sf-icon-Layers tb-icons e-icons"></span></button></div>
+                                <div class="e-toolbar-item tb-item-end tb-custom-diagram-disable e-tbtn-align" aria-disabled="false" title="Themes"><button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" type="button" id="Themes" tabindex="-1" aria-label="Themes" style="width: auto;"><span class="e-btn-icon db-theme-svg tb-icons e-icons"></span></button></div>
+                                <div class="e-toolbar-item e-separator" aria-disabled="false"></div>
+                                <div class="e-toolbar-item tb-item-end tb-item-order tb-dropdown-btn-icon e-template" aria-disabled="false" title="Order">
+                                  <ejs-dropdownbutton id="orderCommandList" items='ViewBag.orderCommandsList' iconCss='sf-icon-Order' select="orderCommandsChange">
+                                    </ejs-dropdownbutton>
+                                </div>
+                                <div class="e-toolbar-item e-separator" aria-disabled="false"></div>
+                                <div class="e-toolbar-item tb-item-start tb-item-align-category e-tbtn-align" aria-disabled="false" title="Align Left"><button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" type="button" id="AlignLeft" tabindex="-1" aria-label="Align Left" style="width: auto;"><span class="e-btn-icon sf-icon-AlignLeft tb-icons e-icons"></span></button></div>
+                                <div class="e-toolbar-item tb-item-middle tb-item-align-category e-tbtn-align" aria-disabled="false" title="Align Center"><button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" type="button" id="AlignCenter" tabindex="-1" aria-label="Align Center" style="width: auto;"><span class="e-btn-icon sf-icon-AlignHorizontally tb-icons e-icons"></span></button></div>
+                                <div class="e-toolbar-item tb-item-middle tb-item-align-category e-tbtn-align" aria-disabled="false" title="Align Right"><button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" type="button" id="AlignRight" tabindex="-1" aria-label="Align Right" style="width: auto;"><span class="e-btn-icon sf-icon-AlignRight tb-icons e-icons"></span></button></div>
+                                <div class="e-toolbar-item tb-item-middle tb-item-align-category e-tbtn-align" aria-disabled="false" title="Align Top"><button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" type="button" id="AilgnTop" tabindex="-1" aria-label="Align Top" style="width: auto;"><span class="e-btn-icon sf-icon-AilgnTop tb-icons e-icons"></span></button></div>
+                                <div class="e-toolbar-item tb-item-middle tb-item-align-category e-tbtn-align" aria-disabled="false" title="Align Middle"><button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" type="button" id="AlignVertically" tabindex="-1" aria-label="Align Middle" style="width: auto;"><span class="e-btn-icon sf-icon-AlignVertically tb-icons e-icons"></span></button></div>
+                                <div class="e-toolbar-item tb-item-middle tb-item-align-category e-tbtn-align" aria-disabled="false" title="Align Bottom"><button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" type="button" id="Align Bottom" tabindex="-1" aria-label="Align Bottom" style="width: auto;"><span class="e-btn-icon sf-icon-AlignBottom tb-icons e-icons"></span></button></div>
+                                <div class="e-toolbar-item tb-item-middle tb-item-space-category e-tbtn-align" aria-disabled="false" title="Distribute Objects Vertically"><button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" type="button" id="DistributeHorizontal" tabindex="-1" aria-label="Distribute Objects Vertically" style="width: auto;"><span class="e-btn-icon sf-icon-DistributeHorizontal tb-icons e-icons"></span></button></div>
+                                <div class="e-toolbar-item tb-item-end tb-item-space-category e-tbtn-align" aria-disabled="false" title="Distribute Objects Horizontally"><button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" type="button" id="DistributeVertical" tabindex="-1" aria-label="Distribute Objects Horizontally" style="width: auto;"><span class="e-btn-icon sf-icon-DistributeVertical tb-icons e-icons"></span></button></div>
+                            </div>
+                        </e-content-template>
+                    </e-toolbar-items> *@
+
+                    @* <e-toolbar-items >
                         <e-toolbar-item prefixIcon="sf-icon-Undo tb-icons" tooltipText="Undo" cssClass="tb-item-start tb-item-undo">
                         </e-toolbar-item>
                         <e-toolbar-item prefixIcon="sf-icon-Redo tb-icons" tooltipText="Redo" cssClass="tb-item-end tb-item-redo">
@@ -71,12 +128,7 @@
                         </e-toolbar-item>
                         <e-toolbar-item prefixIcon="sf-icon-ZoomOut tb-icons" tooltipText="Zoom Out(Ctrl + -)" cssClass="tb-item-start">
                         </e-toolbar-item>
-                        <e-toolbar-item cssClass="tb-item-end tb-zoom-dropdown-btn">
-                            <e-content-template>
-                                <ejs-dropdownbutton id="btnZoomIncrement" items="ViewBag.zoomMenuItems" content="100%"
-                                    select="zoomChange">
-                                </ejs-dropdownbutton>
-                            </e-content-template>
+                        <e-toolbar-item cssClass="tb-item-end tb-zoom-dropdown-btn" id="btnZoomIncrement">
                        </e-toolbar-item>
                        <e-toolbar-item prefixIcon="sf-icon-ZoomIn tb-icons" tooltipText="Zoom In(Ctrl + +)" cssClass="tb-item-end">
                         </e-toolbar-item>
@@ -86,19 +138,9 @@
                         </e-toolbar-item>
                         <e-toolbar-item prefixIcon="sf-icon-Selector tb-icons" tooltipText="Pointer" cssClass="tb-item-middle tb-item-selected">
                         </e-toolbar-item>
-                        <e-toolbar-item  tooltipText="Draw Shapes" cssClass="tb-item-middle tb-drawtools-dropdown-btn tb-custom-diagram-disable">
-                            @* <e-content-template >
-                                <ejs-dropdownbutton id="btnDrawShape" items="ViewBag.drawShapesList" iconCss='sf-icon-DrawingMode'
-                                    select="drawShapeChange">
-                                </ejs-dropdownbutton>
-                            </e-content-template> *@
+                        <e-toolbar-item  tooltipText="Draw Shapes" cssClass="tb-item-middle tb-drawtools-dropdown-btn tb-custom-diagram-disable" id="btnDrawShape">
                         </e-toolbar-item>
-                        <e-toolbar-item tooltipText="Draw Connectors" cssClass="tb-item-middle tb-drawtools-dropdown-btn tb-custom-diagram-disable">
-                            @* <e-content-template>
-                                <ejs-dropdownbutton id='btnDrawConnector' items="ViewBag.drawConnectorsList" iconCss='sf-icon-ConnectorMode'
-                                    select="drawConnectorChange">
-                                </ejs-dropdownbutton>
-                            </e-content-template> *@
+                        <e-toolbar-item tooltipText="Draw Connectors" id='btnDrawConnector' cssClass="tb-item-middle tb-drawtools-dropdown-btn tb-custom-diagram-disable">
                         </e-toolbar-item>
                         <e-toolbar-item prefixIcon="sf-icon-TextInput tb-icons" tooltipText="Text Tool" cssClass="tb-item-end tb-custom-diagram-disable">
                         </e-toolbar-item>
@@ -128,13 +170,7 @@
                         </e-toolbar-item>
                         <e-toolbar-item type="Separator">
                         </e-toolbar-item>
-                        <e-toolbar-item tooltipText="Order" cssClass="tb-item-end tb-item-order tb-dropdown-btn-icon">
-                            @* <e-content-template>
-                                <div id="toolbarEditortemplate">
-                                    <ejs-dropdownbutton items='ViewBag.orderCommandsList' iconCss='sf-icon-Order' select="orderCommandsChange">
-                                    </ejs-dropdownbutton>
-                                </div>
-                            </e-content-template>  *@
+                        <e-toolbar-item tooltipText="Order" id="orderCommandList"  cssClass="tb-item-end tb-item-order tb-dropdown-btn-icon">
                         </e-toolbar-item>
                         <e-toolbar-item type="Separator">
                         </e-toolbar-item>
@@ -154,8 +190,19 @@
                         </e-toolbar-item>
                         <e-toolbar-item prefixIcon="sf-icon-DistributeVertical tb-icons" tooltipText="Distribute Objects Horizontally" cssClass="tb-item-end tb-item-space-category">
                         </e-toolbar-item>
-                    </e-toolbar-items>
-                </ejs-toolbar>
+                    </e-toolbar-items> *@
+                @* </ejs-toolbar> *@
+                    @* <ejs-dropdownbutton id="btnZoomIncrement" items="ViewBag.zoomMenuItems" content="100%"
+                        select="zoomChange">
+                    </ejs-dropdownbutton>
+                    <ejs-dropdownbutton id="btnDrawShape" items="ViewBag.drawShapesList" iconCss='sf-icon-DrawingMode'
+                        select="drawShapeChange">
+                    </ejs-dropdownbutton>
+                    <ejs-dropdownbutton id='btnDrawConnector' items="ViewBag.drawConnectorsList" iconCss='sf-icon-ConnectorMode'
+                        select="drawConnectorChange">
+                    </ejs-dropdownbutton>
+                    <ejs-dropdownbutton id="orderCommandList" items='ViewBag.orderCommandsList' iconCss='sf-icon-Order' select="orderCommandsChange">
+                    </ejs-dropdownbutton> *@
             </div>
             <div class="db-toolbar-hide-btn">
                 <ejs-button id="btnHideToolbar" iconCss='sf-icon-Collapse tb-icons'>
@@ -204,7 +251,7 @@
                             <e-pagesettings-margin left="5" top="5"></e-pagesettings-margin>
                         </e-diagram-pagesettings>
                         <e-diagram-scrollsettings canAutoScroll= "true" minZoom= "0.25" maxZoom= "30" scrollLimit="Infinity"></e-diagram-scrollsettings>
-                        <e-diagram-selecteditems  constraints="ToolTip"></e-diagram-selecteditems>
+                        @* <e-diagram-selecteditems  constraints="ToolTip"></e-diagram-selecteditems> *@
                         <e-diagram-selecteditems  constraints="All"></e-diagram-selecteditems>
                         <e-diagram-contextmenusettings show="true" items="ViewBag.item" ></e-diagram-contextmenusettings> 
                     </ejs-diagram>
@@ -633,7 +680,7 @@
                         <div class="row db-prop-row">
                             <div class="col-xs-6 db-col-left" id="textPositionDiv">
                                 <ejs-dropdownlist dataSource="ViewBag.textPosition" id="ddlTextPosition" 
-                                 change="DiagramPropertyBinding.prototype.textPositionChange">
+                                 change="DiagramPropertyBinding.prototype.textPositionChange" >
                                     <e-dropdownlist-fields text="text" value="value"></e-dropdownlist-fields>
                                 </ejs-dropdownlist>
                                     @* <input type="text" id='ddlTextPosition' /> *@
@@ -705,12 +752,12 @@
                                 <span class="db-prop-text-style">Opacity</span>
                             </div>
                             <div class="col-xs-8 db-col-left" style="padding-right:10px">
-                                <ejs-slider id="opacityTextSlider" min='0' max='100' step='10' type='MinRange' change="textopacitychange">
+                                <ejs-slider id="opacityTextSlider" min='0' max='100' step='10' value="0" type='MinRange' change="textopacitychange">
                                 </ejs-slider>
                                 @* <div id='opacityTextSlider'></div> *@
                             </div>
                             <div class="col-xs-2 db-col-right">
-                                <input id='textOpacityText' type="text" value='100%' class="db-readonly-input" readOnly="true"/>
+                                <input id='textOpacityText' type="text" value="100%" class="db-readonly-input" readOnly="true"/>
                             </div>
                         </div>
                     </div>
@@ -811,7 +858,7 @@
                     </div>
                     <div class="row db-prop-row">
                         <div class="col-xs-8 db-col-left">
-                            <ejs-dropdownlist height='34px' dataSource="ViewBag.fontFamilyList" id="mindmapFontFamilyList" change="mindmapFontFamilyListchange">
+                            <ejs-dropdownlist height='34px' dataSource="ViewBag.fontFamilyList" id="mindmapFontFamilyList" change="mindmapFontFamilyListchange" index=0>
                              <e-dropdownlist-fields text="text" value="value"></e-dropdownlist-fields>
                             </ejs-dropdownlist>
                                 @* <input type="text" id='mindmapFontFamilyList' /> *@
@@ -855,12 +902,12 @@
                             <span class="db-prop-text-style">Opacity</span>
                         </div>
                         <div class="col-xs-8 db-col-left" style="padding-right:10px">
-                            <ejs-slider id="mindmapTextOpacitySlider" min='0' max='100' step='10' type='MinRange'>
+                            <ejs-slider id="mindmapTextOpacitySlider" min='0' max='100' step='10' type='MinRange' change="Mindmaptextopacity">
                             </ejs-slider>
                                 @* <div id='mindmapTextOpacitySlider'></div> *@
                         </div>
                         <div class="col-xs-2 db-col-right">
-                            <input type="text" id="textOpacityText" class="db-readonly-input" readOnly="true" />
+                            <input type="text" id="textOpacityText"  class="db-readonly-input" readOnly="true" />
                         </div>
                     </div>
                 </div>
@@ -1312,7 +1359,6 @@
         </div>
     </e-content-template>
 </ejs-dialog>
-
 
 @* <div id="openTemplateDialog"></div> *@
 

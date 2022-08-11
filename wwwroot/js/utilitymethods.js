@@ -99,12 +99,13 @@ var UtilityMethods = (function () {
         document.getElementById('fontFamily').ej2_instances[0].value = text.fontFamily;
         document.getElementById('fontSizeTextProperties').ej2_instances[0].value = text.fontSize;
         document.getElementById('opacityTextSlider').ej2_instances[0].value = text.opacity * 100;
+        // document.getElementById('textOpacityText').ej2_instances[0].value =  document.getElementById('opacityTextSlider').ej2_instances[0].value + '%';
         var toolbarTextStyle = document.getElementById('toolbarTextStyle');
         if (toolbarTextStyle) {
             toolbarTextStyle = toolbarTextStyle.ej2_instances[0];
         }
         if (toolbarTextStyle) {
-            toolbarTextStyle.items[0].cssClass = text.bold ? 'tb-item-start tb-item-selected' : 'tb-item-start';
+            toolbarTextStyle.items[0].cssClass = text.bold ? 'tb-item1-start tb-item-selected' : 'tb-item-start';
             toolbarTextStyle.items[1].cssClass = text.italic ? 'tb-item-middle tb-item-selected' : 'tb-item-middle';
             toolbarTextStyle.items[2].cssClass = text.textDecoration === 'Underline' ? 'tb-item-end tb-item-selected' : 'tb-item-end';
         }

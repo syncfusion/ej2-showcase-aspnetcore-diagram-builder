@@ -73,51 +73,48 @@ var DiagramClientSideEvents = (function () {
 
     DiagramClientSideEvents.prototype.multipleSelectionSettings = function (selectedItems) {
         selectedItem.utilityMethods.objectTypeChange('None');
-        var showConnectorPanel = false, showNodePanel = false;
-        var showTextPanel = false, showConTextPanel = false;
-        var nodeContainer = document.getElementById('nodePropertyContainer');
+        var showConnectorPanel= false, showNodePanel= false;
+        var showTextPanel= false, showConTextPanel= false;
+        var nodeContainer= document.getElementById('nodePropertyContainer');
         for (var i = 0; i < selectedItems.length; i++) {
-            var object = selectedItems[i];
+            var object= selectedItems[i];
             if (object instanceof ej.diagrams.Node && (!showNodePanel || !showTextPanel)) {
                 showNodePanel = true;
                 showTextPanel = object.annotations.length > 0 && object.annotations[0].content ? true : false;
-            }
-            else if (object instanceof ej.diagrams.Connector && (!showConnectorPanel || !showConTextPanel)) {
+            } else if (object instanceof ej.diagrams.Connector && (!showConnectorPanel || !showConTextPanel)) {
                 showConnectorPanel = true;
                 showConTextPanel = object.annotations.length > 0 && object.annotations[0].content ? true : false;
             }
         }
-        var selectItem1 = selectedItem.selectedDiagram.selectedItems;
+        var selectItem1= selectedItem.selectedDiagram.selectedItems;
         if (showNodePanel) {
             nodeContainer.style.display = '';
             nodeContainer.classList.add('multiple');
             if (showConnectorPanel) {
                 nodeContainer.classList.add('connector');
             }
-            selectedItem.utilityMethods.bindNodeProperties(selectItem1.nodes[0], selectedItem);
+            selectedItem.utilityMethods.bindNodeProperties(selectItem1.nodes[0],selectedItem);
         }
         if (showConnectorPanel && !showNodePanel) {
             document.getElementById('connectorPropertyContainer').style.display = '';
-            selectedItem.utilityMethods.bindConnectorProperties(selectItem1.connectors[0], selectedItem);
+            selectedItem.utilityMethods.bindConnectorProperties(selectItem1.connectors[0],selectedItem);
         }
         if (showTextPanel || showConTextPanel) {
             document.getElementById('textPropertyContainer').style.display = '';
             if (showTextPanel && showConTextPanel) {
                 document.getElementById('textPositionDiv').style.display = 'none';
                 document.getElementById('textColorDiv').className = 'col-xs-6 db-col-left';
-            }
-            else {
+            } else {
                 document.getElementById('textPositionDiv').style.display = '';
                 document.getElementById('textColorDiv').className = 'col-xs-6 db-col-right';
                 if (showConTextPanel) {
-                    diagramEvents.ddlTextPosition.dataSource = selectedItem.textProperties.getConnectorTextPositions();
-                    //selectedItem.utilityMethods.bindTextProperties(selectItem1.connectors[0].annotations[0].style, selectedItem);
+                    document.getElementById("ddlTextPosition").ej2_instances[0].dataSource = selectedItem.textProperties.getConnectorTextPositions();
+                    //this.selectedItem.utilityMethods.bindTextProperties(selectItem1.connectors[0].annotations[0].style, this.selectedItem);
+                } else {
+                    document.getElementById("ddlTextPosition").ej2_instances[0].dataSource =selectedItem.textProperties.getNodeTextPositions();
+                    //this.selectedItem.utilityMethods.bindTextProperties(selectItem1.connectors[0].annotations[0].style, this.selectedItem);
                 }
-                else {
-                    diagramEvents.ddlTextPosition.dataSource = selectedItem.textProperties.getNodeTextPositions();
-                    //selectedItem.utilityMethods.bindTextProperties(selectItem1.connectors[0].annotations[0].style, selectedItem);
-                }
-                diagramEvents.ddlTextPosition.dataBind();
+                document.getElementById("ddlTextPosition").ej2_instances[0].dataBind();
             }
         }
     };
@@ -497,7 +494,7 @@ var MindMapPropertyBinding = (function () {
                 if (node.addInfo && node.annotations.length > 0) {
                     var annotation = node.annotations[0].style;
                     var addInfo = node.addInfo;
-                    var levelType = selectedItem.mindmapSettings.levelType.value;
+                    var levelType = document.getElementById('mindMapLevels').ej2_instances[0].value;
                     if ('Level' + addInfo.level === levelType || addInfo.level === levelType) {
                         switch (propertyName) {
                             case 'bold':

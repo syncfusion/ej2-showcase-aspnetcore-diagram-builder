@@ -805,7 +805,7 @@ input, button, select, textarea {
 }
 
 .e-input-value .db-ddl-template-style .ddl-svg-style {
-    width: 34px;
+    width: 30px;
 }
 
 #lineStyle .e-input-value .db-ddl-template-style .ddl-svg-style {
@@ -1997,7 +1997,7 @@ input.db-layer-edit {
 }
 
 .db-diagram-template-svg-blank-image {
-    background-color: white;
+    background-color: rgb(247, 244, 244);
     background-size: contain;
     background-repeat: no-repeat;
     width: 32px;
