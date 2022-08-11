@@ -229,22 +229,12 @@ namespace SyncfusionWebApp3.Controllers
             
             ViewBag.setPaletteNodeDefaults = "setPaletteNodeDefaults";
             ViewBag.getSymbolInfo = "getSymbolInfo";
-            // ViewBag.expandValue = "Multiple";
             ViewBag.enableSearch=true;
             ViewBag.getNodeDefaults = "getNodeDefaults";
             ViewBag.getConnectorDefaults="getConnectorDefaults";
             ViewBag.getTool = "CustomTool.prototype.getTool";
-            // ViewBag.Multiple='Multiple';
-            // ViewBag.commandSettings="getCommandSettings";
-            // ViewBag.value="selectedItem.nodeProperties.offsetX";
             ViewBag.nodechange="change";
 
-            // List<ExpandOptions> expand = new List<ExpandOptions>();
-            // expand.Add(new ExpandOptions() { text = "Multiple", value = "multiple" });
-
-            // ViewBag.expand = expand;
-            // ViewBag.expandValue = "Multiple";
-            
             double[] intervals = { 1, 9, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75};
             DiagramGridlines grIdLines = new DiagramGridlines()
             { LineColor = "#EEEEEE", LineIntervals = intervals };
@@ -265,11 +255,6 @@ namespace SyncfusionWebApp3.Controllers
             public bool isPrimary { get; set; }
             public string cssClass { get; set; }
         }
-        //  public class ExpandOptions
-        // {
-        //     public string text;
-        //     public string value;
-        // }
         public class contextMenuItems
         {
             [DefaultValue(null)]

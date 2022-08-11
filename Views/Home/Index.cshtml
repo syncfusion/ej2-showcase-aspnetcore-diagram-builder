@@ -62,147 +62,6 @@
         <div class='db-toolbar-editor'>
             <div class='db-toolbar-container '>
                  <div id="toolbarEditor"></div>
-                @* <ejs-toolbar id="toolbarEditor" overflowMode="Scrollable" clicked="toolbarEditorClick">
-                    <e-toolbar-items>
-                        <e-content-template>
-                            <div>
-                                <div class="e-toolbar-item tb-item-start tb-item-undo e-tbtn-align" aria-disabled="false" title="Undo"><button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" type="button" id="Undo" tabindex="-1" aria-label="Undo" style="width: auto;"><span class="e-btn-icon sf-icon-Undo tb-icons e-icons"></span></button></div>
-                                <div class="e-toolbar-item tb-item-end tb-item-redo e-tbtn-align" aria-disabled="false" title="Redo"><button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" type="button" id="Redo" tabindex="-1" aria-label="Redo" style="width: auto;"><span class="e-btn-icon sf-icon-Redo tb-icons e-icons"></span></button></div>
-                                <div class="e-toolbar-item e-separator" aria-disabled="false"></div>
-                                <div class="e-toolbar-item tb-item-start e-tbtn-align" aria-disabled="false" title="Zoom Out(Ctrl + -)"><button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" type="button" id="Zoom in" tabindex="-1" aria-label="Zoom Out(Ctrl + -)" style="width: auto;"><span class="e-btn-icon sf-icon-ZoomOut tb-icons e-icons"></span></button></div>
-                                <div class="e-toolbar-item tb-item-end tb-zoom-dropdown-btn e-template" aria-disabled="false">
-                                    <ejs-dropdownbutton id="btnZoomIncrement" content="100%" items="ViewBag.zoomMenuItems" select="zoomChange">
-                                    </ejs-dropdownbutton>
-                                </div>
-                                <div class="e-toolbar-item tb-item-end e-tbtn-align" aria-disabled="false" title="Zoom In(Ctrl + +)"><button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" type="button" id="Zoom out" tabindex="-1" aria-label="Zoom In(Ctrl + +)" style="width: auto;"><span class="e-btn-icon sf-icon-ZoomIn tb-icons e-icons"></span></button></div>
-                                <div class="e-toolbar-item e-separator" aria-disabled="false"></div>
-                                <div class="e-toolbar-item tb-item-start e-tbtn-align" aria-disabled="false" title="Pan Tool"><button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" type="button" id="Pan" tabindex="-1" aria-label="Pan Tool" style="width: auto;"><span class="e-btn-icon sf-icon-Pan tb-icons e-icons"></span></button></div>
-                               <div class="e-toolbar-item tb-item-middle tb-item-selected e-tbtn-align" aria-disabled="false" title="Pointer"><button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" type="button" id="Pointer" tabindex="-1" aria-label="Pointer" style="width: auto;"><span class="e-btn-icon sf-icon-Selector tb-icons e-icons"></span></button></div>
-                                <div class="e-toolbar-item tb-item-middle tb-drawtools-dropdown-btn tb-custom-diagram-disable e-template" aria-disabled="false" title="Draw Shapes">
-                                    <ejs-dropdownbutton id="btnDrawShape" items="ViewBag.drawShapesList" iconCss='sf-icon-DrawingMode'
-                                    select="drawShapeChange">
-                                    </ejs-dropdownbutton>
-                                </div>
-                                <div class="e-toolbar-item tb-item-middle tb-drawtools-dropdown-btn tb-custom-diagram-disable e-template" aria-disabled="false" title="Draw Connectors">
-                                   <ejs-dropdownbutton id='btnDrawConnector' items="ViewBag.drawConnectorsList" iconCss='sf-icon-ConnectorMode'
-                                    select="drawConnectorChange">
-                                    </ejs-dropdownbutton>
-                                </div>
-                                <div class="e-toolbar-item tb-item-end tb-custom-diagram-disable e-tbtn-align" aria-disabled="false" title="Text Tool"><button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" type="button" id="Texttool" tabindex="-1" aria-label="Text Tool" style="width: auto;"><span class="e-btn-icon sf-icon-TextInput tb-icons e-icons"></span></button></div>
-                                <div class="e-toolbar-item e-separator" aria-disabled="false"></div>
-                                <div class="e-toolbar-item tb-item-start tb-item-fill e-tbtn-align" aria-disabled="false" title="Fill Color"><button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" type="button" id="Fill Color" tabindex="-1" aria-label="Fill Color" style="width: auto;"><span class="e-btn-icon sf-icon-ColorPickers tb-icons e-icons"></span></button></div>
-                                <div class="e-toolbar-item tb-item-end tb-item-stroke e-tbtn-align" aria-disabled="false" title="Border Color"><button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" type="button" id="Border Color" tabindex="-1" aria-label="Border Color" style="width: auto;"><span class="e-btn-icon sf-icon-Pickers tb-icons e-icons"></span></button></div>
-                                <div class="e-toolbar-item e-separator" aria-disabled="false"></div>
-                                <div class="e-toolbar-item tb-item-start tb-item-align-category e-tbtn-align" aria-disabled="false" title="Group"><button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" type="button" id="Group" tabindex="-1" aria-label="Group" style="width: auto;"><span class="e-btn-icon sf-icon-Group tb-icons e-icons"></span></button></div>
-                                <div class="e-toolbar-item tb-item-end tb-item-ungroup e-tbtn-align" aria-disabled="false" title="Ungroup"><button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" type="button" id="Ungroup" tabindex="-1" aria-label="Ungroup" style="width: auto;"><span class="e-btn-icon sf-icon-Ungroup tb-icons e-icons"></span></button></div>
-                                <div class="e-toolbar-item e-separator" aria-disabled="false"></div>
-                                <div class="e-toolbar-item tb-item-start tb-item-lock-category e-tbtn-align" aria-disabled="false" title="Lock"><button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" type="button" id="Lock" tabindex="-1" aria-label="Lock" style="width: auto;"><span class="e-btn-icon sf-icon-Lock tb-icons e-icons"></span></button></div>
-                                <div class="e-toolbar-item tb-item-end tb-item-lock-category e-tbtn-align" aria-disabled="false" title="Delete"><button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" type="button" id="Delete" tabindex="-1" aria-label="Delete" style="width: auto;"><span class="e-btn-icon sf-icon-Delete tb-icons e-icons"></span></button></div>
-                                <div class="e-toolbar-item e-separator" aria-disabled="false"></div>
-                                <div class="e-toolbar-item tb-item-start tb-custom-diagram-disable e-tbtn-align" aria-disabled="false" title="Show Layers"><button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" type="button" id="Layers" tabindex="-1" aria-label="Show Layers" style="width: auto;"><span class="e-btn-icon sf-icon-Layers tb-icons e-icons"></span></button></div>
-                                <div class="e-toolbar-item tb-item-end tb-custom-diagram-disable e-tbtn-align" aria-disabled="false" title="Themes"><button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" type="button" id="Themes" tabindex="-1" aria-label="Themes" style="width: auto;"><span class="e-btn-icon db-theme-svg tb-icons e-icons"></span></button></div>
-                                <div class="e-toolbar-item e-separator" aria-disabled="false"></div>
-                                <div class="e-toolbar-item tb-item-end tb-item-order tb-dropdown-btn-icon e-template" aria-disabled="false" title="Order">
-                                  <ejs-dropdownbutton id="orderCommandList" items='ViewBag.orderCommandsList' iconCss='sf-icon-Order' select="orderCommandsChange">
-                                    </ejs-dropdownbutton>
-                                </div>
-                                <div class="e-toolbar-item e-separator" aria-disabled="false"></div>
-                                <div class="e-toolbar-item tb-item-start tb-item-align-category e-tbtn-align" aria-disabled="false" title="Align Left"><button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" type="button" id="AlignLeft" tabindex="-1" aria-label="Align Left" style="width: auto;"><span class="e-btn-icon sf-icon-AlignLeft tb-icons e-icons"></span></button></div>
-                                <div class="e-toolbar-item tb-item-middle tb-item-align-category e-tbtn-align" aria-disabled="false" title="Align Center"><button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" type="button" id="AlignCenter" tabindex="-1" aria-label="Align Center" style="width: auto;"><span class="e-btn-icon sf-icon-AlignHorizontally tb-icons e-icons"></span></button></div>
-                                <div class="e-toolbar-item tb-item-middle tb-item-align-category e-tbtn-align" aria-disabled="false" title="Align Right"><button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" type="button" id="AlignRight" tabindex="-1" aria-label="Align Right" style="width: auto;"><span class="e-btn-icon sf-icon-AlignRight tb-icons e-icons"></span></button></div>
-                                <div class="e-toolbar-item tb-item-middle tb-item-align-category e-tbtn-align" aria-disabled="false" title="Align Top"><button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" type="button" id="AilgnTop" tabindex="-1" aria-label="Align Top" style="width: auto;"><span class="e-btn-icon sf-icon-AilgnTop tb-icons e-icons"></span></button></div>
-                                <div class="e-toolbar-item tb-item-middle tb-item-align-category e-tbtn-align" aria-disabled="false" title="Align Middle"><button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" type="button" id="AlignVertically" tabindex="-1" aria-label="Align Middle" style="width: auto;"><span class="e-btn-icon sf-icon-AlignVertically tb-icons e-icons"></span></button></div>
-                                <div class="e-toolbar-item tb-item-middle tb-item-align-category e-tbtn-align" aria-disabled="false" title="Align Bottom"><button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" type="button" id="Align Bottom" tabindex="-1" aria-label="Align Bottom" style="width: auto;"><span class="e-btn-icon sf-icon-AlignBottom tb-icons e-icons"></span></button></div>
-                                <div class="e-toolbar-item tb-item-middle tb-item-space-category e-tbtn-align" aria-disabled="false" title="Distribute Objects Vertically"><button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" type="button" id="DistributeHorizontal" tabindex="-1" aria-label="Distribute Objects Vertically" style="width: auto;"><span class="e-btn-icon sf-icon-DistributeHorizontal tb-icons e-icons"></span></button></div>
-                                <div class="e-toolbar-item tb-item-end tb-item-space-category e-tbtn-align" aria-disabled="false" title="Distribute Objects Horizontally"><button class="e-tbar-btn e-control e-btn e-lib e-icon-btn" type="button" id="DistributeVertical" tabindex="-1" aria-label="Distribute Objects Horizontally" style="width: auto;"><span class="e-btn-icon sf-icon-DistributeVertical tb-icons e-icons"></span></button></div>
-                            </div>
-                        </e-content-template>
-                    </e-toolbar-items> *@
-
-                    @* <e-toolbar-items >
-                        <e-toolbar-item prefixIcon="sf-icon-Undo tb-icons" tooltipText="Undo" cssClass="tb-item-start tb-item-undo">
-                        </e-toolbar-item>
-                        <e-toolbar-item prefixIcon="sf-icon-Redo tb-icons" tooltipText="Redo" cssClass="tb-item-end tb-item-redo">
-                        </e-toolbar-item>
-                        <e-toolbar-item type="Separator">
-                        </e-toolbar-item>
-                        <e-toolbar-item prefixIcon="sf-icon-ZoomOut tb-icons" tooltipText="Zoom Out(Ctrl + -)" cssClass="tb-item-start">
-                        </e-toolbar-item>
-                        <e-toolbar-item cssClass="tb-item-end tb-zoom-dropdown-btn" id="btnZoomIncrement">
-                       </e-toolbar-item>
-                       <e-toolbar-item prefixIcon="sf-icon-ZoomIn tb-icons" tooltipText="Zoom In(Ctrl + +)" cssClass="tb-item-end">
-                        </e-toolbar-item>
-                        <e-toolbar-item type="Separator">
-                        </e-toolbar-item >
-                        <e-toolbar-item prefixIcon="sf-icon-Pan tb-icons" tooltipText="Pan Tool" cssClass="tb-item-start">
-                        </e-toolbar-item>
-                        <e-toolbar-item prefixIcon="sf-icon-Selector tb-icons" tooltipText="Pointer" cssClass="tb-item-middle tb-item-selected">
-                        </e-toolbar-item>
-                        <e-toolbar-item  tooltipText="Draw Shapes" cssClass="tb-item-middle tb-drawtools-dropdown-btn tb-custom-diagram-disable" id="btnDrawShape">
-                        </e-toolbar-item>
-                        <e-toolbar-item tooltipText="Draw Connectors" id='btnDrawConnector' cssClass="tb-item-middle tb-drawtools-dropdown-btn tb-custom-diagram-disable">
-                        </e-toolbar-item>
-                        <e-toolbar-item prefixIcon="sf-icon-TextInput tb-icons" tooltipText="Text Tool" cssClass="tb-item-end tb-custom-diagram-disable">
-                        </e-toolbar-item>
-                        <e-toolbar-item type="Separator">
-                        </e-toolbar-item>
-                        <e-toolbar-item prefixIcon="sf-icon-ColorPickers tb-icons" mode="Palette" tooltipText="Fill Color" cssClass="tb-item-start tb-item-fill">
-                        </e-toolbar-item>
-                        <e-toolbar-item prefixIcon="sf-icon-Pickers tb-icons" mode="Palette" tooltipText="Border Color" cssClass="tb-item-end tb-item-stroke">
-                        </e-toolbar-item>
-                        <e-toolbar-item type="Separator">
-                        </e-toolbar-item>
-                        <e-toolbar-item prefixIcon="sf-icon-Group tb-icons" tooltipText="Group" cssClass="tb-item-start tb-item-align-category">
-                        </e-toolbar-item>
-                        <e-toolbar-item prefixIcon="sf-icon-Ungroup tb-icons" tooltipText="Ungroup" cssClass="tb-item-end tb-item-ungroup">
-                        </e-toolbar-item>
-                        <e-toolbar-item type="Separator">
-                        </e-toolbar-item>
-                        <e-toolbar-item prefixIcon="sf-icon-Lock tb-icons" tooltipText="Lock" cssClass="tb-item-start tb-item-lock-category">
-                        </e-toolbar-item>
-                        <e-toolbar-item prefixIcon="sf-icon-Delete tb-icons" tooltipText="Delete" cssClass="tb-item-end tb-item-lock-category">
-                        </e-toolbar-item>
-                        <e-toolbar-item type="Separator">
-                        </e-toolbar-item>
-                        <e-toolbar-item prefixIcon="sf-icon-Layers tb-icons" tooltipText="Show Layers" cssClass="tb-item-start tb-custom-diagram-disable">
-                        </e-toolbar-item>
-                        <e-toolbar-item prefixIcon="db-theme-svg tb-icons" tooltipText="Themes" cssClass="tb-item-end tb-custom-diagram-disable">
-                        </e-toolbar-item>
-                        <e-toolbar-item type="Separator">
-                        </e-toolbar-item>
-                        <e-toolbar-item tooltipText="Order" id="orderCommandList"  cssClass="tb-item-end tb-item-order tb-dropdown-btn-icon">
-                        </e-toolbar-item>
-                        <e-toolbar-item type="Separator">
-                        </e-toolbar-item>
-                        <e-toolbar-item prefixIcon="sf-icon-AlignLeft tb-icons" tooltipText="Align Left" cssClass="tb-item-start tb-item-align-category">
-                        </e-toolbar-item>
-                        <e-toolbar-item prefixIcon="sf-icon-AlignHorizontally tb-icons" tooltipText="Align Center" cssClass="tb-item-middle  tb-item-align-category">
-                        </e-toolbar-item>
-                        <e-toolbar-item prefixIcon="sf-icon-AlignRight tb-icons" tooltipText="Align Right" cssClass="tb-item-middle tb-item-align-category">
-                        </e-toolbar-item>
-                        <e-toolbar-item prefixIcon="sf-icon-AilgnTop tb-icons" tooltipText="Align Top" cssClass="tb-item-middle tb-item-align-category">
-                        </e-toolbar-item>
-                        <e-toolbar-item prefixIcon="sf-icon-AlignVertically tb-icons" tooltipText="Align Middle" cssClass="tb-item-middle tb-item-align-category">
-                        </e-toolbar-item>
-                        <e-toolbar-item prefixIcon="sf-icon-AlignBottom tb-icons" tooltipText="Align Bottom" cssClass="tb-item-middle tb-item-align-category">
-                        </e-toolbar-item>
-                        <e-toolbar-item prefixIcon="sf-icon-DistributeHorizontal tb-icons" tooltipText="Distribute Objects Vertically" cssClass="tb-item-middle tb-item-space-category">
-                        </e-toolbar-item>
-                        <e-toolbar-item prefixIcon="sf-icon-DistributeVertical tb-icons" tooltipText="Distribute Objects Horizontally" cssClass="tb-item-end tb-item-space-category">
-                        </e-toolbar-item>
-                    </e-toolbar-items> *@
-                @* </ejs-toolbar> *@
-                    @* <ejs-dropdownbutton id="btnZoomIncrement" items="ViewBag.zoomMenuItems" content="100%"
-                        select="zoomChange">
-                    </ejs-dropdownbutton>
-                    <ejs-dropdownbutton id="btnDrawShape" items="ViewBag.drawShapesList" iconCss='sf-icon-DrawingMode'
-                        select="drawShapeChange">
-                    </ejs-dropdownbutton>
-                    <ejs-dropdownbutton id='btnDrawConnector' items="ViewBag.drawConnectorsList" iconCss='sf-icon-ConnectorMode'
-                        select="drawConnectorChange">
-                    </ejs-dropdownbutton>
-                    <ejs-dropdownbutton id="orderCommandList" items='ViewBag.orderCommandsList' iconCss='sf-icon-Order' select="orderCommandsChange">
-                    </ejs-dropdownbutton> *@
             </div>
             <div class="db-toolbar-hide-btn">
                 <ejs-button id="btnHideToolbar" iconCss='sf-icon-Collapse tb-icons'>
@@ -217,7 +76,6 @@
                     getSymbolInfo="@ViewBag.getSymbolInfo" palettes="@ViewBag.palettes" symbolPreview="@ViewBag.preview" symbolMargin= "@ViewBag.margin" enableSearch="@ViewBag.enableSearch"
                     getNodeDefaults="@ViewBag.setPaletteNodeDefaults">
                 </ejs-symbolpalette>
-                @* getNodeDefaults="@ViewBag.setPaletteNodeDefaults" *@
             </div>
             <div class="db-overview-parent">
                 <div id="overview"></div>
@@ -238,12 +96,6 @@
                         dragEnter="DiagramClientSideEvents.prototype.dragEnter" historyChange="DiagramClientSideEvents.prototype.historyChange" scrollChange="DiagramClientSideEvents.prototype.scrollChange"
                         collectionChange="collectionChange"  drop="drop" textEdit="DiagramClientSideEvents.prototype.textEdit" getCustomTool="@ViewBag.getTool" getNodeDefaults="@ViewBag.getNodeDefaults" getConnectorDefaults="@ViewBag.getConnectorDefaults"> 
                        <e-diagram-commandmanager commands="@ViewBag.commands"></e-diagram-commandmanager>
-                    @* <ejs-diagram id="diagram"  width="100%" height="100%" backgroundColor="transparent" selectionChange="selectionChange" 
-                    rotateChange="nodeRotationChange" contextMenuOpen=" diagramContextMenuOpen" 
-                    contextMenuClick="contextMenuClick" positionChange="nodePositionChange"  sizeChange="nodeSizeChange"
-                    dragEnter="dragEnter" historyChange="historyChange" scrollChange="scrollChange"
-                    collectionChange="collectionChange" drop="drop" textEdit="textEdit"  getCustomTool="@ViewBag.getTool" getNodeDefaults="@ViewBag.getNodeDefaults" getConnectorDefaults="@ViewBag.getConnectorDefaults"
-                    >  *@
                         <e-diagram-snapsettings constraints="ShowLines" horizontalGridlines="ViewBag.gridLines" verticalGridlines="ViewBag.gridLines" >
                         </e-diagram-snapsettings>
                           <e-diagram-pagesettings width="816" height="1056" multiplePage="true">
@@ -251,7 +103,6 @@
                             <e-pagesettings-margin left="5" top="5"></e-pagesettings-margin>
                         </e-diagram-pagesettings>
                         <e-diagram-scrollsettings canAutoScroll= "true" minZoom= "0.25" maxZoom= "30" scrollLimit="Infinity"></e-diagram-scrollsettings>
-                        @* <e-diagram-selecteditems  constraints="ToolTip"></e-diagram-selecteditems> *@
                         <e-diagram-selecteditems  constraints="All"></e-diagram-selecteditems>
                         <e-diagram-contextmenusettings show="true" items="ViewBag.item" ></e-diagram-contextmenusettings> 
                     </ejs-diagram>
@@ -272,18 +123,15 @@
                                 index="0" >
                                  <e-dropdownlist-fields text="text" value="value"></e-dropdownlist-fields>
                             </ejs-dropdownlist>
-                                @* <input type="text" id='pageSettingsList' /> *@
                         </div>
                         <div class="row db-prop-row" id="pageOrientation">
                             <div class="col-xs-3 db-prop-col-style" style="margin-right: 8px;width: 30%;">
                                 <ejs-radiobutton id="pagePortrait" label="Portrait" name="pageSettings" checked="false"
                                     change="DiagramPropertyBinding.prototype.pageOrientationChange"></ejs-radiobutton>
-                                    @* <input id="pagePortrait" type="radio"> *@
                             </div>
                             <div class="col-xs-3 db-prop-col-style">
                                 <ejs-radiobutton id="pageLandscape" label="Landscape" name="pageSettings" checked="true"
                                     change="DiagramPropertyBinding.prototype.pageOrientationChange"></ejs-radiobutton>
-                                    @* <input id="pageLandscape" type="radio"> *@
                             </div>
                         </div>
                         <div class="row db-prop-row" id='pageDimension' style="display:none">
@@ -294,7 +142,6 @@
                                     </div>
                                     <div class="db-text-input">
                                         <ejs-numerictextbox id="pageWidth" min="100" format="n0" change="DiagramPropertyBinding.prototype.pageDimensionChange" value="1056"></ejs-numerictextbox>
-                                        @* <input id="pageWidth" type="text" /> *@
                                     </div>
                                 </div>
                             </div>
@@ -305,7 +152,6 @@
                                     </div>
                                     <div class="db-text-input">
                                         <ejs-numerictextbox id="pageHeight" min="100" format="n0" change="DiagramPropertyBinding.prototype.pageDimensionChange" value="816"></ejs-numerictextbox>
-                                            @* <input id="pageHeight" type="text" /> *@
                                     </div>
                                 </div>
                             </div>
@@ -316,12 +162,10 @@
                                     <div class="db-color-input">
                                         <ejs-colorpicker id="pageBgColor" type="color" value="#fff"  mode="Palette" width="100%" change="DiagramPropertyBinding.prototype.pageBackgroundChange1">
                                         </ejs-colorpicker>
-                                            @* <input id="pageBgColor" type="color"> background-color: rgb(255, 255, 255); *@
                                     </div>
                                     <div class="db-color-btn">
                                         <ejs-button id="pageBgColorPickerBtn" iconCss='sf-icon-ColorPickers tb-icons'>
                                         </ejs-button>
-                                            @* <button id="pageBgColorPickerBtn"></button> *@
                                     </div>
                                 </div>
                             </div>
@@ -329,7 +173,6 @@
                         <div class="row db-prop-row">
                             <ejs-checkbox id='showPageBreaks' label="Page Breaks" change='DiagramPropertyBinding.prototype.pageBreaksChange'>
                             </ejs-checkbox>
-                                @* <input id="showPageBreaks" type="checkbox" /> *@
                         </div>
                     </div>
                     <div id='nodePropertyContainer' class="db-node-prop-container" style="display:none">
@@ -345,7 +188,6 @@
                                         </div>
                                         <div class="db-text-input">
                                         <ejs-numerictextbox id="nodeOffsetX" format="n0" change="nodeoffsetXchange"></ejs-numerictextbox>
-                                            @* <input id="nodeOffsetX" type="text" /> *@
                                         </div>
                                     </div>
                                 </div>
@@ -356,7 +198,6 @@
                                         </div>
                                         <div class="db-text-input">
                                             <ejs-numerictextbox id="nodeOffsetY" format="n0" change="nodeoffsetYchange"></ejs-numerictextbox>
-                                                @* <input id="nodeOffsetY" type="text" /> *@
                                         </div>
                                     </div>
                                 </div>
@@ -369,7 +210,6 @@
                                         </div>
                                         <div class="db-text-input">
                                             <ejs-numerictextbox id="nodeWidth" min="1" format="n0" change="nodewidthchange"></ejs-numerictextbox>
-                                                @* <input id="nodeWidth" type="text" /> *@
                                         </div>
                                     </div>
                                 </div>
@@ -380,7 +220,6 @@
                                         </div>
                                         <div class="db-text-input">
                                             <ejs-numerictextbox id="nodeHeight" min="1" format="n0" change="nodeheightchange"></ejs-numerictextbox>
-                                                @* <input id="nodeHeight" type="text" /> *@
                                         </div>
                                     </div>
                                 </div>
@@ -388,7 +227,6 @@
                             <div class="row db-prop-row">
                                 <div class="col-xs-6 db-col-left">
                                     <ejs-checkbox id='aspectRatio' label="Aspect Ratio" checked="false" change="nodeaspectratiochange"></ejs-checkbox>
-                                        @* <input id="aspectRatio" type="checkbox" /> *@
                                 </div>
                             </div>
                             <div class="row db-prop-row">
@@ -402,11 +240,9 @@
                                         <div class="db-text">
                                             <ejs-button id="rotateIconBtn" iconCss='sf-icon-Rotate1 tb-icons'>
                                             </ejs-button>
-                                                @* <button id="rotateIconBtn"></button> *@
                                         </div>
                                         <div class="db-text-input">
                                             <ejs-numerictextbox id="nodeRotateAngle" format="n0" change="noderotationchange"></ejs-numerictextbox>
-                                                @* <input id="nodeRotateAngle" type="text" /> *@
                                         </div>
                                     </div>
                                 </div>
@@ -426,7 +262,6 @@
                                             </e-toolbar-item>
                                         </e-toolbar-items>
                                     </ejs-toolbar>
-                                    @* <div id="toolbarNodeInsert"></div> *@
                                 </div>
                             </div>
                             <div class="db-prop-separator">
@@ -443,12 +278,10 @@
                                             <div class="db-color-input">
                                                 <ejs-colorpicker id="nodeFillColor" type="color" mode="Palette" change="nodecolorchange">
                                                 </ejs-colorpicker>
-                                                @* <input id="nodeFillColor" type="color"> *@
                                             </div>
                                             <div class="db-color-btn">
                                                 <ejs-button id="fillColorIconBtn" iconCss='sf-icon-ColorPickers tb-icons'>
                                                 </ejs-button>
-                                                    @* <button id="fillColorIconBtn"></button> *@
                                             </div>
                                         </div>
                                     </div>
@@ -456,26 +289,22 @@
                                 <div id='gradientStyle' class="row db-prop-row db-gradient-style-hide">
                                     <div class="col-xs-4 db-col-left">
                                         <ejs-checkbox id='gradient' label="Gradient" change="nodegradientchange"></ejs-checkbox>
-                                            @* <input id="gradient" type="checkbox" /> *@
                                     </div>
                                     <div class="col-xs-4 db-col-center">
                                         <ejs-dropdownlist id='gradientDirectionDropdown' dataSource="ViewBag.gradientDirections"
                                              popupWidth='200px' change="nodegradientdirectionchange" index=0>
                                         <e-dropdownlist-fields text="text" value="value"></e-dropdownlist-fields>
                                         </ejs-dropdownlist>
-                                            @* <input type="text" id='gradientDirectionDropdown' /> *@
                                     </div>
                                     <div class="col-xs-4 db-col-right">
                                         <div class="db-color-container">
                                             <div class="db-color-input">
                                                 <ejs-colorpicker  id="nodeGradientColor" type="color" mode="Palette" change="nodegradientcolorchange" value="#fff">
                                                 </ejs-colorpicker>
-                                                    @* <input id="nodeGradientColor" type="color"> *@
                                             </div>
                                             <div class="db-color-btn">
                                                 <ejs-button id="gradientColorIconBtn" iconCss='sf-icon-ColorPickers tb-icons'>
                                                 </ejs-button>
-                                                    @* <button id="gradientColorIconBtn"></button> *@
                                             </div>
                                         </div>
                                     </div>
@@ -502,12 +331,10 @@
                                             <div class="db-color-input">
                                                 <ejs-colorpicker id="nodeStrokeColor" type="color" mode="Palette" change="nodestrokecolorchange">
                                                 </ejs-colorpicker>
-                                                    @* <input id="nodeStrokeColor" type="color"> *@
                                             </div>
                                             <div class="db-color-btn">
                                                 <ejs-button id="strokeColorIconBtn" iconCss='sf-icon-Pickers tb-icons'>
                                                 </ejs-button>
-                                                    @* <button id="strokeColorIconBtn"></button> *@
                                             </div>
                                         </div>
                                     </div>
@@ -517,11 +344,9 @@
                                             valueTemplate='<div class="db-ddl-template-style"><span class="${className}"></span></div>'>
                                             <e-dropdownlist-fields text="text" value="value"></e-dropdownlist-fields>
                                         </ejs-dropdownlist>
-                                        @* <input type="text" id='nodeBorderStyle' /> *@
                                     </div>
                                     <div class="col-xs-4 db-col-right">
                                         <ejs-numerictextbox id="nodeStrokeWidth" min="0" step="0.5" change="nodestrokewidthchange"></ejs-numerictextbox>
-                                            @* <input id="nodeStrokeWidth" type="text" /> *@
                                     </div>
                                 </div>
                                 <div class="row db-prop-row">
@@ -529,10 +354,8 @@
                                         <span class="db-prop-text-style">Opacity</span>
                                     </div>
                                     <div class="col-xs-8 db-col-left" style="padding-right:10px">
-                                        @* <ejs-slider id="default" value="30"></ejs-slider> *@
                                         <ejs-slider id='nodeOpacitySlider' min='0' max='100' step='10' type='MinRange' value="0" change="nodeOpacitySliderchange">
                                         </ejs-slider>
-                                        @* <div id='nodeOpacitySlider'></div> *@
                                     </div>
                                     <div class="col-xs-2 db-col-right">
                                         <input id="nodeOpacitySliderText" type="text" value="100%" readOnly="true" class="db-readonly-input" />
@@ -555,7 +378,6 @@
                                 <ejs-dropdownlist id="lineTypeDropdown" change="lineTypeDropdownchange" dataSource="ViewBag.lineTypes ">
                                     <e-dropdownlist-fields text="text" value="value"></e-dropdownlist-fields>
                                 </ejs-dropdownlist>
-                                    @* <input type="text" id='lineTypeDropdown' /> *@
                             </div>
                         </div>
                         <div class="row db-prop-row">
@@ -564,12 +386,10 @@
                                     <div class="db-color-input">
                                           <ejs-colorpicker id="lineColor" mode="Palette" type="color" change="lineColorchange">
                                         </ejs-colorpicker>
-                                        @* <input id="lineColor" type="color"> *@
                                     </div>
                                     <div class="db-color-btn">
                                          <ejs-button id="lineColorIconBtn" iconCss='sf-icon-Pickers tb-icons'>
                                         </ejs-button>
-                                            @* <button id="lineColorIconBtn"></button> *@
                                     </div>
                                 </div>
                             </div>
@@ -588,11 +408,9 @@
                                   valueTemplate='<div class="db-ddl-template-style"><span class="${className}"></span></div>'>
                                     <e-dropdownlist-fields text="text" value="value"></e-dropdownlist-fields>
                                 </ejs-dropdownlist>
-                                    @* <input type="text" id='lineStyle' /> *@
                             </div>
                             <div class="col-xs-4 db-col-right">
                                 <ejs-numerictextbox min="0.5" step="0.5" id="lineWidth" change="lineWidthchange"></ejs-numerictextbox>
-                                    @* <input id="lineWidth" type="text" /> *@
                             </div>
                         </div>
                         <div class="row db-prop-row">
@@ -608,11 +426,9 @@
                                 <ejs-dropdownlist id="sourceType" dataSource="ViewBag.decoratorList" change="sourceTypechange">
                                     <e-dropdownlist-fields text="text" value="value"></e-dropdownlist-fields>
                                 </ejs-dropdownlist>
-                                    @* <input type="text" id='sourceType' /> *@
                             </div>
                             <div class="col-xs-4 db-col-right">
                                 <ejs-numerictextbox min="1" step="1" id="sourceSize" change="sourceSizechange"></ejs-numerictextbox>
-                                    @* <input id="sourceSize" type="text" /> *@
                             </div>
                         </div>
                         <div class="row db-prop-row">
@@ -628,21 +444,17 @@
                                  <ejs-dropdownlist id="targetType" dataSource="ViewBag.decoratorList" change="targetTypechange">
                                 <e-dropdownlist-fields text="text" value="value"></e-dropdownlist-fields>
                                 </ejs-dropdownlist>
-                                    @* <input type="text" id='targetType' /> *@
                             </div>
                             <div class="col-xs-4 db-col-right">
                                    <ejs-numerictextbox min="1" step="1" id="targetSize" change="targetSizechange"></ejs-numerictextbox>
-                                    @* <input id="targetSize" type="text" /> *@
                             </div>
                         </div>
                         <div class="row db-prop-row">
                             <div class="col-xs-8 db-col-left" style="margin-top:5px">
                                 <ejs-checkbox id='lineJump' label="Bridging" checked="false" change="lineJumpchange"></ejs-checkbox>
-                                    @* <input id="lineJump" type="checkbox" /> *@
                             </div>
                             <div class="col-xs-4 db-col-right" id="lineJumpSizeDiv" style="display:none">
                                 <ejs-numerictextbox min="1" step="1" id="lineJumpSize" change="lineJumpSizechange"></ejs-numerictextbox>
-                                    @* <input id="lineJumpSize" type="text" /> *@
                             </div>
                         </div>
                         <div class="row db-prop-row">
@@ -652,7 +464,6 @@
                             <div class="col-xs-8 db-col-left" style="padding-right:10px">
                                 <ejs-slider id='default1' min='0' max='100' step='10' value="0" type='MinRange' change="connectoropacitychange">
                                 </ejs-slider>
-                                    @* <div id='default1'></div> *@
                             </div>
                             <div class="col-xs-2 db-col-right">
                                 <input type="text" id="connectorOpacitySliderText" value="100%" readonly="true" class="db-readonly-input" />
@@ -670,11 +481,9 @@
                                 <ejs-dropdownlist id="fontFamily" height="34px" dataSource="ViewBag.fontFamilyList" change="fontFamilychange">
                                     <e-dropdownlist-fields text="text" value="value"></e-dropdownlist-fields>
                                 </ejs-dropdownlist>
-                                    @* <input type="text" id='fontFamily' /> *@
                             </div>
                             <div class="col-xs-4 db-col-right">
                                 <ejs-numerictextbox min="1" step="1" id="fontSizeTextProperties" change="fontSizechange"></ejs-numerictextbox>
-                                    @* <input id="fontSizeTextProperties" type="text" /> *@
                             </div>
                         </div>
                         <div class="row db-prop-row">
@@ -683,19 +492,16 @@
                                  change="DiagramPropertyBinding.prototype.textPositionChange" >
                                     <e-dropdownlist-fields text="text" value="value"></e-dropdownlist-fields>
                                 </ejs-dropdownlist>
-                                    @* <input type="text" id='ddlTextPosition' /> *@
                             </div>
                             <div class="col-xs-6 db-col-right" id="textColorDiv">
                                 <div class="db-color-container">
                                     <div class="db-color-input">
                                         <ejs-colorpicker id='textColor' mode="Palette" type="color" change="fontColorchange" >
                                         </ejs-colorpicker>
-                                            @* <input id="textColor" type="color"> *@
                                     </div>
                                     <div class="db-color-btn">
                                         <ejs-button id="fontColorBtn" iconCss='sf-icon-ColorPickers tb-icons'>
                                         </ejs-button>
-                                            @* <button id="fontColorBtn"></button> *@
                                     </div>
                                 </div>
                             </div>
@@ -712,7 +518,6 @@
                                         </e-toolbar-item>
                                     </e-toolbar-items>
                                 </ejs-toolbar>
-                                    @* <div id="toolbarTextStyle"></div> *@
                             </div>
                             <div class="col-xs-6 db-col-right">
                                 <ejs-toolbar id='toolbarTextSubAlignment' overflowMode='Scrollable' clicked="DiagramPropertyBinding.prototype.toolbarTextSubAlignChange">
@@ -725,7 +530,6 @@
                                         </e-toolbar-item>
                                     </e-toolbar-items>
                                 </ejs-toolbar>
-                                    @* <div id="toolbarTextSubAlignment"></div> *@
                             </div>
                         </div>
                         <div class="row db-prop-row" id='toolbarTextAlignmentDiv'>
@@ -745,7 +549,6 @@
                                     </e-toolbar-item>
                                 </e-toolbar-items>
                             </ejs-toolbar>
-                                @* <div id="toolbarTextAlignment"></div> *@
                         </div>
                         <div class="row db-prop-row">
                             <div class="col-xs-2 db-col-right db-prop-text-style" style="padding-top: 6px">
@@ -754,7 +557,6 @@
                             <div class="col-xs-8 db-col-left" style="padding-right:10px">
                                 <ejs-slider id="opacityTextSlider" min='0' max='100' step='10' value="0" type='MinRange' change="textopacitychange">
                                 </ejs-slider>
-                                @* <div id='opacityTextSlider'></div> *@
                             </div>
                             <div class="col-xs-2 db-col-right">
                                 <input id='textOpacityText' type="text" value="100%" class="db-readonly-input" readOnly="true"/>
@@ -792,7 +594,6 @@
                             <ejs-dropdownlist id="mindMapLevels" dataSource="ViewBag.mindmapLevels" change="mindMapLevelschange" index=0>
                             <e-dropdownlist-fields text="text" value="value"></e-dropdownlist-fields>
                             </ejs-dropdownlist>
-                                @* <input type="text" id='mindMapLevels' /> *@
                         </div>
                     </div>
                     <div id='mindMapFill' class="row db-prop-row">
@@ -801,12 +602,10 @@
                                 <div class="db-color-input">
                                     <ejs-colorpicker id='mindmapFill' mode="Palette" change="mindmapFillchange" type="color">
                                     </ejs-colorpicker>
-                                    @* <input id="mindmapFill" type="color"> *@
                                 </div>
                                 <div class="db-color-btn">
                                     <ejs-button id="mindmapFillIconBtn" iconCss='sf-icon-ColorPickers tb-icons'>
                                     </ejs-button>
-                                        @* <button id="mindmapFillIconBtn"></button> *@
                                 </div>
                             </div>
                         </div>
@@ -817,12 +616,10 @@
                                 <div class="db-color-input">
                                     <ejs-colorpicker id='mindmapStroke' mode="Palette" change="mindmapStrokechange" type="color">
                                     </ejs-colorpicker>
-                                        @* <input id="mindmapStroke" type="color"> *@
                                 </div>
                                 <div class="db-color-btn">
                                     <ejs-button id="mindmapStrokeIconBtn" iconCss='sf-icon-Pickers tb-icons'>
                                     </ejs-button>
-                                        @* <button id="mindmapStrokeIconBtn"></button> *@
                                 </div>
                             </div>
                         </div>
@@ -832,11 +629,9 @@
                                 valueTemplate='<div class="db-ddl-template-style"><span class="${className}"></span></div>'>
                                   <e-dropdownlist-fields text="text" value="value"></e-dropdownlist-fields>
                             </ejs-dropdownlist>
-                                @* <input type="text" id='strokeStyle' /> *@
                         </div>
                         <div class="col-xs-4 db-col-right">
                             <ejs-numerictextbox id="mindmapStrokeWidth" min="0.5" step="0.5" change="mindmapStrokeWidthchange"></ejs-numerictextbox>
-                                @* <input id="mindmapStrokeWidth" type="text" /> *@
                         </div>
                     </div>
                     <div class="row db-prop-row">
@@ -846,7 +641,6 @@
                         <div class="col-xs-8 db-col-left" style="padding-right:10px">
                             <ejs-slider id="mindmapOpacitySlider" min='0' max='100' step='10' type='MinRange' change="mindmapOpacitySliderchange">
                             </ejs-slider>
-                                @* <div id='mindmapOpacitySlider'></div> *@
                         </div>
                         <div class="col-xs-2 db-col-right">
                             <input type="text" readOnly="true" id="mindmapOpacityText" class="db-readonly-input" />
@@ -861,11 +655,9 @@
                             <ejs-dropdownlist height='34px' dataSource="ViewBag.fontFamilyList" id="mindmapFontFamilyList" change="mindmapFontFamilyListchange" index=0>
                              <e-dropdownlist-fields text="text" value="value"></e-dropdownlist-fields>
                             </ejs-dropdownlist>
-                                @* <input type="text" id='mindmapFontFamilyList' /> *@
                         </div>
                         <div class="col-xs-4 db-col-right">
                             <ejs-numerictextbox min="1" step="1" id="mindmapFontSize" change="mindmapFontSizechange"></ejs-numerictextbox>
-                                @* <input id="mindmapFontSize" type="text" /> *@
                         </div>
                     </div>
                     <div class="row db-prop-row">
@@ -880,19 +672,16 @@
                                     </e-toolbar-item>
                                 </e-toolbar-items>
                             </ejs-toolbar>
-                                @* <div id="mindmapTextStyleToolbar"></div> *@
                         </div>
                         <div class="col-xs-6 db-col-right" id="textColorDiv">
                             <div class="db-color-container">
                                 <div class="db-color-input">
                                     <ejs-colorpicker  id='mindmapTextColor' mode="Palette" type="color" change="mindmapTextColorchange">
                                     </ejs-colorpicker>
-                                        @* <input id="mindmapTextColor" type="color"> *@
                                 </div>
                                 <div class="db-color-btn">
                                     <ejs-button id="textColorIconBtn" iconCss='sf-icon-ColorPickers tb-icons'>
                                     </ejs-button>
-                                        @* <button id="textColorIconBtn"></button> *@
                                 </div>
                             </div>
                         </div>
@@ -904,7 +693,6 @@
                         <div class="col-xs-8 db-col-left" style="padding-right:10px">
                             <ejs-slider id="mindmapTextOpacitySlider" min='0' max='100' step='10' type='MinRange' change="Mindmaptextopacity">
                             </ejs-slider>
-                                @* <div id='mindmapTextOpacitySlider'></div> *@
                         </div>
                         <div class="col-xs-2 db-col-right">
                             <input type="text" id="textOpacityText"  class="db-readonly-input" readOnly="true" />
@@ -917,7 +705,6 @@
                     </div>
                     <div class="row db-prop-row" style="height:28px">
                         <ejs-button id="btnImportData" content="Import Data" cssClass="db-btn-primary" ></ejs-button>
-                            @* <button id="btnImportData"></button> *@
                     </div>
                     <div class="db-prop-separator">
                     </div>
@@ -935,11 +722,9 @@
                     <div class="row">
                         <div class="col-xs-6 db-col-left">
                             <ejs-numerictextbox id="orgHorizontalSpacing" min="25" step="1" format="n0" value="50" change="OrgChartPropertyBinding.prototype.orgChartSpacingChange"></ejs-numerictextbox>
-                                @* <input id="orgHorizontalSpacing" type="text" /> *@
                         </div>
                         <div class="col-xs-6 db-col-right">
                              <ejs-numerictextbox id="orgVerticalSpacing" min="25" step="1" format="n0" value="50" change="OrgChartPropertyBinding.prototype.orgChartSpacingChange"></ejs-numerictextbox>
-                                @* <input id="orgVerticalSpacing" type="text" /> *@
                         </div>
                     </div>
                     <div class="row db-prop-row">
@@ -959,8 +744,6 @@
                                 </e-toolbar-item>
                             </e-toolbar-items>
                         </ejs-toolbar>
-                            @* <div id="orgChartAlignment">
-                                </div> *@
                     </div>
                     <div class="db-prop-separator">
                     </div>
@@ -1301,12 +1084,6 @@
     </e-content-template>
 </ejs-dialog>
 
-@* <div id="exportDialog"></div> *@
-
-@* <div id="printDialog"></div> *@
-
-@* <div id="fileUploadDialog"></div> *@
-
 <div id="diagramTemplateDiv" class="db-diagram-template-div" style="display: none">
     <div class="db-diagram-template-image-div">
         <div class="db-diagram-template-image">
@@ -1359,10 +1136,6 @@
         </div>
     </e-content-template>
 </ejs-dialog>
-
-@* <div id="openTemplateDialog"></div> *@
-
-@* <div id="saveDialog"></div> *@
 
 <ejs-dialog id="moreShapesDialogContent" width="695px" height="470px" header='Shapes' target='#target' isModal="true"
     showCloseIcon='true' allowDragging='true' visible='false'>
@@ -1430,12 +1203,6 @@
     </e-content-template>
 </ejs-dialog>
 
-@* <div id="moreShapesDialogContent"></div> *@
-
-@* <div id="tooltipDialog"></div> *@
-
-@* <div id="hyperlinkDialog"></div> *@
-
 <div class="db-custom-prop-template" style="display:none">
     <div class="row">
         <div class="col-xs-6 db-col-left" style="width:70%">
@@ -1473,8 +1240,6 @@
     isModal='true' allowDragging="true" showCloseIcon='true' visible='false'>
      <e-dialog-animationsettings effect="None"></e-dialog-animationsettings>
 </ejs-dialog>
-
-@* <div id="customPropertyDialog"></div> *@
 
 <div class="db-layer-template" style="display: none">
     <div class="row">
@@ -1569,8 +1334,6 @@
 </ejs-dialog>
 </div>
 
-
-
 <ejs-dialog id="deleteConfirmationDialog" width='400px' header='Delete Field' target="#target"
     isModal='true' visible='false'
     showCloseIcon='true'>
@@ -1586,9 +1349,3 @@
         </div>
     </e-content-template>
 </ejs-dialog>
-
-@* <div id="layerDialog"></div> *@
-
-@* <div id="themeDialog"></div> *@
-
-@* <div id="deleteConfirmationDialog"></div> *@

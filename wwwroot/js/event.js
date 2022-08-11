@@ -34,7 +34,7 @@ var DiagramClientSideEvents = (function () {
                         selectedItem.utilityMethods.bindMindMapProperties(node, selectedItem);
                     }
                     if (node.addInfo && node.addInfo.level !== undefined) {
-                        selectedItem.mindmapSettings.levelType.value = 'Level' + node.addInfo.level;
+                        document.getElementById('mindMapLevels').ej2_instances[0].value = 'Level' + node.addInfo.level;
                     }
                 }
             }
@@ -364,7 +364,6 @@ var DiagramPropertyBinding = (function () {
     };
     DiagramPropertyBinding.prototype.pageBackgroundChange1 = function (args) {
         if (args.currentValue) {
-            // let target: HTMLInputElement = args.target as HTMLInputElement;
             var diagram = selectedItem.selectedDiagram;
             diagram.pageSettings.background = {
                 color: args.currentValue.rgba

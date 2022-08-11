@@ -49,32 +49,10 @@ var UtilityMethods = (function () {
         document.getElementById('nodeStrokeWidth').ej2_instances[0].value  = node.style.strokeWidth;
         document.getElementById('nodeFillColor').ej2_instances[0].value= this.getHexColor(node.style.fill);
         document.getElementById('nodeOpacitySlider').ej2_instances[0].value = node.style.opacity * 100;
-        // document.getElementById('nodeOpacitySliderText').ej2_instances[0].value = document.getElementById('nodeOpacitySlider').ej2_instances[0].value+ '%';
         document.getElementById('aspectRatio').ej2_instances[0].checked = node.constraints & ej.diagrams.NodeConstraints.AspectRatio ? true : false;
         document.getElementById('gradient').ej2_instances[0].checked = node.style.gradient.type !== 'None' ? true : false;
         var gradientElement = document.getElementById('gradientStyle');
-        // if (document.getElementById('gradient').ej2_instances[0]) {
-        //     gradientElement.className = 'row db-prop-row db-gradient-style-show';
-        //     // document.getElementById('nodeGradientColor').ej2_instances[0].value= node.style.gradient.stops[1].color;
-        //     var gradient = node.style.gradient;
-        //     if (gradient.x1) {
-        //         document.getElementById('gradientDirectionDropdown').ej2_instances[0].value = 'North';
-        //     }
-        //     else if (gradient.x2) {
-        //         document.getElementById('gradientDirectionDropdown').ej2_instances[0].value = 'East';
-        //     }
-        //     else if (gradient.y1) {
-        //         document.getElementById('gradientDirectionDropdown').ej2_instances[0].value = 'West';
-        //     }
-        //     else if (gradient.y2) {
-        //         document.getElementById('gradientDirectionDropdown').ej2_instances[0].value = 'South';
-        //     }
-        // }
-        // else {
-        //     gradientElement.className = 'row db-prop-row db-gradient-style-hide';
-        //     document.getElementById('nodeGradientColor').ej2_instances[0].value = '#ffffff';
-        //     document.getElementById('gradientDirectionDropdown').ej2_instances[0].value = 'South';
-        // }
+        
         selectedItem.preventPropertyChange = false;
     };
     UtilityMethods.prototype.bindMindMapProperties = function (node, selectedItem) {
@@ -149,7 +127,6 @@ var UtilityMethods = (function () {
         document.getElementById('sourceType').ej2_instances[0].value = connector.sourceDecorator.shape;
         document.getElementById('targetType').ej2_instances[0].value = connector.targetDecorator.shape;
         document.getElementById('default1').ej2_instances[0].value = connector.style.opacity * 100;
-        // document.getElementById('connectorOpacitySliderText').ej2_instances[0].value = document.getElementById('default1').ej2_instances[0].value+ '%';
         document.getElementById('lineJumpSize').ej2_instances[0].value = connector.bridgeSpace;
         document.getElementById('lineJump').ej2_instances[0].checked = connector.constraints & ej.diagrams.ConnectorConstraints.Bridging ? true : false;
         document.getElementById('targetSize').ej2_instances[0].value = connector.targetDecorator.width;
