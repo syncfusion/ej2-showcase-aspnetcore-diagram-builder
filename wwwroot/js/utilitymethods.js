@@ -52,7 +52,6 @@ var UtilityMethods = (function () {
         document.getElementById('aspectRatio').ej2_instances[0].checked = node.constraints & ej.diagrams.NodeConstraints.AspectRatio ? true : false;
         document.getElementById('gradient').ej2_instances[0].checked = node.style.gradient.type !== 'None' ? true : false;
         var gradientElement = document.getElementById('gradientStyle');
-        
         selectedItem.preventPropertyChange = false;
     };
     UtilityMethods.prototype.bindMindMapProperties = function (node, selectedItem) {
@@ -77,7 +76,6 @@ var UtilityMethods = (function () {
         document.getElementById('fontFamily').ej2_instances[0].value = text.fontFamily;
         document.getElementById('fontSizeTextProperties').ej2_instances[0].value = text.fontSize;
         document.getElementById('opacityTextSlider').ej2_instances[0].value = text.opacity * 100;
-        // document.getElementById('textOpacityText').ej2_instances[0].value =  document.getElementById('opacityTextSlider').ej2_instances[0].value + '%';
         var toolbarTextStyle = document.getElementById('toolbarTextStyle');
         if (toolbarTextStyle) {
             toolbarTextStyle = toolbarTextStyle.ej2_instances[0];

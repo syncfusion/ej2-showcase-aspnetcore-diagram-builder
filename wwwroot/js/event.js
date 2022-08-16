@@ -94,6 +94,7 @@ var DiagramClientSideEvents = (function () {
                 nodeContainer.classList.add('connector');
             }
             selectedItem.utilityMethods.bindNodeProperties(selectItem1.nodes[0],selectedItem);
+           
         }
         if (showConnectorPanel && !showNodePanel) {
             document.getElementById('connectorPropertyContainer').style.display = '';
@@ -364,6 +365,7 @@ var DiagramPropertyBinding = (function () {
     };
     DiagramPropertyBinding.prototype.pageBackgroundChange1 = function (args) {
         if (args.currentValue) {
+            // let target: HTMLInputElement = args.target as HTMLInputElement;
             var diagram = selectedItem.selectedDiagram;
             diagram.pageSettings.background = {
                 color: args.currentValue.rgba

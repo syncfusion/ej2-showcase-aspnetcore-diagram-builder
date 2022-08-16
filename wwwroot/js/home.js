@@ -77,6 +77,27 @@ function setPaletteNodeDefaults(node) {
         node.style.strokeColor = '#3A3A3A';
     }
 };
+
+// function getNodeDefault(symbol) {
+//     if (symbol.id === 'Terminator' || symbol.id === 'Process') {
+//         symbol.width = 135;
+//         symbol.height = 65;
+//     } else  {
+//         symbol.width = 50;
+//         symbol.height = 50;
+//     }
+//     symbol.style = { strokeColor: "#3A3A3A" };
+// }
+// function setPaletteNodeDefaults(symbol) {
+//     if (symbol.id === 'Terminator' || symbol.id === 'Process') {
+//         symbol.width = 50;
+//         symbol.height = 65;
+//     } else {
+//         symbol.width = 50;
+//         symbol.height = 50;
+//     }
+//     symbol.style = { strokeWidth: 2, strokeColor: "#3A3A3A" };
+// }
 function getNodeDefaults(node, diagram) {
     if (node.style) {
         if (node.style.fill === 'transparent' && !node.children) {
@@ -95,6 +116,34 @@ function getConnectorDefaults(connector, diagram) {
         style: { strokeWidth: 2 }
     };
 };
+
+
+// var nodevalue=document.getElementById('nodeOffsetX').ej2_instances[0].value
+// nodeOffsetX
+
+// var pagevalue;
+// document.addEventListener('DOMContentLoaded', function () {
+//     pagevalue = document.getElementById('pageWidth').ej2_instances[0].value;
+//     // pagevalue=pagevalue.value;
+//     // pagevalue.dataBind();
+// });
+// pagevalue.appendTo('#pagevalue')
+
+// var pageHeight = new ej.inputs.NumericTextBox({
+//     min: 100,
+//     format: 'n0',
+//     value: selectedItem.pageSettings.pageHeight,
+//     change: function (args) { DiagramPropertyBinding.prototype.pageDimensionChange(args); }
+// });
+// pageHeight.appendTo('#pageHeight');
+
+// var nodeOffsetX
+// document.addEventListener('DOMContentLoaded', function () {
+//     nodeOffsetX = document.getElementById('nodeOffsetX').ej2_instances[0];
+//     nodeOffsetX.dataBind();
+// });
+// nodeOffsetX.appendTo('#nodeOffsetX');
+
 
 var toolbarEditor = new ej.navigations.Toolbar({
     overflowMode: 'Scrollable',
@@ -522,6 +571,7 @@ function arrangeMenuBeforeOpen(args) {
     for (var i = 0; i < args.element.children.length; i++) {
         args.element.children[i].style.display = 'block';
     }
+    //(args.element.children[0]).style.display = 'block';
     if (args.event && ej.base.closest(args.event.target, '.e-dropdown-btn') !== null) {
         args.cancel = true;
     }
@@ -1396,6 +1446,7 @@ function getUploadButtons() {
 }
 
 function setImage(event) {
+    //(document.getElementsByClassName('sb-content-overlay')[0] as HTMLDivElement).style.display = 'none';
     var node = selectedItem.selectedDiagram.selectedItems.nodes[0];
     node.shape = { type: 'Image', source: event.target.result, align: 'None' };
 }
@@ -1413,6 +1464,7 @@ function loadDiagram(event) {
 
 function onTooltipBeforeRender(args) {
     if (args.target) {
+        // OrgChartPropertyBinding.prototype.getTooltipContent 
         tooltip.content = orgChartPropertyBinding.getTooltipContent(args);
     }
 }

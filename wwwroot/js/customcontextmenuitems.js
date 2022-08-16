@@ -12,6 +12,8 @@ var CustomContextMenuItems = (function () {
     CustomContextMenuItems.prototype.getHiddenMenuItems = function (diagram) {
         var hiddenItems = [];
         hiddenItems.push('duplicate');
+        // hiddenItems.push('Ad-Hoc', 'Loop', 'Compensation', 'Activity-Type', 'Boundry',
+        //     'Data Object', 'Collection', 'Call', 'Trigger Result', 'Event Type', 'Task Type', 'GateWay');
         if (diagram.selectedItems.nodes.length > 0 || diagram.selectedItems.connectors.length > 0) {
             hiddenItems.splice(hiddenItems.indexOf('duplicate'), 1);
         }
@@ -20,6 +22,8 @@ var CustomContextMenuItems = (function () {
             if (node.shape && node.shape.type === 'Bpmn') {
                 var bpmnShape = node.shape;
                 if (bpmnShape.shape === 'Event') {
+                    // hiddenItems.splice(hiddenItems.indexOf('Event Type'), 1);
+                    // hiddenItems.splice(hiddenItems.indexOf('Trigger Result'), 1);
                 }
             }
         }
@@ -41,6 +45,7 @@ var CustomContextMenuItems = (function () {
                     bpmnShape.event.trigger = itemText;
                 }
                 else if (item.id.startsWith('taskType')) {
+                    // bpmnShape.activity.task.type = itemText as BpmnTasks;
                     bpmnShape.activity.subProcess = {};
                 }
             }

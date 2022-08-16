@@ -69,6 +69,32 @@ var ConnectorProperties = (function () {
     function ConnectorProperties() {
         this.m_lineColor = '#ffffff';
     }
+    Object.defineProperty(ConnectorProperties.prototype, "lineColor", {
+        get: function () {
+            return this.m_lineColor;
+        },
+        set: function (lineColor) {
+            if (this.m_lineColor !== lineColor) {
+                this.m_lineColor = lineColor;
+                this.triggerPropertyChange('lineColor',lineColor);
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ConnectorProperties.prototype, "lineTypeDropdown", {
+        get: function () {
+            return this.m_lineType;
+        },
+        set: function (lineType) {
+            if (this.m_lineType !== lineType) {
+                this.m_lineType = lineType;
+                this.triggerPropertyChange('lineTypeDropdown',lineType);
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
     ConnectorProperties.prototype.triggerPropertyChange = function (propertyName, propertyValue) {
         if (!ej.base.isNullOrUndefined(this.propertyChange)) {
             this.propertyChange.call(this, { propertyName: propertyName, propertyValue: propertyValue });
@@ -535,6 +561,7 @@ var SelectorViewModel = (function () {
                                 node.rotateAngle =document.getElementById('nodeRotateAngle').ej2_instances[0].value;
                                 break;
                             case 'aspectratio':
+                                // node.constraints = node.constraints ^ ej.diagrams.NodeConstraints.AspectRatio;
                                 node.constraints = node.constraints ^ ej.diagrams.NodeConstraints.AspectRatio;
                                 break;
                         }
@@ -554,7 +581,7 @@ var SelectorViewModel = (function () {
                     for (var i = 0; i < selectedNodes.length; i++) {
                         switch (args.propertyName.toString().toLowerCase()) {
                             case 'strokecolor':
-                               document.getElementById('lineColor').ej2_instances[0].value= this.getColor(document.getElementById('nodeStrokeColor').ej2_instances[0].value);
+                               document.getElementById('lineColor').ej2_instances[0]= this.getColor(document.getElementById('nodeStrokeColor').ej2_instances[0].value);
                                 break;
                             case 'strokewidth':
                                 document.getElementById('lineWidth').ej2_instances[0].value = document.getElementById('nodeStrokeWidth').ej2_instances[0].value;
@@ -570,7 +597,6 @@ var SelectorViewModel = (function () {
                     diagram.dataBind();
                     this.isModified = true;
                 }
-                diagram.dataBind();
             }
         }
     };
@@ -619,8 +645,7 @@ var SelectorViewModel = (function () {
                     var connector = selectedNodes[i];
                     switch (args.propertyName.toString().toLowerCase()) {
                         case 'linecolor':
-                            connector.style.strokeColor = node.style.strokeColor;
-                            connector.style.strokeColor = SelectorViewModel.prototype.getColor(document.getElementById('lineColor').ej2_instances[0].value);
+                            connector.style.strokeColor =this.getColor(document.getElementById('lineColor').ej2_instances[0].value);
                             connector.sourceDecorator.style = { fill: connector.style.strokeColor, strokeColor: connector.style.strokeColor };
                             connector.targetDecorator.style = { fill: connector.style.strokeColor, strokeColor: connector.style.strokeColor };
                             break;

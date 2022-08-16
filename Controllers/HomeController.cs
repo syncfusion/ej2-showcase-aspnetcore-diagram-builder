@@ -234,7 +234,7 @@ namespace SyncfusionWebApp3.Controllers
             ViewBag.getConnectorDefaults="getConnectorDefaults";
             ViewBag.getTool = "CustomTool.prototype.getTool";
             ViewBag.nodechange="change";
-
+            
             double[] intervals = { 1, 9, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75};
             DiagramGridlines grIdLines = new DiagramGridlines()
             { LineColor = "#EEEEEE", LineIntervals = intervals };

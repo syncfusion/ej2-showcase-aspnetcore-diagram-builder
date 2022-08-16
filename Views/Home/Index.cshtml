@@ -375,7 +375,7 @@
                         </div>
                         <div class="row">
                             <div class="col-xs-6 db-col-left">
-                                <ejs-dropdownlist id="lineTypeDropdown" change="lineTypeDropdownchange" dataSource="ViewBag.lineTypes ">
+                                <ejs-dropdownlist id="lineTypeDropdown" change="lineTypeDropdownchange" dataSource="ViewBag.lineTypes">
                                     <e-dropdownlist-fields text="text" value="value"></e-dropdownlist-fields>
                                 </ejs-dropdownlist>
                             </div>
@@ -478,7 +478,7 @@
                         </div>
                         <div class="row db-prop-row">
                             <div class="col-xs-8 db-col-left">
-                                <ejs-dropdownlist id="fontFamily" height="34px" dataSource="ViewBag.fontFamilyList" change="fontFamilychange">
+                                <ejs-dropdownlist id="fontFamily" height="34px" dataSource="ViewBag.fontFamilyList" change="fontFamilychange" index=0>
                                     <e-dropdownlist-fields text="text" value="value"></e-dropdownlist-fields>
                                 </ejs-dropdownlist>
                             </div>
@@ -496,7 +496,7 @@
                             <div class="col-xs-6 db-col-right" id="textColorDiv">
                                 <div class="db-color-container">
                                     <div class="db-color-input">
-                                        <ejs-colorpicker id='textColor' mode="Palette" type="color" change="fontColorchange" >
+                                        <ejs-colorpicker id='textColor' mode="Palette" type="color" change="fontColorchange" value="#000000">
                                         </ejs-colorpicker>
                                     </div>
                                     <div class="db-color-btn">
