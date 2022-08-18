@@ -499,7 +499,7 @@ var UtilityMethods = (function () {
         selectedItems = selectedItems.concat(selectedDiagram.selectedItems.connectors);
         if (itemText) {
             var commandType = itemText.replace(/[' ']/g, '');
-            if (selectedItems.length === 0 || selectedItem.diagramType === 'GeneralDiagram') {
+            if (selectedItems.length === 0 || selectedItem.diagramType !== 'GeneralDiagram') {
                 switch (commandType.toLowerCase()) {
                     case 'edittooltip':
                         var disable = false;
@@ -533,11 +533,11 @@ var UtilityMethods = (function () {
                 return true;
             }
             if (itemText === 'Select All') {
-                if (selectedItem.diagramType === 'GeneralDiagram' || (selectedItem.selectedDiagram.nodes.length === 0 && selectedItem.selectedDiagram.connectors.length === 0)) {
+                if (selectedItem.diagramType !== 'GeneralDiagram' || (selectedItem.selectedDiagram.nodes.length === 0 && selectedItem.selectedDiagram.connectors.length === 0)) {
                     return true;
                 }
             }
-            if (selectedItem.diagramType == 'GeneralDiagram') {
+            if (selectedItem.diagramType !== 'GeneralDiagram') {
                 if (itemText === 'Themes' || itemText === 'Paste' || itemText === 'Show Rulers' || itemText === 'Show Guides'
                     || itemText === 'Show Grid' || itemText === 'Snap To Grid' || itemText === 'Show Stencil') {
                     return true;
@@ -554,7 +554,7 @@ var UtilityMethods = (function () {
         for (var i = 0; i < contextMenu.items.length; i++) {
             contextMenu.enableItems([contextMenu.items[i].text], false);
         }
-        if (selectedItem.diagramType !== 'GeneralDiagram') {
+        if (selectedItem.diagramType === 'GeneralDiagram') {
             if (selectedItems.length > 1) {
                 contextMenu.enableItems(['Align Objects', 'Distribute Objects', 'Match Size', 'Lock', 'Unlock', 'Group'], true);
             }
