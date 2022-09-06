@@ -215,17 +215,19 @@ namespace SyncfusionWebApp3.Controllers
             commands.Add(new DiagramCommand() { Name = "Ungroup", CanExecute = "canExecute", Execute = "ungroup", Gesture = new DiagramKeyGesture() { Key = Keys.U, KeyModifiers = KeyModifiers.Control } });
             commands.Add(new DiagramCommand() { Name = "cutObjects", CanExecute = "canExecute", Execute = "cutObjects", Gesture = new DiagramKeyGesture() { Key = Keys.X,KeyModifiers = KeyModifiers.Control  } });
             commands.Add(new DiagramCommand() { Name = "copyObjects", CanExecute = "canExecute", Execute = "copyObjects", Gesture = new DiagramKeyGesture() { Key = Keys.C,KeyModifiers = KeyModifiers.Control  } });
-            commands.Add(new DiagramCommand() { Name = "pasteObjects", CanExecute = "canExecute", Execute = "pasteObjectss", Gesture = new DiagramKeyGesture() { Key = Keys.V,KeyModifiers = KeyModifiers.Control  } });
+            commands.Add(new DiagramCommand() { Name = "pasteObjects", CanExecute = "canExecute", Execute = "pasteObjects", Gesture = new DiagramKeyGesture() { Key = Keys.V,KeyModifiers = KeyModifiers.Control  } });
             commands.Add(new DiagramCommand() { Name = "undo", CanExecute = "canExecute", Execute = "undo", Gesture = new DiagramKeyGesture() { Key = Keys.Z,KeyModifiers = KeyModifiers.Control  } });
             commands.Add(new DiagramCommand() { Name = "redo", CanExecute = "canExecute", Execute = "redo", Gesture = new DiagramKeyGesture() { Key = Keys.Y,KeyModifiers = KeyModifiers.Control  } });
-            commands.Add(new DiagramCommand() { Name = "delete", CanExecute = "canExecute", Execute = "delete", Gesture = new DiagramKeyGesture() { Key = Keys.Delete,KeyModifiers = KeyModifiers.None  } });
+            commands.Add(new DiagramCommand() { Name = "Delete", CanExecute = "canExecute", Execute = "Delete", Gesture = new DiagramKeyGesture() { Key = Keys.Delete,KeyModifiers = KeyModifiers.Control  } });
             commands.Add(new DiagramCommand() { Name = "selectAll", CanExecute = "canExecute", Execute = "selectAll", Gesture = new DiagramKeyGesture() { Key = Keys.A,KeyModifiers = KeyModifiers.Control  } });
             ViewBag.commands = commands;
 
             SymbolPaletteMargin margin = new SymbolPaletteMargin() { Left = 12, Bottom = 12, Right = 12, Top = 12 };
             ViewBag.margin = margin;
-            SymbolPaletteSymbolPreview preview=new SymbolPaletteSymbolPreview{Height = 100, Width = 100};
+            SymbolPaletteSymbolPreview preview=new SymbolPaletteSymbolPreview{Height = 30, Width = 30};
             ViewBag.preview = preview;
+        
+
             
             ViewBag.setPaletteNodeDefaults = "setPaletteNodeDefaults";
             ViewBag.getSymbolInfo = "getSymbolInfo";

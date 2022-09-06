@@ -105,7 +105,7 @@ var MindMap = (function () {
         MindMapUtilityMethods.addNode('Left');
     };
     MindMap.prototype.addRightChild = function (args) {
-        MindMapUtilityMethods.addNode('Right');
+        MindMapUtilityMethods.addNode('Right'); 
     };
     MindMap.prototype.addSibilingChildTop = function () {
         MindMapUtilityMethods.addSibilingChild('Top');
@@ -158,7 +158,7 @@ var MindMap = (function () {
         if (node) {
             diagram.clearSelection();
             diagram.select([node]);
-            diagram.bringIntoView(node.wrapper.bounds);
+            // diagram.bringIntoView(node.wrapper.bounds);
         }
     };
     MindMap.prototype.getSameLevelNodes = function () {
@@ -349,7 +349,7 @@ var MindMapUtilityMethods = (function () {
             this.selectedItem.preventPropertyChange = false;
             diagram.doLayout();
             diagram.endGroupAction();
-            diagram.bringIntoView(diagram.nodes[diagram.nodes.length - 1].wrapper.bounds);
+            // diagram.bringIntoView(diagram.nodes[diagram.nodes.length - 1].wrapper.bounds);
         }
     };
     MindMapUtilityMethods.updateLevel = function (parentNode, level, orientation) {
@@ -585,9 +585,128 @@ var MindMapUtilityMethods = (function () {
         diagram.select([node1]);
         this.selectedItem.preventPropertyChange = false;
         diagram.dataBind();
-        diagram.bringIntoView(node1.wrapper.bounds);
+        // diagram.bringIntoView(node1.wrapper.bounds);
         diagram.startTextEdit(node1, node1.annotations[0].id);
         this.selectedItem.isModified = true;
+    };
+    MindMapUtilityMethods.doLayout  = function(){
+        var update = false;
+        var layout;
+        var canDoOverlap = (this.layout.type === 'ComplexHierarchicalTree' || this.layout.type === 'HierarchicalTree');
+        var propChange = this.isProtectedOnChange;
+        this.protectPropertyChange(true);
+        var nodes = this.removeChildrenFromLayout(this.nodes);
+        var canEnableRouting = this.layout.enableRouting && this.layout.type === 'ComplexHierarchicalTree';
+        var viewPort = { x: this.scroller.viewPortWidth, y: this.scroller.viewPortHeight };
+        if (this.layout.type !== 'None') {
+            if (canEnableRouting || (this.layout.connectionPointOrigin === 'DifferentPoint' && this.lineDistributionModule && canDoOverlap) || this.layout.arrangement === 'Linear') {
+                this.lineDistributionModule.initLineDistribution(this.layout, this);
+            }
+            if (this.organizationalChartModule) {
+                layout = this.organizationalChartModule.updateLayout(nodes, this.nameTable, this.layout, viewPort, this.dataSourceSettings.id, this.diagramActions);
+                update = true;
+                if (this.layoutAnimateModule && layout.rootNode && !this.diagramActions) {
+                    this.updateNodeExpand(layout.rootNode, layout.rootNode.isExpanded);
+                }
+                else if (!this.layoutAnimateModule && layout.rootNode && !layout.rootNode.isExpanded && !this.canExpand) {
+                    this.updateNodeExpand(layout.rootNode, layout.rootNode.isExpanded);
+                }
+            }
+            else if (this.mindMapChartModule) {
+                if (nodes && nodes.length > 0) {
+                    this.mindMapChartModule.updateLayout(nodes, this.nameTable, this.layout, viewPort, this.dataSourceSettings.id, this.dataSourceSettings.root);
+                }
+                update = true;
+            }
+            else if (this.radialTreeModule) {
+                this.radialTreeModule.updateLayout(nodes, this.nameTable, this.layout, viewPort);
+                update = true;
+            }
+            else if (this.symmetricalLayoutModule) {
+                this.symmetricalLayoutModule.maxIteration = this.layout.maxIteration;
+                this.symmetricalLayoutModule.springLength = this.layout.springLength;
+                this.symmetricalLayoutModule.springFactor = this.layout.springFactor;
+                this.symmetricalLayoutModule.updateLayout(nodes, this.connectors, this.symmetricalLayoutModule, this.nameTable, this.layout, viewPort);
+                update = true;
+            }
+            else if (this.complexHierarchicalTreeModule) {
+                var nodes_1 = this.complexHierarchicalTreeModule.getLayoutNodesCollection(this.nodes);
+                if (nodes_1.length > 0) {
+                    this.complexHierarchicalTreeModule.doLayout(nodes_1, this.nameTable, this.layout, viewPort, this.lineDistributionModule);
+                }
+                update = true;
+            }
+            if (update) {
+                this.preventDiagramUpdate = true;
+                var connectors = {};
+                var updatedNodes = nodes;
+                if (ej2_base_1.isBlazor() && !this.commandHandler.canUpdateTemplate) {
+                    this.updateTemplate();
+                }
+                for (var _i = 0, updatedNodes_1 = updatedNodes; _i < updatedNodes_1.length; _i++) {
+                    var obj = updatedNodes_1[_i];
+                    var node = obj;
+                    if (!this.preventNodesUpdate && (!this.diagramActions || !(this.diagramActions & enum_5.DiagramAction.PreventIconsUpdate))) {
+                        this.updateIcon(node);
+                        this.updateDefaultLayoutIcons(node);
+                    }
+                    this.preventNodesUpdate = true;
+                    this.nodePropertyChange(node, {}, { offsetX: node.offsetX, offsetY: node.offsetY }, true);
+                    this.preventNodesUpdate = false;
+                    node.wrapper.measure(new size_1.Size(node.wrapper.width, node.wrapper.height));
+                    node.wrapper.arrange(node.wrapper.desiredSize);
+                    this.updateDiagramObject(node, true);
+                    if (node.inEdges.length > 0) {
+                        for (var j = 0; j < node.inEdges.length; j++) {
+                            var connector = this.nameTable[node.inEdges[j]];
+                            connectors[connector.id] = connector;
+                        }
+                    }
+                    if (node.outEdges.length > 0) {
+                        for (var k = 0; k < node.outEdges.length; k++) {
+                            var connection = this.nameTable[node.outEdges[k]];
+                            connectors[connection.id] = connection;
+                        }
+                    }
+                }
+                for (var _a = 0, _b = Object.keys(connectors); _a < _b.length; _a++) {
+                    var conn = _b[_a];
+                    if (canEnableRouting) {
+                        this.lineDistributionModule.resetConnectorSegments(this.nameTable[conn]);
+                    }
+                    var connector = connectors[conn];
+                    var points = this.getPoints(connector);
+                    if (canEnableRouting) {
+                        this.lineDistributionModule.resetRoutingSegments(connector, this, points);
+                    }
+                    diagram_util_5.updateConnector(connector, points);
+                    if (connector.shape.type === 'Bpmn' && connector.shape.sequence === 'Default') {
+                        this.commandHandler.updatePathElementOffset(connector);
+                    }
+                    connector.wrapper.measure(new size_1.Size(undefined, undefined));
+                    connector.wrapper.arrange(connector.wrapper.desiredSize);
+                    this.updateConnectorAnnotation(connector);
+                    this.updateConnectorfixedUserHandles(connector);
+                    this.updateQuad(connector);
+                    this.updateDiagramObject(connector, true);
+                }
+                if (canEnableRouting || this.layout.connectionPointOrigin === 'DifferentPoint' && this.lineDistributionModule && canDoOverlap) {
+                    this.lineDistributionModule.distributeLines(this.layout, this);
+                }
+                this.preventDiagramUpdate = false;
+                this.updatePage();
+                if ((!(this.diagramActions & enum_5.DiagramAction.Render)) || this.mode === 'Canvas') {
+                    this.refreshDiagramLayer();
+                }
+            }
+            if (!propChange) {
+                this.protectPropertyChange(propChange);
+            }
+        }
+        if (update) {
+            this.updateDiagramElementQuad();
+        }
+        return ((this.blazorActions & enum_3.BlazorAction.expandNode) ? layout : ej2_base_1.isBlazor() ? null : true);
     };
     MindMapUtilityMethods.addSibilingChild = function (position) {
         var diagram = this.selectedItem.selectedDiagram;
@@ -615,7 +734,7 @@ var MindMapUtilityMethods = (function () {
             this.selectedItem.preventPropertyChange = true;
             diagram.select([node1]);
             this.selectedItem.preventPropertyChange = false;
-            diagram.bringIntoView(node1.wrapper.bounds);
+            // diagram.bringIntoView(node1.wrapper.bounds);
             diagram.startTextEdit(node1, node1.annotations[0].id);
             this.selectedItem.isModified = true;
         }

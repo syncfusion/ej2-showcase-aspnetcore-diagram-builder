@@ -581,8 +581,9 @@ var SelectorViewModel = (function () {
                     for (var i = 0; i < selectedNodes.length; i++) {
                         switch (args.propertyName.toString().toLowerCase()) {
                             case 'strokecolor':
-                               document.getElementById('lineColor').ej2_instances[0]= this.getColor(document.getElementById('nodeStrokeColor').ej2_instances[0].value);
-                                break;
+                               document.getElementById('lineColor').ej2_instances[0].value= this.getColor(document.getElementById('nodeStrokeColor').ej2_instances[0].value);
+                               SelectorViewModel.prototype.connectorPropertyChange({ propertyName: 'lineColor', propertyValue: args });
+                               break;
                             case 'strokewidth':
                                 document.getElementById('lineWidth').ej2_instances[0].value = document.getElementById('nodeStrokeWidth').ej2_instances[0].value;
                                 break;
@@ -818,7 +819,7 @@ var SelectorViewModel = (function () {
                     break;
                 case 'textopacity':
                     annotation.opacity =document.getElementById('mindmapTextOpacitySlider').ej2_instances[0].value / 100;
-                    document.getElementById("textOpacityText").value = document.getElementById('mindmapTextOpacitySlider').ej2_instances[0].value + '%';
+                    document.getElementById("textOpacity").value = document.getElementById('mindmapTextOpacitySlider').ej2_instances[0].value + '%';
                     break;
             }
         }

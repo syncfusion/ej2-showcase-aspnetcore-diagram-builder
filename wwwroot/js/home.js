@@ -62,88 +62,51 @@ window.onload = function () {
 function setPaletteNodeDefaults(node) {
     if (!(node.addInfo && (node.addInfo).type === 'CustomShapes') && (!node.children)) {
         if (node.id === 'Terminator' || node.id === 'Process') {
-            node.width = 70;
+            node.width = 80;
             node.height = 65;
         } else {
             node.width = 50;
             node.height = 50;
         }
-        node.ports = [
+            node.ports = [
+                { offset: { x: 0, y: 0.5 }, style: { fill: 'white' }, visibility: ej.diagrams.PortVisibility.Connect | ej.diagrams.PortVisibility.Hover, constraints: ej.diagrams.PortConstraints.Default | ej.diagrams.PortConstraints.Draw },
+                { offset: { x: 0.5, y: 0 }, style: { fill: 'white' }, visibility: ej.diagrams.PortVisibility.Connect | ej.diagrams.PortVisibility.Hover, constraints: ej.diagrams.PortConstraints.Default | ej.diagrams.PortConstraints.Draw },
+                { offset: { x: 1, y: 0.5 }, style: { fill: 'white' }, visibility: ej.diagrams.PortVisibility.Connect | ej.diagrams.PortVisibility.Hover, constraints: ej.diagrams.PortConstraints.Default | ej.diagrams.PortConstraints.Draw },
+                { offset: { x: 0.5, y: 1 }, style: { fill: 'white' }, visibility: ej.diagrams.PortVisibility.Connect | ej.diagrams.PortVisibility.Hover, constraints: ej.diagrams.PortConstraints.Default | ej.diagrams.PortConstraints.Draw }
+            ];
+   
+        node.style.strokeColor = '#3A3A3A';
+    }
+};
+
+function getNodeDefaults(node, diagram) {
+    if(!(selectedItem.diagramType === 'MindMap' || selectedItem.diagramType === 'OrgChart' || selectedItem.diagramType === 'FlowChart')){
+        node.width=100;
+        node.height=40;
+    }
+    if(!(selectedItem.diagramType === 'MindMap' || selectedItem.diagramType === 'OrgChart')){
+        node.ports=[
             { offset: { x: 0, y: 0.5 }, style: { fill: 'white' }, visibility: ej.diagrams.PortVisibility.Connect | ej.diagrams.PortVisibility.Hover, constraints: ej.diagrams.PortConstraints.Default | ej.diagrams.PortConstraints.Draw },
             { offset: { x: 0.5, y: 0 }, style: { fill: 'white' }, visibility: ej.diagrams.PortVisibility.Connect | ej.diagrams.PortVisibility.Hover, constraints: ej.diagrams.PortConstraints.Default | ej.diagrams.PortConstraints.Draw },
             { offset: { x: 1, y: 0.5 }, style: { fill: 'white' }, visibility: ej.diagrams.PortVisibility.Connect | ej.diagrams.PortVisibility.Hover, constraints: ej.diagrams.PortConstraints.Default | ej.diagrams.PortConstraints.Draw },
             { offset: { x: 0.5, y: 1 }, style: { fill: 'white' }, visibility: ej.diagrams.PortVisibility.Connect | ej.diagrams.PortVisibility.Hover, constraints: ej.diagrams.PortConstraints.Default | ej.diagrams.PortConstraints.Draw }
         ];
-        node.style.strokeColor = '#3A3A3A';
     }
-};
-
-// function getNodeDefault(symbol) {
-//     if (symbol.id === 'Terminator' || symbol.id === 'Process') {
-//         symbol.width = 135;
-//         symbol.height = 65;
-//     } else  {
-//         symbol.width = 50;
-//         symbol.height = 50;
-//     }
-//     symbol.style = { strokeColor: "#3A3A3A" };
-// }
-// function setPaletteNodeDefaults(symbol) {
-//     if (symbol.id === 'Terminator' || symbol.id === 'Process') {
-//         symbol.width = 50;
-//         symbol.height = 65;
-//     } else {
-//         symbol.width = 50;
-//         symbol.height = 50;
-//     }
-//     symbol.style = { strokeWidth: 2, strokeColor: "#3A3A3A" };
-// }
-function getNodeDefaults(node, diagram) {
-    if (node.style) {
-        if (node.style.fill === 'transparent' && !node.children) {
-            node.style.fill = 'white';
-        }
-    }
-    var node1 = {
+    var node = {
         style: { strokeWidth: 2 }
     };
+    return node;
 };
 function getConnectorDefaults(connector, diagram) {
+    connector.style.fill="red";
     var connector = {
         annotations: [
-            { content: '', style: { fill: '#ffffff' } }
+            { content: '', style: { fill: 'transparent' } }
         ],
         style: { strokeWidth: 2 }
     };
+    return connector;
 };
-
-
-// var nodevalue=document.getElementById('nodeOffsetX').ej2_instances[0].value
-// nodeOffsetX
-
-// var pagevalue;
-// document.addEventListener('DOMContentLoaded', function () {
-//     pagevalue = document.getElementById('pageWidth').ej2_instances[0].value;
-//     // pagevalue=pagevalue.value;
-//     // pagevalue.dataBind();
-// });
-// pagevalue.appendTo('#pagevalue')
-
-// var pageHeight = new ej.inputs.NumericTextBox({
-//     min: 100,
-//     format: 'n0',
-//     value: selectedItem.pageSettings.pageHeight,
-//     change: function (args) { DiagramPropertyBinding.prototype.pageDimensionChange(args); }
-// });
-// pageHeight.appendTo('#pageHeight');
-
-// var nodeOffsetX
-// document.addEventListener('DOMContentLoaded', function () {
-//     nodeOffsetX = document.getElementById('nodeOffsetX').ej2_instances[0];
-//     nodeOffsetX.dataBind();
-// });
-// nodeOffsetX.appendTo('#nodeOffsetX');
-
 
 var toolbarEditor = new ej.navigations.Toolbar({
     overflowMode: 'Scrollable',
@@ -424,10 +387,6 @@ function strokeStylechange(args) {
 function mindmapStrokeWidthchange(args) {
     document.getElementById('mindmapStrokeWidth').ej2_instances[0].value= args.value;
     SelectorViewModel.prototype.mindMapPropertyChange({propertyName: 'strokeWidth', propertyValue: args});
-}
-function Mindmaptextopacity(args) {
-    document.getElementById('mindmapTextOpacitySlider').ej2_instances[0].value= args.value;
-    SelectorViewModel.prototype.mindMapPropertyChange({propertyName: 'textOpacity', propertyValue: args});
 }
 function mindmapOpacitySliderchange(args) {
     document.getElementById('mindmapOpacitySlider').ej2_instances[0].value= args.value;
@@ -752,11 +711,11 @@ function zoomChange(args) {
 function drawShapeChange (args) {
     var diagram = selectedItem.selectedDiagram;
     if (args.item.text === 'Rectangle') {
-        diagram.drawingObject = { shape: { type: 'Basic', shape: 'Rectangle' }, style: { strokeWidth: 2 } };
+        diagram.drawingObject = { shape: { type: 'Basic', shape: 'Rectangle' }, style: { strokeWidth: 1 } };
     } else if (args.item.text === 'Ellipse') {
-        diagram.drawingObject = { shape: { type: 'Basic', shape: 'Ellipse' }, style: { strokeWidth: 2 } };
+        diagram.drawingObject = { shape: { type: 'Basic', shape: 'Ellipse' }, style: { strokeWidth: 1 } };
     } else if (args.item.text === 'Polygon') {
-        diagram.drawingObject = { shape: { type: 'Basic', shape: 'Polygon' }, style: { strokeWidth: 2 } };
+        diagram.drawingObject = { shape: { type: 'Basic', shape: 'Polygon' }, style: { strokeWidth: 1 } };
     }
     diagram.tool = ej.diagrams.DiagramTools.ContinuousDraw;
     removeSelectedToolbarItem();
@@ -770,6 +729,9 @@ function drawConnectorChange (args) {
         diagram.drawingObject = { type: 'Orthogonal', style: { strokeWidth: 2 } };
     } else if (args.item.text === 'Bezier') {
         diagram.drawingObject = { type: 'Bezier', style: { strokeWidth: 2 } };
+    }
+    else if(args.item.text === 'Free Hand'){
+        diagram.drawingObject = { type: 'Freehand', style: { strokeWidth: 2 } };
     }
     diagram.tool = ej.diagrams.DiagramTools.ContinuousDraw;
     diagram.clearSelection();
@@ -829,6 +791,7 @@ function themeDialogCreated(args) {
     themeDialogContent.onmouseleave = diagramThemes.applyOldStyle.bind(diagramThemes);
 }
 
+
 function tooltipCreated(args) {
     tooltip.target = '.db-info-style';
 }
@@ -857,6 +820,21 @@ function btnMoreShapes(args) {
 
 function listViewSelectionChange(args) {
     document.getElementById('shapePreviewImage').src = 'css/assets/dbstyle/shapes_images/' + args.text.toLowerCase() + '.png';
+}
+function SegmentEditing(args){
+    if(diagram.selectedItems.connectors){
+        if(args.checked == true){
+            for(i=0;i<diagram.selectedItems.connectors.length;i++){
+                diagram.selectedItems.connectors[i].constraints = ej.diagrams.ConnectorConstraints.Default | ej.diagrams.ConnectorConstraints.DragSegmentThumb;
+            }
+        }
+        else{
+            for(i=0;i<diagram.selectedItems.connectors.length;i++){
+            diagram.selectedItems.connectors[i].constraints = ej.diagrams.ConnectorConstraints.Default & ~(ej.diagrams.ConnectorConstraints.DragSegmentThumb);
+            }
+        }
+        diagram.dataBind();
+    }
 }
 
 function btnDeleteConfirmation(args) {
@@ -1143,31 +1121,31 @@ function executeEditMenu(diagram, commandType) {
     var key = '';
     switch (commandType.toLowerCase()) {
         case 'undo':
-            this.undo();
+            undo();
             if (selectedItem.diagramType === 'MindMap' || selectedItem.diagramType === 'OrgChart') {
                 diagram.doLayout();
             }
             break;
         case 'redo':
-            this.redo();
+            redo();
             break;
         case 'cut':
-            this.cutObjects();
+            cutObjects();
             break;
         case 'copy':
-            this.copyObjects();
+            copyObjects();
             break;
         case 'paste':
-            this.pasteObjects();
+            pasteObjects();
             break;
         case 'delete':
-            this.deleteData();
+            deleteData();
             break;
         case 'duplicate':
             CommonKeyboardCommands.duplicateSelectedItems();
             break;
         case 'selectall':
-            this.selectAll();
+            selectAll();
             break;
         case 'edittooltip':
             selectedItem.isModified = true;

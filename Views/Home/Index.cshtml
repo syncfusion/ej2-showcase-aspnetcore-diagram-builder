@@ -98,7 +98,7 @@
                        <e-diagram-commandmanager commands="@ViewBag.commands"></e-diagram-commandmanager>
                         <e-diagram-snapsettings constraints="ShowLines" horizontalGridlines="ViewBag.gridLines" verticalGridlines="ViewBag.gridLines" >
                         </e-diagram-snapsettings>
-                          <e-diagram-pagesettings width="816" height="1056" multiplePage="true">
+                        <e-diagram-pagesettings width="816" height="1056" multiplePage="true">
                             <e-pagesettings-background  color= 'white' ></e-pagesettings-background>
                             <e-pagesettings-margin left="5" top="5"></e-pagesettings-margin>
                         </e-diagram-pagesettings>
@@ -160,7 +160,7 @@
                             <div class="col-xs-6 db-col-left">
                                 <div class="db-color-container">
                                     <div class="db-color-input">
-                                        <ejs-colorpicker id="pageBgColor" type="color" value="#fff"  mode="Palette" width="100%" change="DiagramPropertyBinding.prototype.pageBackgroundChange1">
+                                        <ejs-colorpicker id="pageBgColor" type="color" value="#fff" showButtons="false" mode="Palette" width="100%" change="DiagramPropertyBinding.prototype.pageBackgroundChange1">
                                         </ejs-colorpicker>
                                     </div>
                                     <div class="db-color-btn">
@@ -276,8 +276,7 @@
                                     <div class="col-xs-6 db-col-left">
                                         <div class="db-color-container">
                                             <div class="db-color-input">
-                                                <ejs-colorpicker id="nodeFillColor" type="color" mode="Palette" change="nodecolorchange">
-                                                </ejs-colorpicker>
+                                                <ejs-colorpicker id="nodeFillColor" type="color" mode="Palette" showButtons="false" change="nodecolorchange"></ejs-colorpicker>
                                             </div>
                                             <div class="db-color-btn">
                                                 <ejs-button id="fillColorIconBtn" iconCss='sf-icon-ColorPickers tb-icons'>
@@ -299,7 +298,7 @@
                                     <div class="col-xs-4 db-col-right">
                                         <div class="db-color-container">
                                             <div class="db-color-input">
-                                                <ejs-colorpicker  id="nodeGradientColor" type="color" mode="Palette" change="nodegradientcolorchange" value="#fff">
+                                                <ejs-colorpicker  id="nodeGradientColor" type="color" mode="Palette" showButtons="false" change="nodegradientcolorchange" value="#fff">
                                                 </ejs-colorpicker>
                                             </div>
                                             <div class="db-color-btn">
@@ -329,7 +328,7 @@
                                     <div class="col-xs-4 db-col-left">
                                         <div class="db-color-container">
                                             <div class="db-color-input">
-                                                <ejs-colorpicker id="nodeStrokeColor" type="color" mode="Palette" change="nodestrokecolorchange">
+                                                <ejs-colorpicker id="nodeStrokeColor" type="color" mode="Palette" showButtons="false" change="nodestrokecolorchange">
                                                 </ejs-colorpicker>
                                             </div>
                                             <div class="db-color-btn">
@@ -384,7 +383,7 @@
                             <div class="col-xs-6 db-col-left">
                                 <div class="db-color-container">
                                     <div class="db-color-input">
-                                          <ejs-colorpicker id="lineColor" mode="Palette" type="color" change="lineColorchange">
+                                          <ejs-colorpicker id="lineColor" mode="Palette" type="color" showButtons="false" change="lineColorchange">
                                         </ejs-colorpicker>
                                     </div>
                                     <div class="db-color-btn">
@@ -458,6 +457,9 @@
                             </div>
                         </div>
                         <div class="row db-prop-row">
+                            <ejs-checkbox id="SegmentEditing" checked="false" label="Segment Editing" change="SegmentEditing"></ejs-checkbox>
+                        </div>
+                        <div class="row db-prop-row">
                             <div class="col-xs-2 db-col-right db-prop-text-style" style="padding-top: 6px">
                                 <span class="db-prop-text-style">Opacity</span>
                             </div>
@@ -496,7 +498,7 @@
                             <div class="col-xs-6 db-col-right" id="textColorDiv">
                                 <div class="db-color-container">
                                     <div class="db-color-input">
-                                        <ejs-colorpicker id='textColor' mode="Palette" type="color" change="fontColorchange" value="#000000">
+                                        <ejs-colorpicker id='textColor' mode="Palette" type="color" showButtons="false" change="fontColorchange" value="#000000">
                                         </ejs-colorpicker>
                                     </div>
                                     <div class="db-color-btn">
@@ -507,7 +509,7 @@
                             </div>
                         </div>
                         <div class="row db-prop-row">
-                            <div class="col-xs-6 db-col-left">
+                            <div >
                                 <ejs-toolbar id='toolbarTextStyle' overflowMode='Scrollable' clicked="DiagramPropertyBinding.prototype.toolbarTextStyleChange">
                                     <e-toolbar-items>
                                         <e-toolbar-item prefixIcon="sf-icon-Bold tb-icons" tooltipText="Bold" cssClass="tb-item-start">
@@ -519,7 +521,7 @@
                                     </e-toolbar-items>
                                 </ejs-toolbar>
                             </div>
-                            <div class="col-xs-6 db-col-right">
+                            <div >
                                 <ejs-toolbar id='toolbarTextSubAlignment' overflowMode='Scrollable' clicked="DiagramPropertyBinding.prototype.toolbarTextSubAlignChange">
                                     <e-toolbar-items>
                                         <e-toolbar-item prefixIcon="sf-icon-ParaAlignLeft tb-icons" tooltipText="Align Text Left" cssClass="tb-item-start">
@@ -600,7 +602,7 @@
                         <div class="col-xs-6 db-col-left">
                             <div class="db-color-container">
                                 <div class="db-color-input">
-                                    <ejs-colorpicker id='mindmapFill' mode="Palette" change="mindmapFillchange" type="color">
+                                    <ejs-colorpicker id='mindmapFill' mode="Palette" showButtons="false" change="mindmapFillchange" type="color">
                                     </ejs-colorpicker>
                                 </div>
                                 <div class="db-color-btn">
@@ -614,7 +616,7 @@
                         <div class="col-xs-4 db-col-left">
                             <div class="db-color-container">
                                 <div class="db-color-input">
-                                    <ejs-colorpicker id='mindmapStroke' mode="Palette" change="mindmapStrokechange" type="color">
+                                    <ejs-colorpicker id='mindmapStroke' mode="Palette" showButtons="false" change="mindmapStrokechange" type="color">
                                     </ejs-colorpicker>
                                 </div>
                                 <div class="db-color-btn">
@@ -643,7 +645,7 @@
                             </ejs-slider>
                         </div>
                         <div class="col-xs-2 db-col-right">
-                            <input type="text" readOnly="true" id="mindmapOpacityText" class="db-readonly-input" />
+                            <input type="text" readOnly="true" id="mindmapOpacityText" value="100%" class="db-readonly-input" />
                         </div>
                     </div>
                     <div style="margin-top:10px;margin-bottom: 15px"></div>
@@ -676,7 +678,7 @@
                         <div class="col-xs-6 db-col-right" id="textColorDiv">
                             <div class="db-color-container">
                                 <div class="db-color-input">
-                                    <ejs-colorpicker  id='mindmapTextColor' mode="Palette" type="color" change="mindmapTextColorchange">
+                                    <ejs-colorpicker  id='mindmapTextColor' mode="Palette" showButtons="false" type="color" change="mindmapTextColorchange">
                                     </ejs-colorpicker>
                                 </div>
                                 <div class="db-color-btn">
@@ -691,11 +693,11 @@
                             <span class="db-prop-text-style">Opacity</span>
                         </div>
                         <div class="col-xs-8 db-col-left" style="padding-right:10px">
-                            <ejs-slider id="mindmapTextOpacitySlider" min='0' max='100' step='10' type='MinRange' change="Mindmaptextopacity">
+                            <ejs-slider id="mindmapTextOpacitySlider" min='0' max='100' step='10' type='MinRange' change="mindmapTextOpacitySliderchange">
                             </ejs-slider>
                         </div>
                         <div class="col-xs-2 db-col-right">
-                            <input type="text" id="textOpacityText"  class="db-readonly-input" readOnly="true" />
+                            <input type="text" id="textOpacity" value="100%" class="db-readonly-input" readOnly="true" />
                         </div>
                     </div>
                 </div>

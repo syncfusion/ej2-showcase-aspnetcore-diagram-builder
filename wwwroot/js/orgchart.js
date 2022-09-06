@@ -162,7 +162,7 @@ var OrgChartData = (function () {
         if (node) {
             diagram.clearSelection();
             diagram.select([node]);
-            diagram.bringIntoView(node.wrapper.bounds);
+            // diagram.bringIntoView(node.wrapper.bounds);
         }
     };
     OrgChartData.prototype.getMinDistanceNode = function (diagram, direction) {
@@ -433,7 +433,7 @@ var OrgChartUtilityMethods = (function () {
         this.selectedItem.preventPropertyChange = true;
         diagram.select([node1]);
         this.selectedItem.preventPropertyChange = false;
-        diagram.bringIntoView(node1.wrapper.bounds);
+        // diagram.bringIntoView(node1.wrapper.bounds);
         this.selectedItem.isModified = true;
     };
     OrgChartUtilityMethods.getNode = function (nodes, name) {

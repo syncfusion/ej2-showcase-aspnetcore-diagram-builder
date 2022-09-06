@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "Jyy+zWPua/RYdlCnNmSbk0KAAhTL61wJS3t4yRjLvXQjJCPxpfECBK3tSZ6o3ZP/Boj3aXGlt/0qlaxtRMfoAA==",
+  "success": true,
+  "projectFilePath": "D:\\Diagram builder checkout\\ej2-aspnetcore-diagram-builder\\SyncfusionWebApp3.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\GobinathDhamotharan\\.nuget\\packages\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512",
+    "C:\\Users\\GobinathDhamotharan\\.nuget\\packages\\syncfusion.ej2.aspnet.core\\20.2.0.38\\syncfusion.ej2.aspnet.core.20.2.0.38.nupkg.sha512",
+    "C:\\Users\\GobinathDhamotharan\\.nuget\\packages\\syncfusion.licensing\\20.2.0.38\\syncfusion.licensing.20.2.0.38.nupkg.sha512"
+  ],
+  "logs": []
+}
