@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create flowchart, mind map, org chart with syncfusion diagram builder</title>
+    <link rel="icon" type="image/x-icon" href="~/favicon.ico" />
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link href="~/css/assets/index.css" rel="stylesheet" />
+    <link href="~/css/assets/db-icons1/style.css" rel="stylesheet" />
+    <link href="~/css/assets/dbstyle/diagrambuilder.css" rel="stylesheet" />
+    <script src="~/js/ej2/ej2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/shim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reflect-metadata/0.1.10/Reflect.min.js"></script>
+    <script type="text/javascript">
+        if (/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) {
+            document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"><\/script>');
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-signals/1.0.0/js-signals.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crossroads/0.12.0/crossroads.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/hasher/1.2.0/hasher.min.js"></script>
+
+    <style>
+       .container {
+            margin-left: 0px;
+            margin-right: 0px;
+            width: 100% !important;
+            padding-left: 0px !important;
+            padding-right: 0px !important;
+            /*increase width as per your need*/
+            max-width: 100%;
+        }
+    </style>
+    <style>
+        .e-toolbar .e-toolbar-items .e-toolbar-item button.e-btn .e-icons.e-btn-icon.sssk {
+            background-image: url('1.svg');
+            background-repeat: no-repeat;
+            width: 14px;
+            height: 14px;
+            min-width: 14px;
+            min-height: 14px;
+            line-height: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sb-content-overlay">
+        <div class="sb-loading">
+            <svg class="circular" height="40" width="40">
+                <circle class="loadingPath" cx="25" cy="25" r="20" fill="none" stroke-width="6" stroke-miterlimit="10"></circle>
+            </svg>
+        </div>
+    </div>
+    
+    <div class="container" id="target">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/zone.js/0.8.18/zone.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/commoncommands.js"asp-append-version="true"></script>
+    <script src="~/js/customcontextmenuitems.js"asp-append-version="true" ></script>
+    <script src="~/js/customproperties.js"asp-append-version="true"></script>
+    <script src="~/js/downloaddata.js" asp-append-version="true"></script>
+    <script src="~/js/dropdowndatasource.js" asp-append-version="true"></script>
+    <script src="~/js/electrical-shapes.js"asp-append-version="true" ></script>
+    <script src="~/js/event.js"asp-append-version="true"></script> 
+    <script src="~/js/floorplan-shapes.js"asp-append-version="true" ></script>
+    <script src="~/js/layers.js"asp-append-version="true" ></script>
+    <script src="~/js/mindmap.js" asp-append-version="true"></script>
+    <script src="~/js/network-shapes.js"asp-append-version="true"></script>
+    <script src="~/js/orgchart.js"asp-append-version="true"></script>
+    <script src="~/js/pages.js"asp-append-version="true"></script>
+    <script src="~/js/palettes.js"asp-append-version="true"></script> 
+    <script src="~/js/selector.js" asp-append-version="true"></script>
+    <script src="~/js/themes.js"asp-append-version="true"></script>
+    <script src="~/js/userhandles.js" asp-append-version="true"></script>
+    <script src="~/js/utilitymethods.js"asp-append-version="true" ></script>
+    <script src="~/js/home.js" asp-append-version="true"></script>
+	<ejs-scripts></ejs-scripts>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
