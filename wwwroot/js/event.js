@@ -237,9 +237,8 @@ var DiagramClientSideEvents = (function () {
     };
     DiagramClientSideEvents.prototype.dragEnter = function (args) {
         var obj = args.element;
-        var ratio = 100 / obj.width;
         obj.width = 100;
-        obj.height *= ratio;
+        obj.height = 60;
     };
     DiagramClientSideEvents.prototype.historyChange = function (args) {
         var diagram = selectedItem.selectedDiagram;
