@@ -80,10 +80,6 @@ function setPaletteNodeDefaults(node) {
 };
 
 function getNodeDefaults(node, diagram) {
-    if(!(selectedItem.diagramType === 'MindMap' || selectedItem.diagramType === 'OrgChart' || selectedItem.diagramType === 'FlowChart')){
-        node.width=100;
-        node.height=40;
-    }
     if(!(selectedItem.diagramType === 'MindMap' || selectedItem.diagramType === 'OrgChart')){
         node.ports=[
             { offset: { x: 0, y: 0.5 }, style: { fill: 'white' }, visibility: ej.diagrams.PortVisibility.Connect | ej.diagrams.PortVisibility.Hover, constraints: ej.diagrams.PortConstraints.Default | ej.diagrams.PortConstraints.Draw },
