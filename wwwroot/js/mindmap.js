@@ -74,6 +74,30 @@ var MindMap = (function () {
                 {
                     gesture: { key: ej.diagrams.Keys.V, keyModifiers: ej.diagrams.KeyModifiers.Control }, canExecute: this.canExecute,
                     execute: this.pasteMindMap.bind(this), name: 'pasteObject'
+                },
+                {
+                    gesture: { key: ej.diagrams.Keys.B, keyModifiers: ej.diagrams.KeyModifiers.Control }, canExecute: this.canExecute,
+                    execute: this.boldLabel.bind(this), name: 'boldLabel'
+                },
+                {
+                    gesture: { key: ej.diagrams.Keys.U, keyModifiers: ej.diagrams.KeyModifiers.Control }, canExecute: this.canExecute,
+                    execute: this.underlineLabel.bind(this), name: 'underLineLabel'
+                },
+                {
+                    gesture: { key: ej.diagrams.Keys.I, keyModifiers: ej.diagrams.KeyModifiers.Control }, canExecute: this.canExecute,
+                    execute: this.italicLabel.bind(this), name: 'italicLabel'
+                },
+                {
+                    gesture: { key: ej.diagrams.Keys.BackSpace }, canExecute: this.canExecute,
+                    execute: this.removeNode.bind(this), name: 'deleteNode'
+                },
+                {
+                    gesture: { key: ej.diagrams.Keys.F8 }, canExecute: this.canExecute,
+                    execute: this.onFit.bind(this), name: 'FitToPage'
+                },
+                {
+                    gesture: { key: ej.diagrams.Keys.E, keyModifiers: ej.diagrams.KeyModifiers.Control }, canExecute: this.canExecute,
+                    execute: this.expandCollapseParent.bind(this), name: 'expandCollapseParent'
                 }
             ]
         };
@@ -135,6 +159,49 @@ var MindMap = (function () {
             node.isExpanded = !node.isExpanded;
             diagram.dataBind();
         }
+    };
+    MindMap.prototype.expandCollapseParent = function () {
+        var diagram = this.selectedItem.selectedDiagram;
+        var node = diagram.nodes[0];
+        node.isExpanded = !node.isExpanded;
+        diagram.dataBind();
+    };
+    MindMap.prototype.boldLabel = function () {
+        var diagram = this.selectedItem.selectedDiagram;
+        if (diagram.selectedItems.nodes.length > 0) {
+            var node = diagram.selectedItems.nodes[0];
+            if (node.annotations && node.annotations.length > 0) {
+                node.annotations[0].style.bold = !node.annotations[0].style.bold;
+                diagram.dataBind();
+            }
+        }
+    };
+    MindMap.prototype.underlineLabel = function () {
+        var diagram = this.selectedItem.selectedDiagram;
+        if (diagram.selectedItems.nodes.length > 0) {
+            var node = diagram.selectedItems.nodes[0];
+            if (node.annotations && node.annotations.length > 0) {
+                node.annotations[0].style.textDecoration = node.annotations[0].style.textDecoration === 'Underline' ? 'None' : 'Underline';
+                diagram.dataBind();
+            }
+        }
+    };
+    MindMap.prototype.italicLabel = function () {
+        var diagram = this.selectedItem.selectedDiagram;
+        if (diagram.selectedItems.nodes.length > 0) {
+            var node = diagram.selectedItems.nodes[0];
+            if (node.annotations && node.annotations.length > 0) {
+                node.annotations[0].style.italic = !node.annotations[0].style.italic;
+                diagram.dataBind();
+            }
+        }
+    };
+    MindMap.prototype.removeNode = function (args) {
+        this.selectedItem.utilityMethods.removeChild(this.selectedItem);
+    };
+    MindMap.prototype.onFit = function () {
+        var diagram = this.selectedItem.selectedDiagram;
+        diagram.fitToPage();
     };
     MindMap.prototype.editNode = function () {
         var diagram = this.selectedItem.selectedDiagram;
@@ -412,7 +479,7 @@ var MindMapUtilityMethods = (function () {
         };
         this.selectedItem.selectedDiagram.add(node);
         var node1 = {
-            id: 'textNode', width: 400, height: 280, offsetX: this.selectedItem.selectedDiagram.scrollSettings.viewPortWidth - 200, offsetY: 140,
+            id: 'textNode', width: 400, height: 450, offsetX: this.selectedItem.selectedDiagram.scrollSettings.viewPortWidth - 200, offsetY: 230,
             shape: { type: 'HTML', content: this.getShortCutString() }, style: { strokeWidth: 0 },
             excludeFromLayout: true,
             constraints: ej.diagrams.NodeConstraints.Default & ~ej.diagrams.NodeConstraints.Delete
@@ -427,7 +494,7 @@ var MindMapUtilityMethods = (function () {
         this.selectedItem.selectedDiagram.dataBind();
     };
     MindMapUtilityMethods.getShortCutString = function () {
-        return '<div style="width: 400px; height: 280px; padding: 10px; background-color: #FFF7B5; border: 1px solid #FFF7B5">' +
+        return '<div style="width: 400px; height: 450px; padding: 10px; background-color: #FFF7B5; border: 1px solid #FFF7B5">' +
             '<div id="closeIconDiv" style="float: right; width: 22px; height: 22px; border: 1px solid #FFF7B5">' +
             '<span class="sf-icon-Close" style="font-size:14px;cursor:pointer;"></span>' +
             '</div>' +
@@ -461,7 +528,7 @@ var MindMapUtilityMethods = (function () {
             '<div>' +
             '<ul>' +
             '<li>' +
-            '<span class="db-html-font-medium">Delete : </span>' +
+            '<span class="db-html-font-medium">Delete / Backspace : </span>' +
             '<span class="db-html-font-normal">Delete a topic</span>' +
             '</li>' +
             '</ul>' +
@@ -485,8 +552,56 @@ var MindMapUtilityMethods = (function () {
             '<div>' +
             '<ul>' +
             '<li>' +
+            '<span class="db-html-font-medium">Ctrl + B : </span>' +
+            '<span class="db-html-font-normal">To make text bold</span>' +
+            '</li>' +
+            '</ul>' +
+            '</div>' +
+            '<div>' +
+            '<ul>' +
+            '<li>' +
+            '<span class="db-html-font-medium">Ctrl + I : </span>' +
+            '<span class="db-html-font-normal">To make text Italic </span>' +
+            '</li>' +
+            '</ul>' +
+            '</div>' +
+            '<div>' +
+            '<ul>' +
+            '<li>' +
+            '<span class="db-html-font-medium">Ctrl + U : </span>' +
+            '<span class="db-html-font-normal">Underline the text</span>' +
+            '</li>' +
+            '</ul>' +
+            '</div>' +
+            '<div>' +
+            '<ul>' +
+            '<li>' +
             '<span class="db-html-font-medium">Arrow(Up, Down, Left, Right) : </span>' +
             '<span class="db-html-font-normal">Navigate between topics</span>' +
+            '</li>' +
+            '</ul>' +
+            '</div>' +
+            '<div>' +
+            '<ul>' +
+            '<li>' +
+            '<span class="db-html-font-medium">Space : </span>' +
+            '<span class="db-html-font-normal">Expand / Collapse the selected node</span>' +
+            '</li>' +
+            '</ul>' +
+            '</div>' +
+            '<div>' +
+            '<ul>' +
+            '<li>' +
+            '<span class="db-html-font-medium">Ctrl + E :  </span>' +
+            '<span class="db-html-font-normal">Expand / Collapse the whole diagram</span>' +
+            '</li>' +
+            '</ul>' +
+            '</div>' +
+            '<div>' +
+            '<ul>' +
+            '<li>' +
+            '<span class="db-html-font-medium">F8 : </span>' +
+            '<span class="db-html-font-normal">To Fit the diagram into the viewport</span>' +
             '</li>' +
             '</ul>' +
             '</div>' +
@@ -588,7 +703,7 @@ var MindMapUtilityMethods = (function () {
         this.selectedItem.preventPropertyChange = false;
         diagram.dataBind();
         // diagram.bringIntoView(node1.wrapper.bounds);
-        diagram.startTextEdit(node1, node1.annotations[0].id);
+        //diagram.startTextEdit(node1, node1.annotations[0].id);
         this.selectedItem.isModified = true;
     };
     
@@ -619,7 +734,7 @@ var MindMapUtilityMethods = (function () {
             diagram.select([node1]);
             this.selectedItem.preventPropertyChange = false;
             // diagram.bringIntoView(node1.wrapper.bounds);
-            diagram.startTextEdit(node1, node1.annotations[0].id);
+           // diagram.startTextEdit(node1, node1.annotations[0].id);
             this.selectedItem.isModified = true;
         }
     };
