@@ -543,6 +543,11 @@ var UtilityMethods = (function () {
                     return true;
                 }
             }
+            if(selectedItem.diagramType !== 'MindMap') {
+                if (itemText === 'Show Shortcuts') {
+                    return true;
+                }
+            }
         }
         return false;
     };
