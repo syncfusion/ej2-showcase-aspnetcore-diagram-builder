@@ -213,7 +213,9 @@ var DropDownDataSources = (function () {
         var menuItems = [
             { text: 'Show Toolbar', iconCss: 'sf-icon-Selection' }, { text: 'Show Stencil', iconCss: 'sf-icon-Selection' },
             { text: 'Show Properties', iconCss: 'sf-icon-Selection' }, { text: 'Show Layers' },
-            { text: 'Show Pager', iconCss: 'sf-icon-Selection' }, { text: 'Themes' }
+            { text: 'Show Pager', iconCss: 'sf-icon-Selection' },
+            { text: 'Show Shortcuts' },
+            { text: 'Themes' }
         ];
         return menuItems;
     };

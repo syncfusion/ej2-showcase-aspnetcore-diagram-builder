@@ -637,6 +637,13 @@ function menuClick(args) {
             selectedItem.utilityMethods.hideElements('hide-pager', selectedItem.selectedDiagram);
             args.item.iconCss = args.item.iconCss ? '' : 'sf-icon-Selection';
             break;
+        case 'showshortcuts':
+            var node1 = diagram.getObject('textNode');
+            if(node1) {
+                node1.visible = !node1.visible;
+                selectedItem.selectedDiagram.dataBind();
+            }
+            break;
         default:
             executeEditMenu(diagram, commandType);
             break;
