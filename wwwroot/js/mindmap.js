@@ -138,7 +138,10 @@ var MindMap = (function () {
         MindMapUtilityMethods.addSibilingChild('Bottom');
     };
     MindMap.prototype.removeChild = function (args) {
-        this.selectedItem.utilityMethods.removeChild(this.selectedItem);
+        var diagram = this.selectedItem.selectedDiagram;
+        if (diagram.selectedItems.nodes.length > 0 && diagram.selectedItems.nodes[0].id !== "rootNode") {
+            this.selectedItem.utilityMethods.removeChild(this.selectedItem);
+        }
     };
     MindMap.prototype.navigateLeftChild = function (args) {
         this.navigateChild('left');
@@ -197,7 +200,10 @@ var MindMap = (function () {
         }
     };
     MindMap.prototype.removeNode = function (args) {
-        this.selectedItem.utilityMethods.removeChild(this.selectedItem);
+        var diagram = this.selectedItem.selectedDiagram;
+        if (diagram.selectedItems.nodes.length > 0 && diagram.selectedItems.nodes[0].id !== "rootNode") {
+            this.selectedItem.utilityMethods.removeChild(this.selectedItem);
+        }
     };
     MindMap.prototype.onFit = function () {
         var diagram = this.selectedItem.selectedDiagram;
