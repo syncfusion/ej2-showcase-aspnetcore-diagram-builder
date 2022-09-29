@@ -252,6 +252,14 @@ var DiagramClientSideEvents = (function () {
             toolbarContainer.classList.add('db-redo');
         }
     };
+    DiagramClientSideEvents.prototype.keyDown = function (args) {
+        if(selectedItem.diagramType === 'MindMap') {
+            var diagram = selectedItem.selectedDiagram;
+            if (args.key === "Enter" && args.keyModifiers === 0 && (diagram.diagramActions & ej.diagrams.DiagramAction.TextEdit)) {
+                diagram.endEdit();
+            }
+        }
+    };
     return DiagramClientSideEvents;
 }());
 
