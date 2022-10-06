@@ -62,7 +62,7 @@ window.onload = function () {
 function setPaletteNodeDefaults(node) {
     if (!(node.addInfo && (node.addInfo).type === 'CustomShapes') && (!node.children)) {
         if (node.id === 'Terminator' || node.id === 'Process') {
-            node.width = 80;
+            node.width = 50;
             node.height = 65;
         } else {
             node.width = 50;
@@ -643,6 +643,7 @@ function menuClick(args) {
                 node1.visible = !node1.visible;
                 selectedItem.selectedDiagram.dataBind();
             }
+            args.item.iconCss = args.item.iconCss ? '' : 'sf-icon-Selection';
             break;
         default:
             executeEditMenu(diagram, commandType);

@@ -262,7 +262,7 @@ namespace SyncfusionWebApp3.Models
             {
                 text = "Show Layers"
             });
-              windowmenuitems.Add(new
+            windowmenuitems.Add(new
             {
                 text = "Show Pager",
                 iconCss= "sf-icon-Selection"
@@ -270,6 +270,11 @@ namespace SyncfusionWebApp3.Models
             windowmenuitems.Add(new
             {
                 text = "Themes"
+            });
+            windowmenuitems.Add(new
+            {
+                text = "Show Shortcuts",
+                iconCss= "sf-icon-Selection"
             });
            return  windowmenuitems;
         }
