@@ -271,6 +271,11 @@ namespace SyncfusionWebApp3.Models
             {
                 text = "Themes"
             });
+              windowmenuitems.Add(new
+            {
+                text = "Show Shortcuts",
+                iconCss= "sf-icon-Selection"
+            });
            return  windowmenuitems;
         }
         public object helpData(){

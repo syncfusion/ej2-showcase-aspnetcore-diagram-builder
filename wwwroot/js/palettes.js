@@ -158,28 +158,6 @@ var Palettes = (function () {
         ];
         return connectorSymbols;
     };
-    Palettes.prototype.getSymbolInfo = function (symbol) {
-        return { fit: true };
-    };
-    Palettes.prototype.setPaletteNodeDefaults = function (node) {
-        if (!(node.addInfo && node.addInfo.type === 'CustomShapes') && (!node.children)) {
-            if (node.id === 'Terminator' || node.id === 'Process') {
-                node.width = 130;
-                node.height = 65;
-            }
-            else {
-                node.width = 50;
-                node.height = 50;
-            }
-            node.ports = [
-                { offset: { x: 0, y: 0.5 }, style: { fill: 'white' }, visibility: PortVisibility.Connect | PortVisibility.Hover, constraints: PortConstraints.Draw },
-                { offset: { x: 0.5, y: 0 }, style: { fill: 'white' }, visibility: PortVisibility.Connect | PortVisibility.Hover, constraints: PortConstraints.Draw },
-                { offset: { x: 1, y: 0.5 }, style: { fill: 'white' }, visibility: PortVisibility.Connect | PortVisibility.Hover, constraints: PortConstraints.Draw },
-                { offset: { x: 0.5, y: 1 }, style: { fill: 'white' }, visibility: PortVisibility.Connect | PortVisibility.Hover, constraints: PortConstraints.Draw }
-            ];
-            node.style.strokeColor = '#3A3A3A';
-        }
-    };
     Palettes.prototype.getPalettes = function (text) {
         var palettes = [];
         if (text.indexOf('Flow') !== -1) {

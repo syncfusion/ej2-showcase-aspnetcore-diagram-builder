@@ -58,17 +58,23 @@ window.onload = function () {
 
     window.onbeforeunload = closeWindow.bind(this);
 };
-
+function getSymbolInfo (symbol) {
+    return { fit: true };
+};
 function setPaletteNodeDefaults(node) {
     if (!(node.addInfo && (node.addInfo).type === 'CustomShapes') && (!node.children)) {
-        if (node.id === 'Terminator' || node.id === 'Process') {
+        if (node.id === 'Terminator' || node.id === 'Process' || node.id === 'Delay') {
             node.width = 80;
-            node.height = 65;
-        } else {
+            node.height = 40;
+        } else if (node.id === 'Decision' || node.id === 'Document' || node.id === 'PreDefinedProcess' ||
+            node.id === 'PaperTap' || node.id === 'DirectData' || node.id === 'MultiDocument' || node.id === 'Data') {
+            node.width = 50;
+            node.height = 40;
+        }  else {
             node.width = 50;
             node.height = 50;
         }
-            node.ports = [
+       node.ports = [
                 { offset: { x: 0, y: 0.5 }, style: { fill: 'white' }, visibility: ej.diagrams.PortVisibility.Connect | ej.diagrams.PortVisibility.Hover, constraints: ej.diagrams.PortConstraints.Default | ej.diagrams.PortConstraints.Draw },
                 { offset: { x: 0.5, y: 0 }, style: { fill: 'white' }, visibility: ej.diagrams.PortVisibility.Connect | ej.diagrams.PortVisibility.Hover, constraints: ej.diagrams.PortConstraints.Default | ej.diagrams.PortConstraints.Draw },
                 { offset: { x: 1, y: 0.5 }, style: { fill: 'white' }, visibility: ej.diagrams.PortVisibility.Connect | ej.diagrams.PortVisibility.Hover, constraints: ej.diagrams.PortConstraints.Default | ej.diagrams.PortConstraints.Draw },
@@ -643,6 +649,7 @@ function menuClick(args) {
                 node1.visible = !node1.visible;
                 selectedItem.selectedDiagram.dataBind();
             }
+            args.item.iconCss = args.item.iconCss ? '' : 'sf-icon-Selection';
             break;
         default:
             executeEditMenu(diagram, commandType);
