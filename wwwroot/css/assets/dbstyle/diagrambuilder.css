@@ -9,6 +9,10 @@ body {
     background-repeat: no-repeat;
 }
 
+#ej2LicWarning {
+    display: none;
+}
+
 html, body {
     height: 100%;
     overflow: hidden;
