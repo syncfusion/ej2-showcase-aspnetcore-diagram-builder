@@ -400,7 +400,7 @@ var OrgChartUtilityMethods = (function () {
         };
         node.constraints = ej.diagrams.NodeConstraints.Default | ej.diagrams.NodeConstraints.AllowDrop;
         if (parentNode.shape && parentNode.shape.type === 'Image') {
-            node.shape = { type: 'Image', source: 'css/assets/dbstyle/orgchart_images/blank-male.jpg', align: 'XMinYMin', scale: 'Meet' };
+            node.shape = { type: 'Image', source: './css/assets/dbstyle/orgchart_images/blank-male.jpg', align: 'XMinYMin', scale: 'Meet' };
         }
         else {
             node.shape = { type: 'Basic', shape: 'Rectangle', cornerRadius: 5 };
