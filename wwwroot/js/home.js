@@ -829,7 +829,7 @@ function btnMoreShapes(args) {
 }
 
 function listViewSelectionChange(args) {
-    document.getElementById('shapePreviewImage').src = 'css/assets/dbstyle/shapes_images/' + args.text.toLowerCase() + '.png';
+    document.getElementById('shapePreviewImage').src = './css/assets/dbstyle/shapes_images/' + args.text.toLowerCase() + '.png';
 }
 function SegmentEditing(args){
     if(diagram.selectedItems.connectors){
