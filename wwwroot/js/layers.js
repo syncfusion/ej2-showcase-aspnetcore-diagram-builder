@@ -218,7 +218,7 @@ var DiagramBuilderLayer = (function () {
         btnWindow.ej2_instances[0].items[3].iconCss = '';
     };
     DiagramBuilderLayer.prototype.btnDuplicateLayer = function () {
-        var name = this.selectedItem.selectedDiagram.activeLayer.addInfo.name;
+        var name = this.selectedItem.selectedDiagram.activeLayer.addInfo ? this.selectedItem.selectedDiagram.activeLayer.addInfo.name : "default_layer";
         this.selectedItem.selectedDiagram.cloneLayer(this.selectedItem.selectedDiagram.activeLayer.id);
         this.selectedItem.selectedDiagram.layers[this.selectedItem.selectedDiagram.layers.length - 1].addInfo = {
             'name': name + ' Copy'
