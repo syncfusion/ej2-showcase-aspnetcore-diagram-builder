@@ -6,6 +6,8 @@ var CustomProperties = (function () {
         this.selectedItem = selectedItem;
         this.customPropertyDialog = customPropertyDialog;
     }
+    let selectedInstance;
+    var deleteField;
     CustomProperties.prototype.getPropertyDialogContent = function (addInfo) {
         var propertyDialogContent = document.createElement('div');
         if (addInfo) {
@@ -17,6 +19,9 @@ var CustomProperties = (function () {
             this.createSpaceElement(propertyDialogContent);
         }
         propertyDialogContent.appendChild(this.clonePropTemplate());
+        if (!this.customPropertyDialog) {
+            this.customPropertyDialog = document.getElementById('customPropertyDialog').ej2_instances[0];
+        }
         this.customPropertyDialog.content = propertyDialogContent.outerHTML;
         this.customPropertyDialog.refresh();
         this.triggerEvents(addInfo);
@@ -28,16 +33,18 @@ var CustomProperties = (function () {
         var addInfo1 = addInfo;
         var keys = Object.keys(addInfo1);
         for (var i = 0; i < keys.length; i++) {
-            var removeBtnElement = removeBtnElements[i + 1].children[0];
-            var removeButton = new ej.buttons.Button({ iconCss: 'sf-icon-Delete', cssClass: keys[i] });
-            removeButton.appendTo(removeBtnElement);
-            removeBtnElement.onclick = this.showConfirmationDialog.bind(this);
-            var checkboxTooltipElement = removeCheckBoxElements[i + 1].children[0];
-            var checkboxTooltip = new ej.buttons.CheckBox({ checked: Boolean(addInfo1[keys[i]].checked), cssClass: keys[i] });
-            checkboxTooltip.change = this.removeField.bind(this);
-            checkboxTooltip.appendTo(checkboxTooltipElement);
-            propertyValueElements[i + 1].children[0].value = addInfo1[keys[i]].value.toString();
-            propertyValueElements[i + 1].children[0].onchange = this.valueChange.bind(this);
+            if (addInfo1[keys[i]]) {
+                var removeBtnElement = removeBtnElements[i + 1].children[0];
+                var removeButton = new ej.buttons.Button({ iconCss: 'sf-icon-Delete', cssClass: keys[i] });
+                removeButton.appendTo(removeBtnElement);
+                removeBtnElement.onclick = this.showConfirmationDialog.bind(this);
+                var checkboxTooltipElement = removeCheckBoxElements[i + 1].children[0];
+                var checkboxTooltip = new ej.buttons.CheckBox({ checked: Boolean(addInfo1[keys[i]].checked), cssClass: keys[i] });
+                checkboxTooltip.change = this.removeField.bind(this);
+                checkboxTooltip.appendTo(checkboxTooltipElement);
+                propertyValueElements[i + 1].children[0].value = addInfo1[keys[i]].value.toString();
+                propertyValueElements[i + 1].children[0].onchange = this.valueChange.bind(this);
+        }
         }
         var propButton = document.getElementsByClassName('db-custom-prop-button')[1];
         var button = new ej.buttons.Button();
@@ -48,15 +55,15 @@ var CustomProperties = (function () {
         var propertyInfo = document.getElementsByClassName('db-custom-prop-info-template')[0].cloneNode(true);
         propertyInfo.style.display = '';
         var propertyName = key;
-        if (keyValue.type === 'nameField') {
+        if (keyValue && keyValue.type === 'nameField') {
             propertyName = 'Name';
         }
-        else if (keyValue.type === 'imageField') {
+        else if (keyValue && keyValue.type === 'imageField') {
             propertyName = 'Image URL';
         }
         propertyInfo.getElementsByClassName('propertyNameDiv')[0].innerHTML = propertyName;
         var removeBtnElement = propertyInfo.getElementsByClassName('btnRemoveProperty')[0];
-        if (keyValue.type !== 'bindingField') {
+        if (keyValue && keyValue.type !== 'bindingField') {
             removeBtnElement.style.display = 'None';
         }
         return propertyInfo;
@@ -73,12 +80,14 @@ var CustomProperties = (function () {
     };
     CustomProperties.prototype.removeField = function (args) {
         var target = args.event.target;
-        var className = target.parentElement.parentElement.className.replace('e-checkbox-wrapper ', '').trim();
+        var className = target.parentElement.parentElement.className.trim().replace("e-checkbox-wrapper e-wrapper", "").trim();
         for (var i = 0; i < this.selectedItem.selectedDiagram.nodes.length; i++) {
             var node = this.selectedItem.selectedDiagram.nodes[i];
             if (node.id !== 'textNode') {
                 var nodeInfo = node.addInfo;
-                nodeInfo[className].checked = args.checked;
+                if (nodeInfo[className]) {
+                    nodeInfo[className].checked = args.checked;
+                }
             }
         }
         var imageField = false;
@@ -93,16 +102,25 @@ var CustomProperties = (function () {
         if (target.tagName.toLowerCase() === 'span') {
             target = target.parentElement;
         }
-        this.deleteField = target.className.replace('btnRemoveProperty e-control e-btn ', '').replace(' e-icon-btn', '').trim();
+        if (!selectedInstance) {
+            selectedInstance = this.selectedItem;
+        }
+        this.deleteField = target.className.replace('btnRemoveProperty e-control e-btn e-lib', '').replace(' e-icon-btn', '').trim();
+        if (!deleteField || this.deleteField) {
+            deleteField = this.deleteField;
+        }
         var dialog = document.getElementById('deleteConfirmationDialog');
         dialog.ej2_instances[0].show();
     };
     CustomProperties.prototype.removeProperty = function (args) {
+        if (!this.selectedItem) {
+            this.selectedItem = selectedInstance;
+         }
         for (var i = 0; i < this.selectedItem.selectedDiagram.nodes.length; i++) {
             var node = this.selectedItem.selectedDiagram.nodes[i];
             if (node.id !== 'textNode') {
                 var nodeInfo = node.addInfo;
-                delete nodeInfo[this.deleteField];
+                delete nodeInfo[deleteField];
             }
         }
         var addInfo = this.selectedItem.selectedDiagram.selectedItems.nodes[0].addInfo;
@@ -111,7 +129,11 @@ var CustomProperties = (function () {
         if (addInfo['Image URL'] && addInfo['Image URL'].checked) {
             imageField = true;
         }
-        this.selectedItem.utilityMethods.updateLayout(this.selectedItem, true, imageField);
+        if (this.selectedItem) {
+            this.selectedItem.utilityMethods.updateLayout(this.selectedItem, true, imageField);
+        } else {
+            selectedInstance.utilityMethods.updateLayout(selectedInstance, true, imageField);
+        }
         this.deleteField = '';
         var dialog = document.getElementById('deleteConfirmationDialog');
         dialog.ej2_instances[0].hide();
@@ -129,6 +151,9 @@ var CustomProperties = (function () {
     CustomProperties.prototype.addCustomProperty = function () {
         var propName = document.getElementsByClassName('txtPropertyName')[1].value;
         if (propName) {
+            if (!this.selectedItem) {
+                this.selectedItem = selectedInstance;
+            }
             for (var i = 0; i < this.selectedItem.selectedDiagram.nodes.length; i++) {
                 var node = this.selectedItem.selectedDiagram.nodes[i];
                 if (node.id !== 'textNode') {

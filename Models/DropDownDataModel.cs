@@ -140,7 +140,6 @@ namespace SyncfusionWebApp3.Models
             viewmenuitems.Add(new
             {
                 text = "Show Guides",
-                iconCss= "sf-icon-Selection"
             });
             viewmenuitems.Add(new
             {
@@ -519,11 +518,6 @@ namespace SyncfusionWebApp3.Models
             {
                 text = "PNG",
                 value="PNG"
-            });
-            fileFormats.Add(new
-            {
-                text = "BMP",
-                value="BMP"
             });
             fileFormats.Add(new
             {

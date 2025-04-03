@@ -7,7 +7,7 @@
 }
 
 <ejs-contextmenu id='arrangeContextMenu' 
-    items='ViewBag.arrangemenuitems' onOpen="arrangeContextMenuOpen" animationSettings="@new Syncfusion.EJ2.Navigations.ContextMenuAnimationSettings(){Effect= Syncfusion.EJ2.Navigations.MenuEffect.None }" cssClass="arrangeMenu" 
+    items='ViewBag.arrangemenuitems' onOpen="arrangeContextMenuOpen" animationSettings="@new Syncfusion.EJ2.Navigations.ContextMenuAnimationSettings() {Effect = Syncfusion.EJ2.Navigations.MenuEffect.None }" cssClass="arrangeMenu" 
     select="contextMenuClick" beforeClose="arrangeMenuBeforeClose" >
 </ejs-contextmenu>
 
@@ -91,8 +91,8 @@
             <div class="db-diagram-container">
                 <div id="diagramContainerDiv" class='db-current-diagram-container' >
                     <ejs-diagram id="diagram"  width="100%" height="100%" backgroundColor="transparent" selectionChange="DiagramClientSideEvents.prototype.selectionChange" 
-                        rotateChange="DiagramClientSideEvents.prototype.nodeRotationChange" contextMenuOpen="DiagramClientSideEvents.prototype.diagramContextMenuOpen" 
-                        contextMenuClick="contextMenuClick" positionChange="DiagramClientSideEvents.prototype.nodePositionChange"  sizeChange="DiagramClientSideEvents.prototype.nodeSizeChange"
+                        rotateChange="DiagramClientSideEvents.prototype.nodeRotationChange" contextMenuOpen="DiagramClientSideEvents.prototype.diagramContextMenuOpen"
+                        contextMenuClick="contextMenuClick" load="DiagramClientSideEvents.prototype.loadEvent" positionChange="DiagramClientSideEvents.prototype.nodePositionChange" sizeChange="DiagramClientSideEvents.prototype.nodeSizeChange"
                         dragEnter="DiagramClientSideEvents.prototype.dragEnter" historyChange="DiagramClientSideEvents.prototype.historyChange" scrollChange="DiagramClientSideEvents.prototype.scrollChange"
                         collectionChange="collectionChange"  drop="drop" textEdit="DiagramClientSideEvents.prototype.textEdit" keyDown="DiagramClientSideEvents.prototype.keyDown"  getCustomTool="@ViewBag.getTool" getNodeDefaults="@ViewBag.getNodeDefaults" getConnectorDefaults="@ViewBag.getConnectorDefaults"> 
                        <e-diagram-commandmanager commands="@ViewBag.commands"></e-diagram-commandmanager>
@@ -485,7 +485,7 @@
                                 </ejs-dropdownlist>
                             </div>
                             <div class="col-xs-4 db-col-right">
-                                <ejs-numerictextbox min="1" step="1" id="fontSizeTextProperties" change="fontSizechange"></ejs-numerictextbox>
+                                <ejs-numerictextbox min="5" step="1" id="fontSizeTextProperties" change="fontSizechange"></ejs-numerictextbox>
                             </div>
                         </div>
                         <div class="row db-prop-row">
@@ -848,73 +848,6 @@
                         </ejs-dropdownlist>
                     </div>
                 </div>
-            </div>
-        </div>
-    </e-content-template>
-</ejs-dialog>
-
-<ejs-dialog id="printDialog" width='335px' header='Print Diagram' target='#target' isModal='true' visible='false' showCloseIcon='true'>
-    <e-dialog-buttons>
-            <e-dialog-dialogbutton buttonModel="@ViewBag.PrintButton" click="btnPrintClick"></e-dialog-dialogbutton>
-            <e-dialog-dialogbutton buttonModel="@ViewBag.CancelClick" click="btnCancelClick"></e-dialog-dialogbutton>
-    </e-dialog-buttons>
-    <e-dialog-animationsettings effect="None"></e-dialog-animationsettings>
-    <e-content-template>
-        <div id="printDialogContent">
-            <div class="row">
-                <div class="row">
-                    Region
-                </div>
-                <div class="row db-dialog-child-prop-row">
-                    <ejs-dropdownlist id="printRegionDropdown" dataSource="ViewBag.diagramRegions" index=1>
-                    <e-dropdownlist-fields text="text" value="value"></e-dropdownlist-fields>
-                    </ejs-dropdownlist>
-                </div>
-            </div>
-            <div class="row db-dialog-prop-row">
-                <div class="row">
-                    Print Settings
-                </div>
-                <div class="row db-dialog-child-prop-row">
-                    <ejs-dropdownlist dataSource="ViewBag.paperList" id="printPaperSizeDropdown" index=0>
-                     <e-dropdownlist-fields text="text" value="value"></e-dropdownlist-fields>
-                    </ejs-dropdownlist>
-                </div>
-            </div>
-            <div id="printCustomSize" class="row db-dialog-prop-row" style="display:none; height: 28px;">
-                <div class="col-xs-6 db-col-left">
-                    <div class="db-text-container">
-                        <div class="db-text">
-                            <span>W</span>
-                        </div>
-                        <div class="db-text-input">
-                            <ejs-numerictextbox id="printPageWidth" min="100" step="1" format="n0" ></ejs-numerictextbox>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-6 db-col-right">
-                    <div class="db-text-container">
-                        <div class="db-text">
-                            <span>H</span>
-                        </div>
-                        <div class="db-text-input">
-                            <ejs-numerictextbox id="printPageHeight" min="100" step="1" format="n0" ></ejs-numerictextbox>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="printOrientation" class="row db-dialog-prop-row" style="height: 28px; padding: 5px 0px;">
-                <div class="col-xs-3 db-prop-col-style" style="margin-right: 8px;">
-                    <ejs-radiobutton id='printPortrait' label="Portrait" name="printSettings" checked="true">
-                    </ejs-radiobutton>
-                </div>
-                <div class="col-xs-3 db-prop-col-style">
-                    <ejs-radiobutton id='printLandscape' label="Landscape" name="printSettings" checked="false">
-                    </ejs-radiobutton>
-                </div>
-            </div>
-            <div class="row db-dialog-prop-row" style="margin-top: 16px">
-                <ejs-checkbox id='printMultiplePage' label="Scale to fit 1 page" checked="false" change="Printchange"></ejs-checkbox>
             </div>
         </div>
     </e-content-template>

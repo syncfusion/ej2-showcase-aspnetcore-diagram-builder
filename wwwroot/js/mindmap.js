@@ -239,16 +239,18 @@ var MindMap = (function () {
         var diagram = this.selectedItem.selectedDiagram;
         if (diagram.selectedItems.nodes.length > 0) {
             var node = diagram.selectedItems.nodes[0];
-            var orientation_1 = node.addInfo.orientation.toString();
-            var connector = MindMapUtilityMethods.getConnector(diagram.connectors, node.inEdges[0]);
-            var parentNode = MindMapUtilityMethods.getNode(diagram.nodes, connector.sourceID);
-            for (var i = 0; i < parentNode.outEdges.length; i++) {
-                connector = MindMapUtilityMethods.getConnector(diagram.connectors, parentNode.outEdges[i]);
-                var childNode = MindMapUtilityMethods.getNode(diagram.nodes, connector.targetID);
-                if (childNode) {
-                    var childOrientation = childNode.addInfo.orientation.toString();
-                    if (orientation_1 === childOrientation) {
-                        sameLevelNodes.push(childNode);
+            if (node.addInfo && node.addInfo.orientation) {
+                var orientation_1 = node.addInfo.orientation.toString();
+                var connector = MindMapUtilityMethods.getConnector(diagram.connectors, node.inEdges[0]);
+                var parentNode = MindMapUtilityMethods.getNode(diagram.nodes, connector.sourceID);
+                for (var i = 0; i < parentNode.outEdges.length; i++) {
+                    connector = MindMapUtilityMethods.getConnector(diagram.connectors, parentNode.outEdges[i]);
+                    var childNode = MindMapUtilityMethods.getNode(diagram.nodes, connector.targetID);
+                    if (childNode) {
+                        var childOrientation = childNode.addInfo.orientation.toString();
+                        if (orientation_1 === childOrientation) {
+                            sameLevelNodes.push(childNode);
+                        }
                     }
                 }
             }

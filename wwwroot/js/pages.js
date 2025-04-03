@@ -104,10 +104,12 @@ var PageCreation = (function () {
     };
     PageCreation.prototype.loadPage = function (savedData) {
         var pageData = JSON.parse(savedData);
-        this.pageOptionList = pageData.pageOptionList;
-        this.activePage = this.findPage(pageData.activePage.toString());
-        this.selectedItem.diagramType = pageData.diagramType.toString();
-        this.generatePageButtons(this.pageOptionList);
+        if (pageData.activePage) {
+            this.pageOptionList = pageData.pageOptionList;
+            this.activePage = this.findPage(pageData.activePage.toString());
+            this.selectedItem.diagramType = pageData.diagramType.toString();
+            this.generatePageButtons(this.pageOptionList);
+        }
     };
     PageCreation.prototype.saveDiagramSettings = function () {
         this.activePage.diagram = JSON.parse(selectedItem.selectedDiagram.saveDiagram());
@@ -115,11 +117,18 @@ var PageCreation = (function () {
             this.activePage.mindmapTemplateType = MindMapUtilityMethods.templateType;
         }
     };
-    PageCreation.prototype.loadDiagramSettings = function () {
+    PageCreation.prototype.loadDiagramSettings = function (data) {
         var diagram = this.selectedItem.selectedDiagram;
         document.getElementsByClassName('sidebar')[0].className = 'sidebar show-overview';
         this.selectedItem.isLoading = true;
-        diagram.loadDiagram(JSON.stringify(this.activePage.diagram));
+        if (this.selectedItem && this.selectedItem.diagramType === "OrgChart") {
+            this.activePage.diagram.selectedItems.wrapper = null;
+        }
+        if (this.activePage.diagram) {
+            diagram.loadDiagram(JSON.stringify(this.activePage.diagram));
+        } else if (data) {
+            diagram.loadDiagram(data);
+        }
         diagram.clearSelection();
         this.selectedItem.isLoading = false;
         document.getElementsByClassName('sidebar')[0].className = 'sidebar';

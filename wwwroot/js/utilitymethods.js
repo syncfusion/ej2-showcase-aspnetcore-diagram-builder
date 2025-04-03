@@ -313,8 +313,6 @@ var UtilityMethods = (function () {
             }
             if (selectedItem.diagramType === 'OrgChart') {
                 selectedItem.selectedDiagram.layout.getLayoutInfo = OrgChartUtilityMethods.getLayoutInfo.bind(OrgChartUtilityMethods);
-                selectedItem.selectedDiagram.selectedItems.userHandles = OrgChartUtilityMethods.handle;
-                selectedItem.selectedDiagram.selectedItems.constraints = ej.diagrams.SelectorConstraints.UserHandle;
                 selectedItem.selectedDiagram.dataBind();
             }
             selectedItem.preventSelectionChange = false;
@@ -539,7 +537,7 @@ var UtilityMethods = (function () {
             }
             if (selectedItem.diagramType !== 'GeneralDiagram') {
                 if (itemText === 'Themes' || itemText === 'Paste' || itemText === 'Show Rulers' || itemText === 'Show Guides'
-                    || itemText === 'Show Grid' || itemText === 'Snap To Grid' || itemText === 'Show Stencil') {
+                    || itemText === 'Show Grid' || itemText === 'Snap To Grid' || itemText === 'Show Stencil' || itemText === 'Show Layers') {
                     return true;
                 }
             }
@@ -561,7 +559,13 @@ var UtilityMethods = (function () {
         }
         if (selectedItem.diagramType === 'GeneralDiagram') {
             if (selectedItems.length > 1) {
-                contextMenu.enableItems(['Align Objects', 'Distribute Objects', 'Match Size', 'Lock', 'Unlock', 'Group'], true);
+                contextMenu.enableItems(['Align Objects', 'Distribute Objects', 'Match Size', 'Group'], true);
+                if (selectedItems[0].constraints & ej.diagrams.NodeConstraints.Drag) {
+                    contextMenu.enableItems(['Lock'], true);
+                }
+                else {
+                    contextMenu.enableItems(['Unlock'], true);
+                }
             }
             else if (selectedItems.length === 1) {
                 contextMenu.enableItems(['Send To Back', 'Bring To Front', 'Send Backward', 'Bring Forward']);
@@ -723,7 +727,7 @@ var UtilityMethods = (function () {
                 }
                 for (var i_1 = 0; i_1 < keys.length; i_1++) {
                     var keyValue = nodeInfo[keys[i_1]];
-                    if (keyValue.type === 'bindingField') {
+                    if (keyValue && keyValue.type === 'bindingField') {
                         if (keyValue.checked) {
                             if (bindBindingFields) {
                                 bindingFields.push(keys[i_1]);
@@ -739,7 +743,6 @@ var UtilityMethods = (function () {
                 if (!imageField) {
                     node.minWidth = 150;
                     node.minHeight = 50;
-                    node.maxHeight = 50;
                     selectedItem.selectedDiagram.dataBind();
                     node.shape = { type: 'Basic', shape: 'Rectangle', cornerRadius: 5 };
                     selectedItem.selectedDiagram.dataBind();
@@ -747,7 +750,6 @@ var UtilityMethods = (function () {
                 else if (imageField) {
                     node.minWidth = 300;
                     node.minHeight = 100;
-                    node.maxHeight = 100;
                     selectedItem.selectedDiagram.dataBind();
                     node.shape = {
                         type: 'Image', source: nodeInfo[propName] && nodeInfo[propName].value ? nodeInfo[propName].value.toString() : './css/assets/dbstyle/orgchart_images/blank-male.jpg',
