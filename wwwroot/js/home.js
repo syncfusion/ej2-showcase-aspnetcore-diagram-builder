@@ -23,7 +23,6 @@ window.onload = function () {
     openTemplateDialog = document.getElementById("openTemplateDialog").ej2_instances[0];
     saveDialog = document.getElementById("saveDialog").ej2_instances[0];
     exportDialog = document.getElementById("exportDialog").ej2_instances[0];
-    printDialog = document.getElementById("printDialog").ej2_instances[0];
     tooltipDialog = document.getElementById("tooltipDialog").ej2_instances[0];
     tooltip = document.getElementById("tooltip").ej2_instances[0];
     themeDialog = document.getElementById("themeDialog").ej2_instances[0];
@@ -86,7 +85,7 @@ function setPaletteNodeDefaults(node) {
 };
 
 function getNodeDefaults(node, diagram) {
-    if(!(selectedItem.diagramType === 'MindMap' || selectedItem.diagramType === 'OrgChart')){
+    if (!(selectedItem.diagramType === 'MindMap' || selectedItem.diagramType === 'OrgChart')){
         node.ports=[
             { offset: { x: 0, y: 0.5 }, style: { fill: 'white' }, visibility: ej.diagrams.PortVisibility.Connect | ej.diagrams.PortVisibility.Hover, constraints: ej.diagrams.PortConstraints.Default | ej.diagrams.PortConstraints.Draw },
             { offset: { x: 0.5, y: 0 }, style: { fill: 'white' }, visibility: ej.diagrams.PortVisibility.Connect | ej.diagrams.PortVisibility.Hover, constraints: ej.diagrams.PortConstraints.Default | ej.diagrams.PortConstraints.Draw },
@@ -569,14 +568,10 @@ function menuClick(args) {
             saveDialog.show();
             break;
         case 'print':
-            document.getElementById("printPageHeight").ej2_instances[0] = document.getElementById("pageHeight").ej2_instances[0];
-            document.getElementById("printPageWidth").ej2_instances[0] =  document.getElementById("pageWidth").ej2_instances[0];
-            document.getElementById("printPaperSizeDropdown").ej2_instances[0] = document.getElementById("pageSettingsList").ej2_instances[0];
-            document.getElementById("printPortrait").ej2_instances[0] = document.getElementById("pagePortrait").ej2_instances[0];
-            document.getElementById("printLandscape").ej2_instances[0] = !document.getElementById("pagePortrait").ej2_instances[0];
-            printDialog.show();
+            btnPrintClick();
             break;
         case 'export':
+            document.getElementById("exportfileName").value = document.getElementById('diagramName').innerHTML;
             exportDialog.show();
             break;
         case 'showguides':
@@ -900,9 +895,6 @@ function btnCancelClick(args) {
     switch (key) {
         case 'exportDialog':
             exportDialog.hide();
-            break;
-        case 'printDialog':
-            printDialog.hide();
             break;
         case 'saveDialog':
             saveDialog.hide();
@@ -1383,7 +1375,7 @@ function getCommandSettings() {
 function btnExportClick() {
     var diagram = selectedItem.selectedDiagram;
     diagram.exportDiagram({
-        fileName: document.getElementById("exportfileName").value,
+        fileName: document.getElementById('exportfileName').value,
         format:  document.getElementById("exportFormat").value,
         region:  document.getElementById("exportRegion").value
     });
@@ -1391,33 +1383,11 @@ function btnExportClick() {
 }
 
 function btnPrintClick() {
-    var pageWidth = selectedItem.printSettings.pageWidth;
-    var pageHeight = selectedItem.printSettings.pageHeight;
-    var paperSize = selectedItem.utilityMethods.getPaperSize(selectedItem.printSettings.paperSize);
-    if (paperSize.pageHeight && paperSize.pageWidth) {
-        pageWidth = paperSize.pageWidth;
-        pageHeight = paperSize.pageHeight;
-    }
-    if (selectedItem.pageSettings.isPortrait) {
-        if (pageWidth > pageHeight) {
-            var temp = pageWidth;
-            pageWidth = pageHeight;
-            pageHeight = temp;
-        }
-    } else {
-        if (pageHeight > pageWidth) {
-            var temp1 = pageHeight;
-            pageHeight = pageWidth;
-            pageWidth = temp1;
-        }
-    }
     var diagram = selectedItem.selectedDiagram;
     diagram.print({
-        region: selectedItem.printSettings.region, pageHeight: pageHeight, pageWidth: pageWidth,
+        region: "Content",
         multiplePage: !selectedItem.printSettings.multiplePage,
-        pageOrientation: selectedItem.printSettings.isPortrait ? 'Portrait' : 'Landscape'
     });
-    printDialog.hide();
 }
 
 function getUploadButtons() {
@@ -1446,7 +1416,7 @@ function closeThemeDialog(args) {
 
 function loadDiagram(event) {
     page.loadPage(event.target.result.toString());
-    page.loadDiagramSettings();
+    page.loadDiagramSettings(event.target.result.toString());
     OrgChartUtilityMethods.uploadDialog.hide();
 }
 

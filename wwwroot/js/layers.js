@@ -50,7 +50,7 @@ var DiagramBuilderLayer = (function () {
             layerTemplate.className = 'db-layer-template active';
         }
         var layerNameElement = layerTemplate.getElementsByClassName('db-layer-name')[0];
-        layerNameElement.innerHTML = layer.addInfo.name;
+        layerNameElement.innerHTML = layer.addInfo ? layer.addInfo.name : 'default_layer';
         layerNameElement.className = 'db-layer-name ' + layer.id;
         layerNameElement.parentNode.style.width = 'calc(100% - ' + 88 + 'px)';
         return layerTemplate;
@@ -61,18 +61,24 @@ var DiagramBuilderLayer = (function () {
         var layers = this.getLayers();
         for (var i = 0; i < layers.length; i++) {
             var layer = layers[i];
+            const visibleElement = visibleElements[layers.length - i];
+            if (visibleElement && visibleElement.childNodes.length > 0) {
+                visibleElement.childNodes[0].remove();
+            }
             var visibleLayer = new ej.buttons.Button({
                 iconCss: layer.visible ? 'sf-icon-View' : 'sf-icon-Invisible',
                 cssClass: layer.id
             });
-            var visibleElement = visibleElements[layers.length - i];
             visibleElement.title = layer.visible ? 'Visible' : 'Invisible';
             visibleLayer.appendTo(visibleElement);
             visibleElement.onclick = this.changeLayerVisibility.bind(this);
             if (!layer.visible) {
                 visibleElement.parentElement.className = 'db-layer-content-btn db-layer-invisible';
             }
-            var lockElement = lockElements[layers.length - i];
+            const lockElement = lockElements[layers.length - i];
+            if (lockElement && lockElement.childNodes.length > 0) {
+                lockElement.childNodes[0].remove();
+            }
             var lockLayer = new ej.buttons.Button({
                 iconCss: layer.lock ? 'sf-icon-Lock' : 'sf-icon-Unlock',
                 cssClass: layer.id,
@@ -133,7 +139,7 @@ var DiagramBuilderLayer = (function () {
     };
     DiagramBuilderLayer.prototype.changeLayerSelection = function (args) {
         var element = args.target;
-        var layerName = element.className.replace('db-layer-lock e-control e-btn ', '').replace(' e-icon-btn', '').replace(' e-ripple', '');
+        var layerName = element.className.replace('db-layer-lock e-control e-btn e-lib', '').replace(' e-icon-btn', '').replace(' e-ripple', '').trim();
         var layer = this.findLayer(layerName);
         layer.lock = !layer.lock;
         element.ej2_instances[0].iconCss = layer.lock ? 'sf-icon-Lock' : 'sf-icon-Unlock';
@@ -143,7 +149,7 @@ var DiagramBuilderLayer = (function () {
     };
     DiagramBuilderLayer.prototype.changeLayerVisibility = function (args) {
         var element = args.target;
-        var layerName = element.className.replace('db-layer-visible e-control e-btn ', '').replace(' e-icon-btn', '').replace(' e-ripple', '');
+        var layerName = element.className.replace('db-layer-visible e-control e-btn e-lib', '').replace(' e-icon-btn', '').replace(' e-ripple', '').trim();;
         var layer = this.findLayer(layerName);
         layer.visible = !layer.visible;
         element.ej2_instances[0].iconCss = layer.visible ? 'sf-icon-View' : 'sf-icon-Invisible';
@@ -187,6 +193,9 @@ var DiagramBuilderLayer = (function () {
     };
     DiagramBuilderLayer.prototype.renameLayer = function (args) {
         var target = args.target;
+        if (!this.selectedItem.selectedDiagram.activeLayer.addInfo) {
+            this.selectedItem.selectedDiagram.activeLayer.addInfo = { name: this.selectedItem.selectedDiagram.activeLayer.id };
+        }
         var addInfo = this.selectedItem.selectedDiagram.activeLayer.addInfo;
         target.parentElement.children[0].innerHTML = addInfo.name = target.value;
         target.parentElement.classList.remove('db-layer-editing');
@@ -209,7 +218,7 @@ var DiagramBuilderLayer = (function () {
         btnWindow.ej2_instances[0].items[3].iconCss = '';
     };
     DiagramBuilderLayer.prototype.btnDuplicateLayer = function () {
-        var name = this.selectedItem.selectedDiagram.activeLayer.addInfo.name;
+        var name = this.selectedItem.selectedDiagram.activeLayer.addInfo ? this.selectedItem.selectedDiagram.activeLayer.addInfo.name : "default_layer";
         this.selectedItem.selectedDiagram.cloneLayer(this.selectedItem.selectedDiagram.activeLayer.id);
         this.selectedItem.selectedDiagram.layers[this.selectedItem.selectedDiagram.layers.length - 1].addInfo = {
             'name': name + ' Copy'

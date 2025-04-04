@@ -6,7 +6,7 @@ var DropDownDataSources = (function () {
     DropDownDataSources.prototype.fileFormats = function () {
         var fileFormats = [
             { text: 'JPG', value: 'JPG' }, { text: 'PNG', value: 'PNG' },
-            { text: 'BMP', value: 'BMP' }, { text: 'SVG', value: 'SVG' }
+            { text: 'SVG', value: 'SVG' }
         ];
         return fileFormats;
     };
@@ -175,7 +175,7 @@ var DropDownDataSources = (function () {
         var menuItems = [
             { text: 'Zoom In', iconCss: 'sf-icon-ZoomIn' }, { text: 'Zoom Out', iconCss: 'sf-icon-ZoomOut' }, { separator: true },
             { text: 'Fit To Screen' }, { separator: true },
-            { text: 'Show Rulers' }, { text: 'Show Guides', iconCss: 'sf-icon-Selection' },
+            { text: 'Show Rulers' }, { text: 'Show Guides' },
             { text: 'Show Grid', iconCss: 'sf-icon-Selection' }, { separator: true },
             { text: 'Snap To Grid' }
         ];
