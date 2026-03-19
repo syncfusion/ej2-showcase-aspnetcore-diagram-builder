@@ -20,42 +20,54 @@
                 <input id='diagramEditable' type="text" class="db-diagram-name" onkeydown="diagramNameKeyDown(event)" onfocusout= "diagramNameChange(event)" />
                 <span id='diagramreport' class="db-diagram-name db-save-text"></span>
             </div>
-            <div class='db-menu-container'>
-                <div class="db-menu-style">
-                    <ejs-dropdownbutton  id="btnFileMenu" cssClass='db-dropdown-menu' content="File" items="ViewBag.filemenuitems"
-                            select="menuClick" beforeItemRender="beforeItemRender" beforeOpen="arrangeMenuBeforeOpen"
-                            beforeClose="arrangeMenuBeforeClose">
-                    </ejs-dropdownbutton>
+            <div class='db-menu-container' style="display: flex; justify-content: space-between;">
+                <div class="db-menu-control">
+                    <div class="db-menu-style">
+                        <ejs-dropdownbutton  id="btnFileMenu" cssClass='db-dropdown-menu' content="File" items="ViewBag.filemenuitems"
+                                select="menuClick" beforeItemRender="beforeItemRender" beforeOpen="arrangeMenuBeforeOpen"
+                                beforeClose="arrangeMenuBeforeClose">
+                        </ejs-dropdownbutton>
+                    </div>
+                    <div class="db-menu-style">
+                        <ejs-dropdownbutton id="btnEditMenu"  cssClass='db-dropdown-menu' items="ViewBag.editmenuitems" select="menuClick"
+                                content="Edit" beforeItemRender="beforeItemRender" beforeOpen="arrangeMenuBeforeOpen"
+                                beforeClose="arrangeMenuBeforeClose">
+                        </ejs-dropdownbutton>
+                    </div>
+                    <div class="db-menu-style">
+                        <ejs-dropdownbutton id="btnViewMenu" cssClass='db-dropdown-menu' items="ViewBag.viewmenuitems"
+                                content="View" select="menuClick" beforeItemRender="beforeItemRender" beforeOpen="arrangeMenuBeforeOpen"
+                                beforeClose="arrangeMenuBeforeClose">
+                        </ejs-dropdownbutton>
+                    </div>
+                    <div class="db-menu-style">
+                        <ejs-dropdownbutton id="btnArrangeMenu" cssClass='db-dropdown-menu'  target='.e-contextmenu-wrapper.arrangeMenu' content="Arrange"
+                                select="menuClick" beforeItemRender="beforeItemRender" beforeOpen="arrangeMenuBeforeOpen"
+                                beforeClose="arrangeMenuBeforeClose">
+                        </ejs-dropdownbutton>
+                    </div>
+                    <div class="db-menu-style">
+                        <ejs-dropdownbutton id="btnWindowMenu" cssClass='db-dropdown-menu' items='ViewBag.windowmenuitems'
+                                content="Window" select="menuClick" beforeItemRender="beforeItemRender" beforeOpen="arrangeMenuBeforeOpen"
+                                beforeClose="arrangeMenuBeforeClose">
+                        </ejs-dropdownbutton >
+                    </div>
+                    <div class="db-menu-style" style="display: none">
+                        <ejs-dropdownbutton id="btnHelpMenu" cssClass='db-dropdown-menu'items='ViewBag.helpmenuitems'
+                                content="Edit" select="menuClick" beforeItemRender="beforeItemRender" beforeOpen="arrangeMenuBeforeOpen"
+                                beforeClose="arrangeMenuBeforeClose">
+                        </ejs-dropdownbutton >
+                    </div>
                 </div>
-                <div class="db-menu-style">
-                    <ejs-dropdownbutton id="btnEditMenu"  cssClass='db-dropdown-menu' items="ViewBag.editmenuitems" select="menuClick"
-                            content="Edit" beforeItemRender="beforeItemRender" beforeOpen="arrangeMenuBeforeOpen"
-                            beforeClose="arrangeMenuBeforeClose">
-                    </ejs-dropdownbutton>
-                </div>
-                <div class="db-menu-style">
-                    <ejs-dropdownbutton id="btnViewMenu" cssClass='db-dropdown-menu' items="ViewBag.viewmenuitems"
-                            content="View" select="menuClick" beforeItemRender="beforeItemRender" beforeOpen="arrangeMenuBeforeOpen"
-                            beforeClose="arrangeMenuBeforeClose">
-                    </ejs-dropdownbutton>
-                </div>
-                <div class="db-menu-style">
-                    <ejs-dropdownbutton id="btnArrangeMenu" cssClass='db-dropdown-menu'  target='.e-contextmenu-wrapper.arrangeMenu' content="Arrange"
-                            select="menuClick" beforeItemRender="beforeItemRender" beforeOpen="arrangeMenuBeforeOpen"
-                            beforeClose="arrangeMenuBeforeClose">
-                    </ejs-dropdownbutton>
-                </div>
-                <div class="db-menu-style">
-                    <ejs-dropdownbutton id="btnWindowMenu" cssClass='db-dropdown-menu' items='ViewBag.windowmenuitems'
-                            content="Window" select="menuClick" beforeItemRender="beforeItemRender" beforeOpen="arrangeMenuBeforeOpen"
-                            beforeClose="arrangeMenuBeforeClose">
-                    </ejs-dropdownbutton >
-                </div>
-                <div class="db-menu-style" style="display: none">
-                    <ejs-dropdownbutton id="btnHelpMenu" cssClass='db-dropdown-menu'items='ViewBag.helpmenuitems'
-                            content="Edit" select="menuClick" beforeItemRender="beforeItemRender" beforeOpen="arrangeMenuBeforeOpen"
-                            beforeClose="arrangeMenuBeforeClose">
-                    </ejs-dropdownbutton >
+                <div class="promotion-text">
+                    <img style="margin-right:7px; filter: brightness(0) invert(1);"
+                         src="./css/assets/dbstyle/common_images/Syncfusion_Logo.svg" alt="Syncfusion Logo" />
+                    Powered by&nbsp;
+                    <a style="text-decoration: none; color:#fff30f;"
+                       href="https://www.syncfusion.com/aspnet-core-ui-controls/diagram?tag=es-freetools-diagram-builder-sample-ft"
+                       target="_blank">
+                        Syncfusion Diagram Component
+                    </a>
                 </div>
             </div>
         </div>
@@ -809,7 +821,34 @@
         </div>
     </div>
 </div>
-
+<div class="footer">
+    <div class="footer-container">
+        <div class="diagram-icon">
+            <img class="footer-logo" src="./css/assets/dbstyle/common_images/Diagram_Component.svg"
+                 alt="Diagram Component Logo" />
+        </div>
+        <div class="footer-content">
+            <div class="title">
+                <span>
+                    Want interactive diagramming in your app?
+                </span>
+                <span>
+                    <strong class="main-title"> Try our Diagram Component</strong> — build, connect, and
+                    customize!
+                </span>
+            </div>
+            <div class="buttons">
+                <button type="button" class="e-trial-btn e-btn e-primary e-icons"
+                        onclick="window.open('https://www.syncfusion.com/downloads/aspnetcore-js2?tag=es-freetools-diagram-builder-sample-ads-trial', '_blank')">
+                </button>
+                <button type="button" class="e-demo-btn e-btn"
+                        onclick="window.open('https://www.syncfusion.com/request-demo?tag=es-freetools-diagram-builder-sample-ads-demo', '_blank')">
+                    Request Demo
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 <ejs-dialog id="exportDialog" width='400px' header='Export Diagram' target='#target' isModal='true' 
      visible='false' showCloseIcon='true'>
         <e-dialog-buttons>
